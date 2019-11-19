@@ -1,0 +1,9 @@
+apiVersion: v2
+name: py-repo
+description: Deployment that can serve python packages via pip install.
+type: application
+version: 0.1.0
+appVersion: latest # Nginx docker image version
+maintainers:
+- name: Jared Hanson
+  email: jred0011@gmail.com
