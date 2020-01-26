@@ -1,8 +1,7 @@
-name=endergy/python-repository
-version=latest
-image=${name}:${version}
+docker-user=jaredhanson11
+name=${docker-user}/python-repository
 
 build:
-	docker build . -t ${image}
-push:
-	docker push ${image}
+	docker build . -t ${name}:latest
+push: build
+	docker push ${name}:lastest
