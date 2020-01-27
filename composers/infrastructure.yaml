@@ -1,26 +1,26 @@
+# Infrastructure like package registries, jenkins, etc.
+# Infrastructure containers are exposed at 692* ports
 version: "3.7"
 services:
-
   jenkins:
     image: jenkins/jenkins:lts
     ports:
-    - "6902:8080"
+    - "6922:8080"
     volumes:
     - "${HOME}/.endergy-data/jenkins-home/:/var/jenkins_home/"
 
   docker-registry:
     image: registry:2
     ports:
-    - "6900:5000"
+    - "6920:5000"
     volumes:
     - "${HOME}/.endergy-data/docker-registry/:/var/lib/registry/"
 
   python-repository:
-    image: localhost:6900/docker-registry
+    image: python-repository
     ports:
-    - "6901:8080"
-    volumes:
-    - "${HOME}/.endergy-data/docker-registry/:/var/lib/registry/"
+    - "6921:8080"
+    # volumes:
+    # - "${HOME}/.endergy-data/python-repository/:/"
     depends_on:
       - docker-registry
-

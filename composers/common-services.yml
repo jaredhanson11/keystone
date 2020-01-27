@@ -1,0 +1,13 @@
+# Common services like databases, object stores, kafka etc.
+# Common services are exposed at 690* ports
+version: '3.3'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+    - "6900:5432"
+    environment:
+      POSTGRES_PASSWORD: bSydBTMW8QGzcZ65ZCg4e44c
+    volumes:
+    - "${HOME}/.endergy-data/postgres:/var/lib/postgresql"

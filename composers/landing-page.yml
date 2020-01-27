@@ -1,0 +1,19 @@
+# Landing page deployment, server and client
+# Landing page services are exposed at 693* ports
+version: '3.3'
+services:
+  landing-page-client:
+    image: jaredhanson11/endergy-landing-page-client
+    restart: always
+    ports:
+    - "6930:80"
+  landing-page-server:
+    image: jaredhanson11/endergy-landing-page-server
+    restart: always
+    ports:
+    - "6931:8000"
+    environment:
+      MAIL_USERNAME: endergygroup@gmail.com
+      MAIL_PASSWORD: bSydBTMW8QGzcZ65ZCg4e44c
+      SQL_CONNECTION_URI: postgresql://postgres:bSydBTMW8QGzcZ65ZCg4e44c@localhost:6900/endergy_landing_page
+      APP_CONFIG: /app/config.py
