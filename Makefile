@@ -1,7 +1,7 @@
 images-dir=./images
 images=$(shell ls ${images-dir})
 
-build-all:
+build:
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} build;)
-push-all:
+push:
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} push;)

@@ -1,6 +1,6 @@
 # Common services like databases, object stores, kafka etc.
 # Common services are exposed at 690* ports
-version: '3.3'
+version: '3.7'
 services:
   postgres:
     image: postgres

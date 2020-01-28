@@ -10,4 +10,4 @@ RUN rm /requirements.txt
 
 WORKDIR /app
 
-CMD [ "gunicorn", "-w 4", "server:app", "-b 0.0.0.0:8000" ]
+ENTRYPOINT [ "gunicorn", "-w 4", "server:app", "-b 0.0.0.0:8000" ]

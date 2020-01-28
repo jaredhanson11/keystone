@@ -1,6 +1,6 @@
 # Landing page deployment, server and client
 # Landing page services are exposed at 693* ports
-version: '3.3'
+version: '3.7'
 services:
   landing-page-client:
     image: jaredhanson11/endergy-landing-page-client

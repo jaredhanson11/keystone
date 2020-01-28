@@ -1,5 +1,5 @@
 docker-user=jaredhanson11
-name=${docker-user}/jenkins
+name=${docker-user}/cicd-tools
 
 build:
 	docker build . -t ${name}:latest
