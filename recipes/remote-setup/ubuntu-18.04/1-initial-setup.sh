@@ -15,4 +15,4 @@ done
 cd ${HOME}
 git clone git@github.com:jaredhanson11/keystone.git
 
-./keystone/recipes/remote-setup/ubuntu-18.04/setup.sh
+./keystone/recipes/remote-setup/ubuntu-18.04/2-setup.sh
