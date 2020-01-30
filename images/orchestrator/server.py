@@ -20,9 +20,6 @@ gunicorn_logger = logging.getLogger('gunicorn.error')
 app.logger.handlers = gunicorn_logger.handlers
 app.logger.setLevel(gunicorn_logger.level)
 
-create_network = ['docker', 'network', 'create', 'endergy-network']
-Popen(create_network).wait()
-
 @app.route('/redeploy')
 def redeploy():
     pull()
@@ -37,6 +34,11 @@ def pull():
 
 
 def deploy():
+    # Create network
+    create_network = ['docker', 'network', 'create', 'endergy-network']
+    Popen(create_network).wait()
+
+    # Start stacks based on deploy files
     confs = list(filter(lambda f: f.endswith('.yml'), os.listdir(DEPLOYS_DIR)))
     common_services_i = confs.index('common-services.yml')
     ordered_confs = [confs.pop(common_services_i)] + confs
