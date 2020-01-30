@@ -1,0 +1,10 @@
+services:
+- name: jenkins
+  deploy: false
+  containerPort: 8080
+- name: docker-registry
+  deploy: false
+  containerPort: 5000
+- name: python-repository
+  deploy: true
+  containerPort: 8080

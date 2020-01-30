@@ -1,0 +1,8 @@
+services:
+- name: landing-page-client
+  deploy: true
+  containerPort: 80
+  extraPaths: [""] # Enable location as root
+- name: landing-page-server
+  deploy: true
+  containerPort: 8000

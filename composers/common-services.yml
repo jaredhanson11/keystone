@@ -2,12 +2,25 @@
 # Common services are exposed at 690* ports
 version: '3.7'
 services:
+  ingress:
+    image: jaredhanson11/ingress
+    restart: always
+    ports:
+    - 8000:80
   postgres:
     image: postgres
     restart: always
-    ports:
-    - "6900:5432"
     environment:
       POSTGRES_PASSWORD: bSydBTMW8QGzcZ65ZCg4e44c
     volumes:
     - "${HOME}/.endergy-data/postgres:/var/lib/postgresql"
+  redis:
+    image: redis:alpine
+    restart: always
+    volumes:
+    - "../files/redis.conf:/usr/local/etc/redis/redis.conf"
+    command: "redis-server /usr/local/etc/redis/redis.conf"
+networks:
+  default:
+    external:
+      name: endergy-network

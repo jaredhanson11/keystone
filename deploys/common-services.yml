@@ -1,0 +1,7 @@
+services:
+- name: postgres
+  deploy: true
+  containerPort: 5432
+- name: redis
+  deploy: false
+  containerPort: 6379

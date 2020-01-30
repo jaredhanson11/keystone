@@ -4,23 +4,21 @@ version: "3.7"
 services:
   jenkins:
     image: jenkins/jenkins:lts
-    ports:
-    - "6922:8080"
     volumes:
     - "${HOME}/.endergy-data/jenkins-home/:/var/jenkins_home/"
 
   docker-registry:
     image: registry:2
-    ports:
-    - "6920:5000"
     volumes:
     - "${HOME}/.endergy-data/docker-registry/:/var/lib/registry/"
 
   python-repository:
     image: pypiserver/pypiserver:latest
     command: -P /data/.htpasswd /data/packages
-    ports:
-    - "6921:8080"
     volumes:
     - "${HOME}/.endergy-data/python-repository/:/data/packages"
     - "../files/pypipasswd.txt:/data/.htpasswd"
+networks:
+  default:
+    external:
+      name: endergy-network
