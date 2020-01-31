@@ -10,4 +10,5 @@ RUN rm /requirements.txt
 
 WORKDIR /app
 
+EXPOSE 8000
 ENTRYPOINT [ "gunicorn", "-w 2", "server:app", "-b 0.0.0.0:8000" ]
