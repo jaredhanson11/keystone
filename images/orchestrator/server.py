@@ -3,7 +3,7 @@ Orchestrator handles keeping deployments up to date by exposing endpoint
 for webhooks to hit whenever new images are published.
 '''
 import os
-import logging
+from multiprocessing import Process
 from subprocess import Popen
 
 from yaml import safe_load
@@ -16,14 +16,13 @@ COMPOSERS_DIR = os.path.join(KEYSTONE_DIR, 'composers')
 
 app = Flask(__name__)
 
-gunicorn_logger = logging.getLogger('gunicorn.error')
-app.logger.handlers = gunicorn_logger.handlers
-app.logger.setLevel(gunicorn_logger.level)
 
 @app.route('/redeploy')
 def redeploy():
     pull()
-    deploy()
+    process = Process(target=deploy)
+    process.daemon = True
+    process.start()
     return jsonify(True)
 
 
@@ -55,9 +54,10 @@ def deploy():
             service_conf = ServiceDeployConf(svc)
             if service_conf.deploy:
                 deploy_services.append(service_conf.name)
-        up = compose + ['up', '-d'] + deploy_services
-        app.logger.debug(up)
-        Popen(args=up).wait()
+        if deploy_services:
+            up = compose + ['up', '-d'] + deploy_services
+            app.logger.debug(up)
+            Popen(args=up).wait()
 
 
 class ServiceDeployConf:  # This class should be moved to common library
@@ -85,3 +85,7 @@ class ServiceDeployConf:  # This class should be moved to common library
         if self.deploy:
             assert self.name
             assert self.port
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
