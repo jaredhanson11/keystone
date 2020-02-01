@@ -8,6 +8,7 @@ if [[ -z "$deploys_dir" ]]; then
 fi
 
 all_stacks=($(ls ${deploys_dir}/*.yml))
+# Add stacks to this array that should be on CI/CD
 update_stacks=("landing-page.yml")
 
 if [[ "$type" == "init" ]]; then

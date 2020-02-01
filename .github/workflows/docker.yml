@@ -12,3 +12,11 @@ jobs:
         DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
       with:
         entrypoint: /scripts/github-workflows/push-docker-artifacts.sh
+    - name: Trigger deployment
+      uses: docker://jaredhanson11/cicd-tools
+      env:
+        GITHUB_KEY: ${{ secrets.KEYSTONE_ACCESS_KEY }}
+        GITHUB_USER: jaredhanson11
+        GITHUB_REPO: keystone
+      with:
+        entrypoint: /scripts/github-workflows/trigger-deploy.sh

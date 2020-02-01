@@ -1,0 +1,15 @@
+name: Deploy Services
+on: [deployment]
+jobs:
+  redeploy-services:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Redeploy services
+      uses: docker://jaredhanson11/cicd-tools
+      env:
+        SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        SWARM_MANAGER_IP: 64.227.62.134
+        SWARM_MANAGER_USER: endergy
+        SWARM_MANAGER_PUBKEY: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKg2C1eQrttq5s3mFjKkqUnTUNtHkSJj9TR83oZIs68QXHBGUHrLlaqi/FJ6AuROU7pKuO2JRdaH5MrqFv+gno0="
+      with:
+        entrypoint: /scripts/github-workflows/deploy.sh
