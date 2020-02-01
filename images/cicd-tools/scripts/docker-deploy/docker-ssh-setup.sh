@@ -12,6 +12,8 @@ eval "$(ssh-agent -s)"
 ssh-add - <<< "${SSH_DEPLOY_KEY}"
 
 # Add docker swarm manager to known_hosts
-echo "${SSH_DEPLOY_KEY}" > ~/.ssh/id_rsa
+mkdir ${HOME}/.ssh
+echo "${SSH_DEPLOY_KEY}" > ${HOME}/.ssh/id_rsa
+echo "${manager_ip} ${manager_pubkey}" > ${HOME}/.ssh/known_hosts
 # Setup docker to connect to remote host
 export DOCKER_HOST=ssh://${maanger_user}@${manager_ip}
