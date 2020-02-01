@@ -3,10 +3,8 @@ images-dir=./images
 images=$(shell ./recipes/build-scripts/images.sh ${images-dir})
 
 build: build-config
-	${MAKE} -C deploys build
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} build;)
 push: push-config
-	${MAKE} -C deploys push
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} push;)
 
 # Related to config Docker image

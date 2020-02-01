@@ -1,4 +1,4 @@
-FROM jaredhanson11/keysone-configs as deploys
+FROM jaredhanson11/keystone-configs as deploys
 FROM docker
 
 COPY --from=deploys /config/deploys /deploys
