@@ -30,4 +30,5 @@ for stack in ${stacks[@]}
 do
     stack_deploy+=" -c $stack"
 done
-echo $stack_deploy
+
+$stack_deploy
