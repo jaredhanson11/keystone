@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+set -e
 
 type=$1
 deploys_dir=$2

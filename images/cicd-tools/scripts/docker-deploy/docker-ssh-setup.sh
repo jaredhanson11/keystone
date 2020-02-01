@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+set -e
 
 # Docker swarm manager connection info
 manager_ip=${SWARM_MANAGER_IP}
@@ -11,6 +12,6 @@ eval "$(ssh-agent -s)"
 ssh-add - <<< "${SSH_DEPLOY_KEY}"
 
 # Add docker swarm manager to known_hosts
-echo "${manager_ip} ${manager_pubkey}" > ~/.ssh/known_hosts
+echo "${SSH_DEPLOY_KEY}" > ~/.ssh/id_rsa
 # Setup docker to connect to remote host
-docker-machine create --driver generic --generic-ip-address=${manager_ip} --generic-ssh-user=${manager_user} ${manager_ip}
+export DOCKER_HOST=ssh://${maanger_user}@${manager_ip}
