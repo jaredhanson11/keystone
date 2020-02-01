@@ -7,7 +7,7 @@ if [[ "$1" == "local" ]]; then
     $SCRIPT_DIR/../docker-deploy/docker-deploy-config.sh ./files
     $SCRIPT_DIR/../docker-deploy/docker-deploy-stack.sh ./deploys
 else
-    $SCRIPT_DIR/../docker-deploy/docker-ssh-setup.sh
+    source $SCRIPT_DIR/../docker-deploy/docker-ssh-setup.sh
     $SCRIPT_DIR/../docker-deploy/docker-deploy-config.sh $files
     $SCRIPT_DIR/../docker-deploy/docker-deploy-stack.sh $
 fi
