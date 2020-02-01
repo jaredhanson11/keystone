@@ -1,3 +1,3 @@
 FROM alpine:latest
-WORKDIR /deploys
+WORKDIR /config
 COPY ./ ./

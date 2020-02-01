@@ -5,6 +5,11 @@ services:
   landing-page-client:
     image: jaredhanson11/endergy-landing-page-client
     restart: always
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.landing-page-client.rule=PathPrefix(`/landing-page/`)"
+    - "traefik.http.routers.landing-page-client.middlewares=landing-page-client@docker"
+    - "traefik.http.middlewares.landing-page-client.stripprefix.prefixes=/landing-page"
   landing-page-server:
     image: jaredhanson11/endergy-landing-page-server
     restart: always
@@ -13,7 +18,3 @@ services:
       MAIL_PASSWORD: bSydBTMW8QGzcZ65ZCg4e44c
       SQL_CONNECTION_URI: postgresql://ingress/postgres:bSydBTMW8QGzcZ65ZCg4e44c@localhost/endergy_landing_page
       APP_CONFIG: /app/config.py
-networks:
-  default:
-    external:
-      name: endergy-network

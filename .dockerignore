@@ -1,0 +1,9 @@
+# Ignore everything
+**
+
+# Allow files and directories
+!/files/**
+!/deploys/**
+
+# Ignore unnecessary files inside allowed directories
+**/.DS_Store

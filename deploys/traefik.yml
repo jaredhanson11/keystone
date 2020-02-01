@@ -3,13 +3,11 @@ version: "3.7"
 services:
   traefik:
     image: "traefik:v2.0.0-rc3"
-    container_name: "traefik"
     command:
       - "--api.insecure=true"
       - "--log.level=DEBUG"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.defaultrule=Host(`{{ normalize .Name }}.localhost`)"
     ports:
       - "80:80"
       - "443:443"
@@ -18,7 +16,3 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     labels:
       - "traefik.enable=true"
-networks:
-  default:
-    external:
-      name: endergy-network

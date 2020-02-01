@@ -17,8 +17,10 @@ services:
     command: -P /data/.htpasswd /data/packages
     volumes:
     - "${HOME}/.endergy-data/python-repository/:/data/packages"
-    - "../files/pypipasswd.txt:/data/.htpasswd"
-networks:
-  default:
-    external:
-      name: endergy-network
+    configs:
+    - source: pypipasswd.txt
+      target: /data/.htpasswd
+
+configs:
+  pypipasswd.txt:
+    external: true
