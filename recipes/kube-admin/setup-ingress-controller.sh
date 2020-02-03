@@ -4,6 +4,7 @@
 INGRESS_CONTROLLER_NODE_PORT=
 
 helm install nginx-ingress stable/nginx-ingress \
+--namespace kube-system \
 --set controller.publishService.enabled=true \
 --set controller.service.type=NodePort \
 --set controller.service.nodePorts.http=30269 \
