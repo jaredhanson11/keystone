@@ -1,0 +1,9 @@
+dependencies:
+- name: postgresql
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 8.2.1
+- name: endergy-lib
+  repository: file://../endergy-lib
+  version: 0.1.0
+digest: sha256:04f6db43fbe5a0b4986ed3942897a39a605eb3635f6aeb9e6860ef36c8052101
+generated: "2020-02-03T22:30:01.267985-08:00"

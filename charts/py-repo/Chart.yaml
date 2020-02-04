@@ -1,0 +1,16 @@
+apiVersion: v2
+name: py-repo
+description: Deploys a python repository used as a custom pypi instance.
+type: application
+
+version: 0.1.0
+appVersion: 0.4.10
+
+# Chart dependencies
+dependencies:
+- name: postgresql
+  version: 8.2.1
+  repository: "@stable"
+- name: endergy-lib
+  version: 0.1.0
+  repository: file://../endergy-lib
