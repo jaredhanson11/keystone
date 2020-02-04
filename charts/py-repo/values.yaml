@@ -2,24 +2,13 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-global:
-  postgresql:
-    postgresqlDatabase: pypi_db
-    postgresqlUsername: pypi_user
-    # postgresqlPassword, use '--set' CLI option
-    postgresqlPassword: ""
-
-### py-repo related values
-
 replicaCount: 1
 image:
-  repository: jaredhanson11/pypi-server
+  repository: pypiserver/pypiserver
   pullPolicy: Always
 nameOverride: ""
 fullnameOverride: ""
 resources: {}
-
-enablePypiProxy: false
 
 service:
   type: ClusterIP
@@ -32,10 +21,3 @@ ingress:
   subdomain: "pyrepo"
   # hosts, if empty use all hosts defined in endergy-lib
   hosts: []
-
-# postresql subchart values
-postgresql:
-  image:
-    repository: postgres
-    tag: 12
-

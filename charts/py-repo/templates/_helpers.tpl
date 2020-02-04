@@ -51,17 +51,6 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{/*
-Create the name of the service account to use
-*/}}
-{{- define "py-repo.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create -}}
-    {{ default (include "py-repo.fullname" .) .Values.serviceAccount.name }}
-{{- else -}}
-    {{ default "default" .Values.serviceAccount.name }}
-{{- end -}}
-{{- end -}}
-
-{{/*
 Call subchart methods. See: https://github.com/helm/helm/issues/4535#issuecomment-416022809
 */}}
 {{- define "py-repo.call-nested" -}}
@@ -69,16 +58,4 @@ Call subchart methods. See: https://github.com/helm/helm/issues/4535#issuecommen
 {{- $subchart := index . 1 }}
 {{- $template := index . 2 }}
 {{- include $template (dict "Chart" (dict "Name" $subchart) "Values" (index $dot.Values $subchart) "Release" $dot.Release "Capabilities" $dot.Capabilities) }}
-{{- end -}}
-
-{{/*
-Get DB connection url.
-*/}}
-{{- define "py-repo.dbUrl" -}}
-{{- $user := .Values.global.postgresql.postgresqlUsername -}}
-{{- $password := .Values.global.postgresql.postgresqlPassword -}}
-{{- $db := .Values.global.postgresql.postgresqlDatabase -}}
-{{- $host := include "py-repo.call-nested" (list . "postgresql" "postgresql.fullname") -}}
-{{- $port := include "py-repo.call-nested" (list . "postgresql" "postgresql.port") -}}
-postgres://{{ $user }}:{{ $password }}@{{ $host }}:{{ $port }}/{{ $db }}
 {{- end -}}

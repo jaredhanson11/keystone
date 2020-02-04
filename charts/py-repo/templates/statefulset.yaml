@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "py-repo.fullname" . }}
   labels:
@@ -9,6 +9,7 @@ spec:
   selector:
     matchLabels:
       {{- include "py-repo.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "py-repo.fullname" . }}
   template:
     metadata:
       labels:
@@ -18,16 +19,10 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: "PORT"
-              value: "80"
-            - name: "DB"
-              value: {{ include "py-repo.dbUrl" . | quote }}
-            - name: "PYPI_PROXY"
-              value: {{ int .Values.enabledPypiProxy | quote }}
+          args: [ "-P", "/auth/.htpasswd", "-a", "update,download,list", "/data/packages" ]
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
@@ -39,3 +34,21 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: pypi-data
+              mountPath: /data
+            - name: htpasswd-file
+              mountPath: /auth/.htpasswd
+              subPath: .htpasswd
+      volumes:
+        - name: htpasswd-file
+          configMap:
+            name: {{ include "py-repo.fullname" . }}
+  volumeClaimTemplates:
+    - metadata:
+        name: pypi-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 5Gi
