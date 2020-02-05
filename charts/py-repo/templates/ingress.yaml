@@ -17,6 +17,6 @@ metadata:
   {{- end }}
 spec:
   rules:
-  {{- $_inputs := dict "subdomain" "pyrepo" "svcName" $fullName "svcPort" $svcPort -}}
-  {{- include "endergy-lib.hosts" $_inputs | indent 4 -}}
+  {{- $_inputs := dict "subdomain" "pyrepo" "svcName" $fullName "svcPort" $svcPort }}
+  {{- include "endergy-lib.hosts" (merge . (dict "_inputs" $_inputs)) | indent 4 -}}
 {{- end }}

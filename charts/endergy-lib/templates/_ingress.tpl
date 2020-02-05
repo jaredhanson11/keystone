@@ -1,25 +1,23 @@
 {{- /*
 endergy-libs.hosts generates ingress entrypoints.
-input:
-  dict(
-    subdomain: str
-    hosts: list (optional)
-    svcName: str
-    svcPort: str
-  )
+.Values
+._inputs:
+  subdomain: str
+  hosts: list (optional)
+  svcName: str
+  svcPort: str
 */ -}}
 {{- define "endergy-lib.hosts" -}}
-{{- $subdomain := .subdomain }}
-{{- $hosts := default (list "endergy.info" "endergy.co") .hosts }} 
-{{- $svcName := .svcName }}
-{{- $svcPort := .svcPort }}
+{{- $_hosts := index (index .Values "endergy-lib") "hosts" }}
+{{- $hosts := default $_hosts ._inputs.hosts }}
+{{- $inputs := ._inputs -}}
 {{- range $hosts }}
-- host: "{{ $subdomain }}.{{ . }}"
+- host: "{{ $inputs.subdomain }}.{{ . }}"
   http:
     paths:
       - path: "/"
         backend:
-          serviceName: {{ $svcName | quote }}
-          servicePort: {{ $svcPort }}
+          serviceName: {{ $inputs.svcName| quote }}
+          servicePort: {{ $inputs.svcPort }}
 {{- end -}}
 {{- end -}}
