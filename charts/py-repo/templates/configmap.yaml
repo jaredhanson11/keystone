@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "py-repo.fullname" . }}
+  name: {{ include "endergy-lib.common.fullname" . }}
   labels:
-    {{- include "py-repo.labels" . | nindent 4 }}
+    {{- include "endergy-lib.common.labels" . | nindent 4 }}
 data:
-  .htpasswd: "endergy-automation:{SHA}8v9akPd5PzHroQhtl/o6gfJb2Sg="
+  .htpasswd: {{ .Values.htpasswd }}

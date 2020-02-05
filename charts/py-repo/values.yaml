@@ -6,9 +6,11 @@ replicaCount: 1
 image:
   repository: pypiserver/pypiserver
   pullPolicy: Always
-nameOverride: ""
+
 fullnameOverride: ""
 resources: {}
+# htpasswd concatins password entries used for authenticating pyrepo access
+htpasswd: ""
 
 service:
   type: ClusterIP

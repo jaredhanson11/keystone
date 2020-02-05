@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "py-repo.fullname" . }}
+  name: {{ include "endergy-lib.common.fullname" . }}
   labels:
-    {{- include "py-repo.labels" . | nindent 4 }}
+    {{- include "endergy-lib.common.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "py-repo.selectorLabels" . | nindent 4 }}
+    {{- include "endergy-lib.common.selectorLabels" . | nindent 4 }}

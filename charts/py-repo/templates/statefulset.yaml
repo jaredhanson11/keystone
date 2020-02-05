@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: {{ include "py-repo.fullname" . }}
+  name: {{ include "endergy-lib.common.fullname" . }}
   labels:
-    {{- include "py-repo.labels" . | nindent 4 }}
+    {{- include "endergy-lib.common.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "py-repo.selectorLabels" . | nindent 6 }}
-  serviceName: {{ include "py-repo.fullname" . }}
+      {{- include "endergy-lib.common.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "endergy-lib.common.fullname" . }}
   template:
     metadata:
       labels:
-        {{- include "py-repo.selectorLabels" . | nindent 8 }}
+        {{- include "endergy-lib.common.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -43,7 +43,7 @@ spec:
       volumes:
         - name: htpasswd-file
           configMap:
-            name: {{ include "py-repo.fullname" . }}
+            name: {{ include "endergy-lib.common.fullname" . | quote}}
   volumeClaimTemplates:
     - metadata:
         name: pypi-data
