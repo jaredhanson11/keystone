@@ -8,7 +8,7 @@ endergy-libs.hosts generates ingress entrypoints.
   svcPort: str
 */ -}}
 {{- define "endergy-lib.ingress.hosts" -}}
-{{- $hosts := default (index (index .Values "endergy-lib") "hosts") .Values.hosts }}
+{{- $hosts := default (index (index .Values "endergy-lib") "hosts") .Values.ingress.hosts }}
 {{- $fullName := include "endergy-lib.common.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- $subdomain := .Values.ingress.subdomain -}}

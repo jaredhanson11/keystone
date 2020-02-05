@@ -2,15 +2,18 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
+# htpasswd concatins password entries used for authenticating pyrepo access
+htpasswd: ""
+
+nameOverride: ""
+fullnameOverride: ""
+
 image:
   repository: pypiserver/pypiserver
   pullPolicy: Always
 
-fullnameOverride: ""
+replicaCount: 1
 resources: {}
-# htpasswd concatins password entries used for authenticating pyrepo access
-htpasswd: ""
 
 service:
   type: ClusterIP

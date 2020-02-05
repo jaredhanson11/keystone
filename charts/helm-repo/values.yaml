@@ -3,12 +3,17 @@
 # Declare variables to be passed into your templates.
 
 user: "endergy-automation"
-password: ""
+password: "changeme"
 
-replicaCount: 1
+nameOverride: ""
+fullnameOverride: ""
+
 image:
   repository: chartmuseum/chartmuseum
   pullPolicy: Always
+
+replicaCount: 1
+resources: {}
 
 service:
   type: ClusterIP
