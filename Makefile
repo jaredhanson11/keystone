@@ -6,11 +6,3 @@ build: build-config
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} build;)
 push: push-config
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} push;)
-
-# Related to config Docker image
-docker-user=jaredhanson11
-config-image-name=${docker-user}/keystone-configs
-build-config:
-	docker build . -t ${config-image-name}:latest
-push-config: build-config
-	docker push ${config-image-name}:latest
