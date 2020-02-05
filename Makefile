@@ -6,9 +6,9 @@ images=$(shell ./recipes/build-scripts/images.sh ${images-dir})
 charts-dir=./charts
 charts=$(shell ./recipes/build-scripts/charts.sh ${charts-dir})
 
-build-images: build-config
+build-images:
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} build;)
-push-images: push-config
+push-images:
 	$(foreach image, ${images}, $(MAKE) -C ${images-dir}/${image} push;)
 
 # This job is run under the assumption you're in the cicd-tools container.
