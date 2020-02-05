@@ -1,0 +1,1 @@
+{{- include "endergy-lib.ingress" . -}}
