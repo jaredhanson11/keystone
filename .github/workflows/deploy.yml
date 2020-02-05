@@ -7,9 +7,9 @@ jobs:
     - name: Redeploy services
       uses: docker://jaredhanson11/cicd-tools
       env:
-        SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
-        SWARM_MANAGER_IP: 64.227.62.134
-        SWARM_MANAGER_USER: endergy
-        SWARM_MANAGER_PUBKEY: "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBKg2C1eQrttq5s3mFjKkqUnTUNtHkSJj9TR83oZIs68QXHBGUHrLlaqi/FJ6AuROU7pKuO2JRdaH5MrqFv+gno0="
+        DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        DIGITALOCEAN_CLUSTER_NAME: endergy-cluster-1
+        HELM_REPO_USER: ${{ secrets.HELM_REPO_USER }}
+        HELM_REPO_PASSWORD: ${{ secrets.HELM_REPO_PASSWORD }}
       with:
         entrypoint: /scripts/github-workflows/deploy.sh
