@@ -5,6 +5,10 @@ COPY ./scripts /scripts
 RUN chmod -R +x /scripts \
     && apk add bash make curl
 
+# github actions was setting $HOME value, so helm plugins couldn't be found
+ENV XDG_CACHE_HOME=/root/.cache
+ENV XDG_CONFIG_HOME=/root/.config
+ENV XDG_DATA_HOME=/root/.local/share
 # doctl, kubect, helm
 RUN apk add openssl git --virtual .build-deps \
     && curl -sL https://github.com/digitalocean/doctl/releases/download/v1.37.0/doctl-1.37.0-linux-amd64.tar.gz | tar -xzv \

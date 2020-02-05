@@ -13,4 +13,4 @@ push-images:
 
 # This job is run under the assumption you're in the cicd-tools container.
 push-charts:
-	$(foreach chart, ${charts}, ${scripts-dir}/kube/helm-push.sh ${charts-dir}/${chart})
+	$(foreach chart, ${charts}, ${scripts-dir}/kube/helm-push.sh ${charts-dir}/${chart};)
