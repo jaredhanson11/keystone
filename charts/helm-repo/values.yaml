@@ -3,7 +3,8 @@
 # Declare variables to be passed into your templates.
 
 user: "endergy-automation"
-password: "changeme"
+# password, recommended to use --set password=<...> cli arg for password
+password: "CHANGEME"
 
 nameOverride: ""
 fullnameOverride: ""
