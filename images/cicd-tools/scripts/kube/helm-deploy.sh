@@ -34,5 +34,4 @@ fi
 helm upgrade --install $deploy_name $CHART_NAME \
     --values $VALUES_FILE \
     --namespace $namespace \
-    --dependency-update \
     $EXTRA_HELM_ARGS
