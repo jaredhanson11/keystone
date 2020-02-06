@@ -1,9 +1,6 @@
 FROM docker
 
-COPY ./scripts /scripts
-
-RUN chmod -R +x /scripts \
-    && apk add bash make curl jq
+RUN apk add bash make curl jq
 
 # github actions was setting $HOME value, so helm plugins couldn't be found
 ENV XDG_CACHE_HOME=/root/.cache
@@ -21,5 +18,8 @@ RUN apk add openssl git --virtual .build-deps \
     && apk del .build-deps \
     && curl -L https://github.com/mikefarah/yq/releases/download/3.0.1/yq_linux_amd64 > ./yq \
     && chmod +x ./yq && mv ./yq /usr/local/bin/yq
+
+COPY ./scripts /scripts
+RUN chmod -R +x /scripts
 
 ENTRYPOINT [ "/bin/bash" ]
