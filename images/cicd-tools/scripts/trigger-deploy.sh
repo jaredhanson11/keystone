@@ -2,6 +2,7 @@
 # Triggers a deployment.
 # Usage:
 #   ./trigger-deploy <deploy-key>
+set -e
 
 # Get inputs
 deploy_key=$1

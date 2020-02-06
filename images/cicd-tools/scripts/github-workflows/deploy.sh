@@ -9,9 +9,8 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 # Get deployment to be triggered
 deploy_key=$1
 if [[ -z "$deploy_key" ]]; then
-    echo "Mssing required inputs."
-    echo "Usage:"
-    echo "  ./deploy.sh <deploy-key>"
+    echo "Missing required inputs."
+    echo "./deploy.sh <deploy-key>"
     exit 1
 fi
 

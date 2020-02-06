@@ -3,6 +3,7 @@
 # Requires: $HELM_REPO_USER
 #           $HELM_REPO_PASSWORD
 # Optional: $HELM_REPO_URL (default, https://helm.endergy.co/)
+set -e
 
 if [[ -z "$HELM_REPO_PASSWORD" || -z "$HELM_REPO_USER" ]]; then
     echo "Missing required inputs."

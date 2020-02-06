@@ -2,6 +2,7 @@
 # Setup .kubeconfig for Digital Ocean cluster.
 # Requires: $DIGITALOCEAN_ACCESS_TOKEN
 #           $DIGITALOCEAN_CLUSTER_NAME
+set -e
 
 if [[ -z "$DIGITALOCEAN_ACCESS_TOKEN" || -z "$DIGITALOCEAN_CLUSTER_NAME" ]]; then
     echo "Missing required inputs."
