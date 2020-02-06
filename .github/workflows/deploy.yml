@@ -13,3 +13,4 @@ jobs:
         HELM_REPO_PASSWORD: ${{ secrets.HELM_REPO_PASSWORD }}
       with:
         entrypoint: /scripts/github-workflows/deploy.sh
+        args: ${{ github.deployment.payload.deployKey }}

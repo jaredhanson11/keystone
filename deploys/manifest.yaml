@@ -1,0 +1,31 @@
+# This manifest maps deployment payload -> stacks to deploy
+#
+## Deploys Structure ##
+# deploys/
+#   manifest.yaml
+#   <namespace>/
+#     <app>.yml # stack = _default
+#     <app>.<stack>.yml
+#
+# Manifest Entry #
+# <payload.deploy>:
+#   - name: str # used to find
+#     chartName: str # name of chart in helm repo (i.e stable/postgres)
+#     namespace: str # name of k8s namespace (and values file directory)
+#     stacks: list # if empty deploy all stacks, else deploy only stacks defined here
+#
+# NO YAML ANCHORS ALLOWED -> https://github.com/mikefarah/yq/issues/339
+
+endergy-master: []
+
+py-repo:
+  - name: "py-repo"
+    chartName: "endergy/py-repo"
+    namespace: "endergy-tools"
+    stacks: []
+
+helm-repo:
+  - name: "helm-repo"
+    chartName: "endergy/helm-repo"
+    namespace: "endergy-tools"
+    stacks: []
