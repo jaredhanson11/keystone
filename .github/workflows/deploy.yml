@@ -4,6 +4,7 @@ jobs:
   redeploy-services:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v1
     - name: Redeploy services
       uses: docker://jaredhanson11/cicd-tools
       env:
