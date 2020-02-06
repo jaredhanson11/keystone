@@ -13,7 +13,7 @@ if [[ -z "$deploy_key" ]]; then
 fi
 
 # Create deployment payload
-payload="{\"deploy_key\": \"$deploy_key\"}"
+payload="{\"deployKey\": \"$deploy_key\"}"
 data="{\"ref\":\"master\", \"required_contexts\":[], \"payload\":$payload}"
 
 # Curl
