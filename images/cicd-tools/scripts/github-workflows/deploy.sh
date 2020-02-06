@@ -20,7 +20,9 @@ $SCRIPT_DIR/../kube/helm-setup.sh
 
 # Get charts and deploy them
 deploys=$( $SCRIPT_DIR/../deploy/triggers.sh $deploy_key )
-for deploy_args in ${deploys[@]}; do
-    echo "Deploying: $deploy_args"
-    $SCRIPT_DIR/../kube/helm-deploy.sh $deploy_args
+echo "$deploys" | while IFS= read -r deploy_args; do
+    if [[ $deploy_args = *[![:space:]]* ]]; then
+        echo "Deploying: $deploy_args"
+        $SCRIPT_DIR/../kube/helm-deploy.sh $deploy_args
+    fi
 done
