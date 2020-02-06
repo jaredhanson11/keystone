@@ -19,7 +19,7 @@ RUN apk add openssl git --virtual .build-deps \
     && curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash \
     && helm plugin install https://github.com/chartmuseum/helm-push \
     && apk del .build-deps \
-    && curl https://github.com/mikefarah/yq/releases/download/3.0.1/yq_linux_amd64 > ./yq \
+    && curl -L https://github.com/mikefarah/yq/releases/download/3.0.1/yq_linux_amd64 > ./yq \
     && chmod +x ./yq && mv ./yq /usr/local/bin/yq
 
 ENTRYPOINT [ "/bin/bash" ]
