@@ -7,8 +7,7 @@
 deploy_key=$1
 if [[ -z "$deploy_key" ]]; then
     echo "Missing required inputs."
-    echo "Usage:"
-    echo "  ./trigger-deploy <deploy-key>"
+    echo "./trigger-deploy <deploy-key>"
     exit 1
 fi
 

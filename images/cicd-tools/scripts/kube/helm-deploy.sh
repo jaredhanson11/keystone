@@ -14,8 +14,7 @@ CHART_NAME=$1
 VALUES_FILE=$2
 if [[ -z "$CHART_NAME" || -z "$VALUES_FILE" ]]; then
     echo "Missing required inputs"
-    echo "Usage:"
-    echo "  ./helm-deploy.sh <chart-name> <values-file>"
+    echo "./helm-deploy.sh <chart-name> <values-file>"
     exit 1
 fi
 

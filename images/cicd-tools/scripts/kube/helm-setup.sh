@@ -6,6 +6,7 @@
 
 if [[ -z "$HELM_REPO_PASSWORD" || -z "$HELM_REPO_USER" ]]; then
     echo "Missing required inputs."
+    echo "HELM_REPO_USER, HELM_REPO_PASSWORD"
     exit 1
 fi
 
