@@ -15,8 +15,8 @@ if [[ -z "$deploy_key"]]; then
     exit 1
 fi
 
-# Setup kubectl and helm
-$SCRIPT_DIR/../kube/kube-setup.sh
+# Setup kubectl (digital ocean) and helm
+$SCRIPT_DIR/../kube/kube-setup-do.sh
 $SCRIPT_DIR/../kube/helm-setup.sh
 
 # Get charts and deploy them
