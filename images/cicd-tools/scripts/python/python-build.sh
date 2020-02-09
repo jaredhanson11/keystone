@@ -12,5 +12,5 @@ if [[ -z "$package_dir" ]]; then
 fi
 
 pushd $package_dir
-python3 setup.py sdist bdist_build
+python3 setup.py sdist bdist_wheel
 popd
