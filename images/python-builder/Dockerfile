@@ -1,6 +1,6 @@
 FROM python:3.7-alpine
 
-RUN apk add bash
+RUN apk add bash make
 RUN apk add --no-cache --virtual .build-deps gcc libc-dev libffi-dev openssl-dev python3-dev && \
     pip install --upgrade setuptools wheel twine && \
     apk del .build-deps
