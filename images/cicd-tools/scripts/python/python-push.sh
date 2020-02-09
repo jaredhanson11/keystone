@@ -19,6 +19,6 @@ fi
 
 $SCRIPT_DIR/python-build.sh package_dir
 
-pushd package_dir
+pushd $package_dir
 twine upload dist/*
 popd
