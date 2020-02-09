@@ -10,5 +10,6 @@ ENV TWINE_REPOSITORY_URL='unset'
 ENV TWINE_NON_INTERACTIVE='1'
 
 COPY --from=jaredhanson11/cicd-tools /scripts/python /scripts/python
+COPY --from=jaredhanson11/cicd-tools /scripts/github-workflows /scripts/github-workflows
 
 WORKDIR /build
