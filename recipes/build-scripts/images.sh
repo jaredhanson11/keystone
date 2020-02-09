@@ -7,7 +7,7 @@ if [[ -z "$IMG_DIR" ]]; then
     exit 1
 fi
 
-ordered_images=(serverbase)
+ordered_images=(serverbase, cicd-tools)
 images=($(ls $IMG_DIR))
 
 for image in "${images[@]}"; do

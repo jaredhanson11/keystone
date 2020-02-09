@@ -9,4 +9,6 @@ ENV TWINE_PASSWORD='unset'
 ENV TWINE_REPOSITORY_URL='unset'
 ENV TWINE_NON_INTERACTIVE='1'
 
+COPY --from=jaredhanson11/cicd-tools /scripts/python /scripts/python
+
 WORKDIR /build
