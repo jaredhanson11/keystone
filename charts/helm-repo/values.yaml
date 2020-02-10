@@ -25,5 +25,5 @@ ingress:
   annotations: {}
   # subdomain, for example `pyrepo.endergy.co`
   subdomain: "helm"
-  # hosts, if empty use all hosts defined in endergy-lib
+  # hosts, if empty use all hosts defined in lib
   hosts: []

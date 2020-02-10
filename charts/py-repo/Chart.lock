@@ -1,6 +1,6 @@
 dependencies:
-- name: endergy-lib
-  repository: file://../endergy-lib
+- name: lib
+  repository: file://../lib
   version: 0.1.0
 digest: sha256:7f20defbb89be8b0b41580a39683fca6b52ba8cc55cea5a3c05f8815d30765c7
 generated: "2020-02-04T00:22:08.822013-08:00"

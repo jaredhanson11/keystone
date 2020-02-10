@@ -8,6 +8,6 @@ appVersion: latest
 
 # Chart dependencies
 dependencies:
-- name: endergy-lib
+- name: lib
   version: 0.1.0
-  repository: file://../endergy-lib
+  repository: file://../lib

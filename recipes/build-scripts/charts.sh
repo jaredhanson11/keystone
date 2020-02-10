@@ -7,7 +7,7 @@ if [[ -z "$CHART_DIR" ]]; then
     exit 1
 fi
 
-ordered_charts=(endergy-lib)
+ordered_charts=(lib)
 charts=($(ls $CHART_DIR))
 
 for chart in "${charts[@]}"; do

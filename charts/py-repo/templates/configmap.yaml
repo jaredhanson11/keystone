@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "endergy-lib.common.fullname" . }}
+  name: {{ include "lib.common.fullname" . }}
   labels:
-    {{- include "endergy-lib.common.labels" . | nindent 4 }}
+    {{- include "lib.common.labels" . | nindent 4 }}
 data:
   .htpasswd: {{ .Values.htpasswd }}

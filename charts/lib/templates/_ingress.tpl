@@ -1,5 +1,5 @@
 {{- /*
-endergy-libs.hosts generates ingress entrypoints.
+libs.hosts generates ingress entrypoints.
 .Values
 ._inputs:
   subdomain: str
@@ -7,9 +7,9 @@ endergy-libs.hosts generates ingress entrypoints.
   svcName: str
   svcPort: str
 */ -}}
-{{- define "endergy-lib.ingress.hosts" -}}
-{{- $hosts := default (index (index .Values "endergy-lib") "hosts") .Values.ingress.hosts }}
-{{- $fullName := include "endergy-lib.common.fullname" . -}}
+{{- define "lib.ingress.hosts" -}}
+{{- $hosts := default .Values.lib.hosts .Values.ingress.hosts }}
+{{- $fullName := include "lib.common.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- $subdomain := .Values.ingress.subdomain -}}
 {{- range $hosts }}
@@ -25,7 +25,7 @@ endergy-libs.hosts generates ingress entrypoints.
 
 {{- /*
 */ -}}
-{{- define "endergy-lib.ingress" -}}
+{{- define "lib.ingress" -}}
 {{- if .Values.ingress.enabled -}}
 {{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
@@ -34,15 +34,15 @@ apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
-  name: {{ include "endergy-lib.common.fullname" . }}
+  name: {{ include "lib.common.fullname" . }}
   labels:
-    {{- include "endergy-lib.common.labels" . | nindent 4 }}
+    {{- include "lib.common.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
   rules:
-  {{- include "endergy-lib.ingress.hosts" . | indent 4 -}}
+  {{- include "lib.ingress.hosts" . | indent 4 -}}
 {{- end }}
 {{- end -}}
