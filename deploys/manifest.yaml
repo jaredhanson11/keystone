@@ -29,3 +29,9 @@ helm-repo:
     chartName: "endergy/helm-repo"
     namespace: "endergy-tools"
     stacks: []
+
+landing-page:
+  - name: "landing-page"
+    chartName: "endergy/landing-page"
+    namespace: "development"
+    stacks: []
