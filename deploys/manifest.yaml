@@ -30,6 +30,12 @@ helm-repo:
     namespace: "endergy-tools"
     stacks: []
 
+postgresql:
+  - name: "postgresql"
+    chartName: "stable/postgresql"
+    namespace: "development"
+    stacks: []
+
 landing-page:
   - name: "landing-page"
     chartName: "endergy/landing-page"
