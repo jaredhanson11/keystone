@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "lib.common.fullname" . }}
   labels:
-    {{- include "lib.common.labels" . | nindent 4 }}
+    {{- include "landing-page.client.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,21 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "lib.common.selectorLabels" . | nindent 4 }}
+    {{- include "landing-page.client.selectorLabels" . | nindent 4 }}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "lib.common.fullname" . }}-server
+  labels:
+    {{- include "landing-page.server.labels" . | nindent 4 }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "landing-page.server.selectorLabels" . | nindent 4 }}

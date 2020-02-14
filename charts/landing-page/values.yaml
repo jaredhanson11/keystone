@@ -23,3 +23,8 @@ ingress:
   subdomain: "landing"
   # hosts, if empty use all hosts defined in lib
   hosts: []
+
+server:
+  mailUsername: "endergygroup@gmail.com"
+  mailPassword: ""
+  sqlConnectionUri: ""

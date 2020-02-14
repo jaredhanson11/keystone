@@ -3,21 +3,26 @@ kind: Deployment
 metadata:
   name: {{ include "lib.common.fullname" . }}
   labels:
-    {{- include "lib.common.labels" . | nindent 4 }}
+    checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum | trunc 63 }}
+    {{- include "landing-page.client.labels" . | nindent 4 }}
 spec:
+  revisionHistoryLimit: 0
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "lib.common.selectorLabels" . | nindent 6 }}
+      {{- include "landing-page.client.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "lib.common.selectorLabels" . | nindent 8 }}
+        {{- include "landing-page.client.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: nginx-conf
+              mountPath: /etc/nginx/conf.d/
           ports:
             - name: http
               containerPort: 80
@@ -29,6 +34,67 @@ spec:
           readinessProbe:
             httpGet:
               path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: {{ include "lib.common.fullname" . }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "lib.common.fullname" . }}-server
+  labels:
+    checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum | trunc 63 }}
+    {{- include "landing-page.server.labels" . | nindent 4 }}
+spec:
+  revisionHistoryLimit: 0
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "landing-page.server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "landing-page.server.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "jaredhanson11/endergy-landing-page-server:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: APP_CONFIG
+              value: /app/config.py
+            - name: MAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "lib.common.fullname" . }}
+                  key: MAIL_USERNAME
+            - name: MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "lib.common.fullname" . }}
+                  key: MAIL_PASSWORD
+            - name: SQL_CONNECTION_URI
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "lib.common.fullname" . }}
+                  key: SQL_CONNECTION_URI
+
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /hb
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /hb
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

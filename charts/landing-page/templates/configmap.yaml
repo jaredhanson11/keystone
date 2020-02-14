@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "lib.common.fullname" . }}
+  labels:
+    {{- include "lib.common.labels" . | nindent 4 }}
+data:
+  default.conf: |-
+    server {
+      listen      80;
+      server_name localhost;
+
+      location / {
+          root   /usr/share/nginx/html;
+          index  index.html index.htm;
+      }
+
+      error_page   500 502 503 504  /50x.html;
+      location = /50x.html {
+          root   /usr/share/nginx/html;
+      }
+
+      location /api {
+        proxy_pass http://{{ include "lib.common.fullname" . }}-server:8000/;
+      }
+    }
