@@ -34,4 +34,6 @@ fi
 helm upgrade --install $deploy_name $CHART_NAME \
     --values $VALUES_FILE \
     --namespace $namespace \
+    --history-max=1 \
+    --atomic \
     $EXTRA_HELM_ARGS
