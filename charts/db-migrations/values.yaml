@@ -13,3 +13,6 @@ dbScripts:
 - init.sql
 - landing-page.sql
 - surrogate.sql
+
+fullnameOverride: ""
+nameOverride: ""
