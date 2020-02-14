@@ -30,6 +30,12 @@ helm-repo:
     namespace: "endergy-tools"
     stacks: []
 
+db-migrations:
+  - name: "db-migrations"
+    chartName: "endergy/db-migrations"
+    namespace: "development"
+    stacks: []
+
 postgresql:
   - name: "postgresql"
     chartName: "stable/postgresql"

@@ -1,0 +1,15 @@
+# Default values for py-repo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# dbUser, name of user to connect with
+dbUser: "postgres"
+# dbHost, host to connect to
+dbHost: "postgresql"
+# dbSecret, name of secret that contains "postgresql-password" entry
+dbSecret: "postgresql"
+# dbScripts, name/ordering of files in files/* directory that contain sql queries
+dbScripts:
+- init.sql
+- landing-page.sql
+- surrogate.sql

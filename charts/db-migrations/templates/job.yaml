@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "lib.common.fullname" . }}
+spec:
+  template:
+    spec:
+      containers:
+      - name: psql-client
+        image: postgres
+        command:
+          - "psql"
+          - "--username={{ .Values.dbUser }}"
+          - "--host={{ .Values.dbHost }}"
+          - "--file=/etc/db-scripts/dbScript.sql"
+        volumeMounts:
+        - name: db-scripts
+          mountPath: /etc/db-scripts
+        env:
+          - name: PGPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.dbSecret }}
+                key: postgresql-password
+      restartPolicy: Never
+      volumes:
+        - name: db-scripts
+          configMap:
+            name: {{ include "lib.common.fullname" . }}
+  backoffLimit: 1

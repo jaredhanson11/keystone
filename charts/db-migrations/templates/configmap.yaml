@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "lib.common.fullname" . }}
+  labels:
+    {{- include "lib.common.labels" . | nindent 4 }}
+data:
+  dbScript.sql: |-
+{{- range $_, $val := .Values.dbScripts -}}
+{{- $.Files.Get (printf "files/%s" $val) | nindent 4 }}
+{{- end -}}
