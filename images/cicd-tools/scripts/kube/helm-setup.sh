@@ -16,4 +16,5 @@ if [[ -z "$HELM_REPO_URL" ]]; then
 fi
 
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add endergy $HELM_REPO_URL --username "$HELM_REPO_USER" --password "$HELM_REPO_PASSWORD"
