@@ -1,0 +1,21 @@
+image:
+  debug: true
+
+replicaCount: 1
+
+rabbitmq:
+  username: endergy-user
+  password: ""
+
+persistence:
+  enabled: true
+  size: 5Gi
+
+ingress:
+  enabled: true
+  hostName: "rabbitmq.endergy.co"
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 125m

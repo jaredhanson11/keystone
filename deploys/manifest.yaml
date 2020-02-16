@@ -46,13 +46,11 @@ postgresql:
     namespace: "common"
     stacks: []
 
-kafka:
+rabbitmq:
   # Installed with:
-  #   --set auth.brokerPassword=***
-  #   --set auth.interBrokerPassword=***
-  #   --set auth.zookeeperPassword=***
-  - name: "kafka"
-    chartName: "bitnami/kafka"
+  #   --set rabbitmq.password=***
+  - name: "rabbitmq"
+    chartName: "stable/rabbitmq"
     namespace: "common"
     stacks: []
 
