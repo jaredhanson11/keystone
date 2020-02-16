@@ -18,6 +18,7 @@
 
 endergy-master: []
 
+# endergy-tools
 py-repo:
   - name: "py-repo"
     chartName: "endergy/py-repo"
@@ -30,24 +31,26 @@ helm-repo:
     namespace: "endergy-tools"
     stacks: []
 
+# common services
 db-migrations:
   - name: "db-migrations"
     chartName: "endergy/db-migrations"
-    namespace: "development"
+    namespace: "common"
     stacks: []
 
 postgresql:
   - name: "postgresql"
     chartName: "stable/postgresql"
-    namespace: "development"
+    namespace: "common"
     stacks: []
 
 kafka:
   - name: "kafka"
     chartName: "bitnami/kafka"
-    namespace: "development"
+    namespace: "common"
     stacks: []
 
+# apps
 landing-page:
   - name: "landing-page"
     chartName: "endergy/landing-page"

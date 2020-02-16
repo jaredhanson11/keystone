@@ -25,7 +25,7 @@ cat <<-EOM | kubectl apply -f -
   "metadata": {
     "name": "$namespace",
     "labels": {
-      "name": "$name"
+      "name": "$namespace"
     }
   }
 }
