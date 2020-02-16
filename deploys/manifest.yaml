@@ -42,6 +42,12 @@ postgresql:
     namespace: "development"
     stacks: []
 
+kafka:
+  - name: "kafka"
+    chartName: "bitnami/kafka"
+    namespace: "development"
+    stacks: []
+
 landing-page:
   - name: "landing-page"
     chartName: "endergy/landing-page"

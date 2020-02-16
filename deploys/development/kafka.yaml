@@ -1,0 +1,16 @@
+image:
+  debug: true
+
+replicaCount: 1
+
+auth:
+  brokerUser: endergy-user
+  interBrokerUser: endergy-admin
+  zookeeperUser: endergy-zookeeper
+
+externalAccess:
+  enabled: false
+
+persistence:
+  enabled: true
+  size: 5Gi
