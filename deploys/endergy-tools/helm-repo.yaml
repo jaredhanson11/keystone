@@ -1,2 +1,7 @@
 # password was set on install
 password: ""
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 125m

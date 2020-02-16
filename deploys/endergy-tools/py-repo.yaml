@@ -1,1 +1,6 @@
 htpasswd: "endergy-automation:{SHA}8v9akPd5PzHroQhtl/o6gfJb2Sg="
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 125m

@@ -1,0 +1,4 @@
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 125m
