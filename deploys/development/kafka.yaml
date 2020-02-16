@@ -14,3 +14,8 @@ externalAccess:
 persistence:
   enabled: true
   size: 5Gi
+
+zookeeper:
+  persistence:
+    enabled: true
+    size: 5Gi
