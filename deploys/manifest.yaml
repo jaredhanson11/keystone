@@ -39,14 +39,29 @@ db-migrations:
     stacks: []
 
 postgresql:
+  # Installed with:
+  #   --set postgresqlPassword=***
   - name: "postgresql"
     chartName: "stable/postgresql"
     namespace: "common"
     stacks: []
 
 kafka:
+  # Installed with:
+  #   --set auth.brokerPassword=***
+  #   --set auth.interBrokerPassword=***
+  #   --set auth.zookeeperPassword=***
   - name: "kafka"
     chartName: "bitnami/kafka"
+    namespace: "common"
+    stacks: []
+
+minio:
+  # Installed with:
+  #   --set accessKey=***
+  #   --set secretKey=***
+  - name: "minio"
+    chartName: "stable/minio"
     namespace: "common"
     stacks: []
 

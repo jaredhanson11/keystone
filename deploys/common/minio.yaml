@@ -1,0 +1,21 @@
+mode: standalone
+
+persistence:
+  enabled: true
+  size: 5Gi
+
+buckets:
+  - name: epw
+    policy: public
+    purge: false
+  - name: idf
+    policy: public
+    purge: false
+  - name: misc
+    policy: public
+    purge: false
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 125m
