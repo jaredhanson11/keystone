@@ -4,7 +4,6 @@ kind: Deployment
 metadata:
   name: {{ include "lib.common.fullname" . }}
   labels:
-    checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum | trunc 63 }}
     {{- include "lib.common.labels" . | nindent 4 }}
 spec:
   revisionHistoryLimit: 0
@@ -15,6 +14,7 @@ spec:
   template:
     metadata:
       labels:
+        checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum | trunc 63 }}
         {{- include "lib.common.selectorLabels" . | nindent 8 }}
     spec:
       containers:

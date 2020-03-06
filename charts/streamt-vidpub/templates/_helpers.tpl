@@ -26,11 +26,13 @@ rtmp {
             # Events
             on_publish {{ .Values.rtmpPublishUrl }};
         }
+    }
 
+    server {
+        listen 127.0.0.1:1935;
         application published {
             ## General
             live on;
-            deny publish all;
             deny play all;
             allow publish 127.0.0.1;
 

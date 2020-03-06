@@ -3,7 +3,6 @@ kind: StatefulSet
 metadata:
   name: {{ include "lib.common.fullname" . }}
   labels:
-    checksum/config: {{ include "streamt-vidpub.nginx-conf" . | sha256sum | trunc 63 }}
     {{- include "lib.common.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -14,6 +13,7 @@ spec:
   template:
     metadata:
       labels:
+        checksum/config: {{ include "streamt-vidpub.nginx-conf" . | sha256sum | trunc 63 }}
         {{- include "lib.common.selectorLabels" . | nindent 8 }}
     spec:
       containers:
