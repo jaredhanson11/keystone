@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "lib.common.fullname" . }}
+  labels:
+    checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum | trunc 63 }}
+    {{- include "lib.common.labels" . | nindent 4 }}
+spec:
+  revisionHistoryLimit: 0
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "lib.common.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "lib.common.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ printf "%s:%s" (required "Missing image.repository" .Values.image.repository) (required "Missing image.tag" .Values.image.tag) }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: APP_CONFIG
+              value: /app/config.py
+{{- include "streamt-app.envConfigs" . | nindent 12 -}}
+{{- include "streamt-app.envSecrets" . | nindent 12 }}
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          livenessProbe:
+            periodSeconds: 60 # TODO remove in prod. In non-prod this clutters debug statements
+            httpGet:
+              path: /hb
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /hb
+              port: http
+          volumeMounts:
+            - name: app-config
+              mountPath: /app/config.py
+              subPath: config.py
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: app-config
+          configMap:
+            name: {{ include "lib.common.fullname" . }}

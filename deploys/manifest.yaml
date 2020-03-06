@@ -64,8 +64,14 @@ minio:
     stacks: []
 
 # apps
-landing-page:
-  - name: "landing-page"
-    chartName: "endergy/landing-page"
+streamt-api:
+  - name: "streamt-api"
+    chartName: "endergy/streamt-app"
+    namespace: "development"
+    stacks: []
+
+streamt-vidpub:
+  - name: "streamt-vidpub"
+    chartName: "endergy/streamt-vidpub"
     namespace: "development"
     stacks: []

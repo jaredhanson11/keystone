@@ -1,0 +1,30 @@
+# Default values for py-repo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: tiangolo/nginx-rtmp
+  pullPolicy: Always
+
+replicaCount: 1
+resources: {}
+
+service:
+  type: NodePort
+  port: 1935
+
+# rtmpVideoLocation, directory to mount and save recorded video files
+rtmpRecordLocation: /streamt/videos
+# rtmpRecordInterval, interval that the video clips are saved at
+rtmpRecordInterval: 1m
+# rtmpPublishUrl, callback url when stream starts
+rtmpPublishUrl: http://streamt-api-streamt-app/api/v1.0/stream/publish
+# rtmpPublishDoneUrl, callback when stream finishes
+rtmpPublishDoneUrl: http://streamt-api-streamt-app/api/v1.0/stream/publish-done
+# rtmpVolumeSize, volume size for PVC mounted to rtmp pods. Total sizes should be replicaCount * rtmpVolumeSize
+rtmpVolumeSize: 5Gi
+
+

@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "lib.common.fullname" . }}
+  labels:
+    checksum/config: {{ include "streamt-vidpub.nginx-conf" . | sha256sum | trunc 63 }}
+    {{- include "lib.common.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "lib.common.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "lib.common.fullname" . }}
+  template:
+    metadata:
+      labels:
+        {{- include "lib.common.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+            - name: nginx-conf
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+            - name: {{ include "lib.common.fullname" . }}
+              mountPath: {{ .Values.rtmpRecordLocation }}
+          ports:
+            - name: rtmp
+              containerPort: 1935
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      initContainers:
+        - name: setup-permissions
+          image: busybox:1.28
+          command: ['sh', '-c', 'chown nobody: {{ .Values.rtmpRecordLocation }}']
+          volumeMounts:
+            - name: {{ include "lib.common.fullname" . }}
+              mountPath: {{ .Values.rtmpRecordLocation }}
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: {{ include "lib.common.fullname" . }}
+  volumeClaimTemplates:
+    - metadata:
+        name: {{ include "lib.common.fullname" . }}
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: {{ .Values.rtmpVolumeSize }}

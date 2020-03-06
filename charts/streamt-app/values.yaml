@@ -1,0 +1,56 @@
+# Default values for py-repo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  tag: ""
+  repository: ""
+  pullPolicy: Always
+
+# existingSecret, holds secrets for deployment.
+#   Make sure all secrets defined in `.Values.secret`
+#   are defined in the existing secret
+existingSecret: ""
+# secrets, defines all secret values that need to be set
+#   if `.Values.existingSecret` is not set, then use the values
+#   from set in this dictionary
+secret:
+  SQLALCHEMY_DATABASE_URI: ""
+  SECRET_KEY: ""
+
+# config, values set as environemnt variables
+config:
+  JWT_LIFESPAN: -1
+  JWT_FRESHPAN: 5
+
+
+# config.py, config file mounted as flask app config
+config.py: |-
+  '''General config options'''
+  import os
+
+  # JWT
+  SECRET_KEY = os.environ.get('SECRET_KEY')
+  JWT_LIFESPAN = os.environ.get('JWT_LIFESPAN')
+  JWT_FRESHSPAN = os.environ.get('JWT_FRESHSPAN', 5)
+
+  # SQLALCHEMY
+  SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+
+replicaCount: 1
+resources: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations: {}
+  # subdomain, for example `pyrepo.endergy.co`
+  subdomain: "api"
+  # hosts, if empty use all hosts defined in lib
+  hosts: []
