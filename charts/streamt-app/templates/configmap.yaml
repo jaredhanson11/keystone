@@ -7,3 +7,7 @@ metadata:
 data:
   config.py: |-
 {{ index .Values "config.py" | nindent 4 }}
+{{ with .Values.customLogfile }}
+  logging.conf: |-
+{{- . | nindent 4 }}
+{{- end -}}

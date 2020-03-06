@@ -43,6 +43,11 @@ spec:
             - name: app-config
               mountPath: /app/config.py
               subPath: config.py
+{{ with .Values.customLogfile }}
+            - name: app-config
+              mountPath: /app/logging.conf
+              subPath: logging.conf
+{{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:

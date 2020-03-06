@@ -13,4 +13,4 @@ COPY ./logging.conf /app/
 RUN mkdir -p /logs/
 
 EXPOSE 8000
-ENTRYPOINT [ "gunicorn", "-w 2", "server:app", "-b 0.0.0.0:8000", "--log-file", "/app/logging.conf" ]
+ENTRYPOINT [ "gunicorn", "-w 2", "server:app", "-b 0.0.0.0:8000", "--log-config", "/app/logging.conf" ]
