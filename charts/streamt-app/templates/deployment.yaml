@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: {{ printf "%s:%s" (required "Missing image.repository" .Values.image.repository) (required "Missing image.tag" .Values.image.tag) }}
+          image: {{ printf "%s:%s" (required "Missing image.repository" .Values.image.repository) (required "Missing image.tag" .Values.image.tag) | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: APP_CONFIG
