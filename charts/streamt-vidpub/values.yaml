@@ -15,6 +15,7 @@ resources: {}
 service:
   type: NodePort
   port: 1935
+  nodePort: ""
 
 # rtmpVideoLocation, directory to mount and save recorded video files
 rtmpRecordLocation: /streamt/videos
