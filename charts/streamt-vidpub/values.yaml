@@ -7,7 +7,29 @@ fullnameOverride: ""
 
 image:
   repository: tiangolo/nginx-rtmp
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
+
+# Adds publisher sidecar that uploads video streams
+# to configured s3 bucket.
+streamPublisher:
+  image:
+    repository: jaredhanson11/streamt-s3upload
+    tag: latest
+    pullPolicy: Always
+  resources:
+    {}
+
+  enabled: true
+  cronSchedule: "* * * * *"
+
+  # s3ObjectPrefix, optional prefix to add to all uploaded S3 objects
+  s3ObjectPrefix: "streams/"
+  # the following s3 values configue the s3 client
+  s3Bucket: "streamt-videos"
+  s3Endpoint: "https://sfo2.digitaloceanspaces.com"
+  s3Region: "sfo2"
+  # s3ExistingSecret, existing secret that must have AWS_ACCESS_KEY and AWS_ACCESS_KEY_SECRET
+  s3ExistingSecret: ""
 
 replicaCount: 1
 resources: {}

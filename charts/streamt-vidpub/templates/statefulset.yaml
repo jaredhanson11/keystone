@@ -32,6 +32,43 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+{{ if .Values.streamPublisher.enabled }}
+        - name: s3-publisher
+          image: "{{ .Values.streamPublisher.image.repository }}:{{ .Values.streamPublisher.image.tag }}"
+          imagePullPolicy: {{ .Values.streamPublisher.image.pullPolicy }}
+          env:
+            - name: STREAMS_RECORD_PATH
+              value: {{ .Values.rtmpRecordLocation | quote }}
+            - name: S3_BUCKET
+              value: {{ .Values.streamPublisher.s3Bucket | quote }}
+            - name: S3_ENDPOINT
+              value: {{ .Values.streamPublisher.s3Endpoint | quote }}
+            - name: S3_REGION
+              value: {{ .Values.streamPublisher.s3Region | quote}}
+{{ with .Values.streamPublisher.s3ObjectPrefix }}
+            - name: S3_OBJECTS_PREFIX
+              value: {{ . | quote }}
+{{ end }}
+{{ with .Values.streamPublisher.cronSchedule }}
+            - name: CRON_SCHEDULE
+              value: {{ . | quote }}
+{{ end }}
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ required "Existing secret required." .Values.streamPublisher.s3ExistingSecret }}
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ required "Existing secret required." .Values.streamPublisher.s3ExistingSecret }}
+                  key: AWS_SECRET_ACCESS_KEY
+          volumeMounts:
+            - name: {{ include "lib.common.fullname" . }}
+              mountPath: {{ .Values.rtmpRecordLocation }}
+          resources:
+            {{- toYaml .Values.streamPublisher.resources | nindent 12 }}
+{{ end }}
       initContainers:
         - name: setup-permissions
           image: busybox:1.28
