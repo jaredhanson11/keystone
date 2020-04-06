@@ -5,4 +5,4 @@
 set -e
 helm dependency update $1 && \
 helm lint $1 --strict --debug && \
-helm push $1 endergy --dependency-update --force --debug
+helm push $1 vamble --dependency-update --force --debug
