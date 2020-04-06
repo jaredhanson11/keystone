@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-user: "endergy-automation"
+user: "vamble-automation"
 # password, recommended to use --set password=<...> cli arg for password
 password: "CHANGEME"
 
