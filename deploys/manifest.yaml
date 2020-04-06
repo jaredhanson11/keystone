@@ -18,23 +18,23 @@
 
 endergy-master: []
 
-# endergy-tools
+# tools
 py-repo:
   - name: "py-repo"
-    chartName: "endergy/py-repo"
-    namespace: "endergy-tools"
+    chartName: "vamble/py-repo"
+    namespace: "tools"
     stacks: []
 
 helm-repo:
   - name: "helm-repo"
-    chartName: "endergy/helm-repo"
-    namespace: "endergy-tools"
+    chartName: "vamble/helm-repo"
+    namespace: "tools"
     stacks: []
 
 # common services
 db-migrations:
   - name: "db-migrations"
-    chartName: "endergy/db-migrations"
+    chartName: "vamble/db-migrations"
     namespace: "common"
     stacks: []
 
@@ -66,12 +66,12 @@ minio:
 # apps
 streamt-api:
   - name: "streamt-api"
-    chartName: "endergy/streamt-app"
+    chartName: "vamble/streamt-app"
     namespace: "development"
     stacks: []
 
 streamt-vidpub:
   - name: "streamt-vidpub"
-    chartName: "endergy/streamt-vidpub"
+    chartName: "vamble/streamt-vidpub"
     namespace: "development"
     stacks: []
