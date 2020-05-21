@@ -1,0 +1,25 @@
+# Default values for py-repo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: ""
+  pullPolicy: Always
+
+replicaCount: 1
+resources: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations: {}
+  # subdomain, for example `pyrepo.endergy.co`
+  subdomain: "admin"
+  # hosts, if empty use all hosts defined in lib
+  hosts: []

@@ -1,0 +1,5 @@
+image:
+  repository: "jaredhanson11/summn-admin-prototype"
+
+ingress:
+  subdomain: "admin"

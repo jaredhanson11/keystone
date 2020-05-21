@@ -13,6 +13,9 @@ config:
   ALEXA_SOURCE_RANKING_MAX: "200"
   SUMMN_STORY_COUNT: "10"
 
+ingress:
+  subdomain: "api"
+
 config.py: |-
   import os
   # SQLALCHEMY
