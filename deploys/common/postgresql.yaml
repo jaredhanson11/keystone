@@ -2,6 +2,8 @@ persistence:
   enabled: true
   size: 5Gi
 
+existingSecret: postgres-secrets
+
 resources:
   requests:
     memory: 256Mi

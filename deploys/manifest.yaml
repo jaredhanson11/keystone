@@ -40,7 +40,7 @@ db-migrations:
 
 postgresql:
   # Installed with:
-  #   --set postgresqlPassword=***
+  #   --set existingSecret=postgres-secrets
   - name: "postgresql"
     chartName: "stable/postgresql"
     namespace: "common"
