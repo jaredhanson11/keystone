@@ -5,7 +5,7 @@ literals=""
 for literal in "${@:2}"
 do
     echo "$literal"
-    literals+="$literals --from-literal $literal"
+    literals+=" --from-literal $literal"
 done
 if [[ -z "$secret_name" ]]; then
     echo "Missing required input, secret_name"
