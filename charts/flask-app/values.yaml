@@ -32,7 +32,7 @@ dbConnection:
   name: summn_development
 
 # config, values set as environemnt variables
-config:
+config: {}
   ## Some common values to be set:
   # JWT_LIFESPAN: -1
   # JWT_FRESHPAN: 5
