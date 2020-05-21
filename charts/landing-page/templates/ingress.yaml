@@ -1,1 +1,15 @@
 {{- include "lib.ingress" . -}}
+
+{{- $fullName := include "lib.common.fullname" . -}}
+{{- $hosts := list "endergy.co" "endergy.info" -}}
+{{- $svcPort := .Values.service.port -}}
+{{- $subdomain := .Values.ingress.subdomain -}}
+{{- range $hosts }}
+    - host: "{{ . }}"
+      http:
+        paths:
+          - path: "/"
+            backend:
+              serviceName: {{ $fullName | quote }}
+              servicePort: {{ $svcPort }}
+{{- end -}}

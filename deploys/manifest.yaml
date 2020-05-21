@@ -64,6 +64,8 @@ minio:
     stacks: []
 
 # apps
+
+## STREAMT -- DEPRECATED ##
 streamt-api:
   - name: "streamt-api"
     chartName: "vamble/streamt-app"
@@ -73,5 +75,12 @@ streamt-api:
 streamt-vidpub:
   - name: "streamt-vidpub"
     chartName: "vamble/streamt-vidpub"
+    namespace: "development"
+    stacks: []
+
+## Summn
+summn-landing-page:
+  - name: "summn-landing-page"
+    chartName: "vamble/landing-page"
     namespace: "development"
     stacks: []

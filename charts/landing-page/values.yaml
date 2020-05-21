@@ -6,7 +6,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 image:
-  repository: jaredhanson11/endergy-landing-page-client
+  repository: jaredhanson11/summn-landing-page-client
   pullPolicy: Always
 
 replicaCount: 1
@@ -25,6 +25,16 @@ ingress:
   hosts: []
 
 server:
-  mailUsername: "endergygroup@gmail.com"
-  mailPassword: ""
-  sqlConnectionUri: ""
+  image:
+    repository: jaredhanson11/summn-landing-page-server
+    imageVersion: latest
+    pullPolicy: Always
+  dbConnection:
+    prefix: "postgresql://"
+    passwordSecret:
+      secretName: postgres-secrets
+      keyName: postgresql-password
+    user: postgres
+    port: 5432
+    host: postgresql.common
+    name: summn_landing_page

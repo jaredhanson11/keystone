@@ -48,7 +48,6 @@ kind: Deployment
 metadata:
   name: {{ include "lib.common.fullname" . }}-server
   labels:
-    checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum | trunc 63 }}
     {{- include "landing-page.server.labels" . | nindent 4 }}
 spec:
   revisionHistoryLimit: 0
@@ -63,26 +62,28 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "jaredhanson11/endergy-landing-page-server:{{ .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.imageVersion }}"
+          imagePullPolicy: {{ .Values.server.image.pullPolicy }}
           env:
             - name: APP_CONFIG
               value: /app/config.py
-            - name: MAIL_USERNAME
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "lib.common.fullname" . }}
-                  key: MAIL_USERNAME
-            - name: MAIL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "lib.common.fullname" . }}
-                  key: MAIL_PASSWORD
-            - name: SQL_CONNECTION_URI
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "lib.common.fullname" . }}
-                  key: SQL_CONNECTION_URI
+                  name: {{ .Values.server.dbConnection.passwordSecret.secretName }}
+                  key: {{ .Values.server.dbConnection.passwordSecret.keyName }}
+            - name: DB_NAME
+              value: {{ .Values.server.dbConnection.name }}
+            - name: DB_USER
+              value: {{ .Values.server.dbConnection.user }}
+            - name: DB_PORT
+              value: "{{ .Values.server.dbConnection.port }}"
+            - name: DB_HOST
+              value: {{ .Values.server.dbConnection.host }}
+            - name: DB_PREFIX
+              value: {{ .Values.server.dbConnection.prefix }}
+            - name: SQLALCHEMY_DATABASE_URI
+              value: "$(DB_PREFIX)$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)"
 
           ports:
             - name: http
