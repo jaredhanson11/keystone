@@ -1,5 +1,0 @@
-image:
-  repository: jaredhanson11/streamt-api
-  tag: latest
-
-existingSecret: streamt-api-secrets

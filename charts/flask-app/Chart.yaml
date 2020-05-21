@@ -1,5 +1,5 @@
 apiVersion: v2
-name: streamt-app
+name: flask-app
 description: Flask app within Streamt infra.
 type: application
 

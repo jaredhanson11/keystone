@@ -1,0 +1,23 @@
+image:
+  repository: jaredhanson11/summn-api-prototype
+  tag: latest
+
+dbConnection:
+  shouldConnect: true
+
+existingSecret: summn-api-prototype-secrets
+secret:
+  AYLIEN_NEWS_API_ID: ""
+  AYLIEN_NEWS_API_KEY: ""
+
+config.py: |-
+  import os
+  # SQLALCHEMY
+  SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI')
+  # Stories configuration
+  ALEXA_SOURCE_RANKING_MAX = 200
+  SUMMN_STORY_COUNT = 10
+  # Aylien Config
+  AYLIEN_NEWS_API_ID = os.environ.get('AYLIEN_NEWS_API_ID')
+  AYLIEN_NEWS_API_KEY = os.environ.get('AYLIEN_NEWS_API_KEY')
+

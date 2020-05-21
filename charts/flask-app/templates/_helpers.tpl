@@ -1,4 +1,4 @@
-{{- define "streamt-app.secretName" -}}
+{{- define "flask-app.secretName" -}}
 {{- if (not (empty .Values.existingSecret)) -}}
 {{ .Values.existingSecret }}  
 {{- else -}}
@@ -6,19 +6,19 @@
 {{- end -}}
 {{- end -}}
 
-{{- define "streamt-app.envSecrets" -}}
+{{- define "flask-app.envSecrets" -}}
 {{- with .Values.secret -}}
 {{- range $key, $val := . }}
 - name: {{ $key }}
   valueFrom:
     secretKeyRef:
-      name: {{ include "streamt-app.secretName" $ }}
+      name: {{ include "flask-app.secretName" $ }}
       key: {{ $key }}
 {{- end -}}
 {{- end -}}
 {{- end -}}
 
-{{- define "streamt-app.envConfigs" -}}
+{{- define "flask-app.envConfigs" -}}
 {{- with .Values.config -}}
 {{- range $key, $val := . }}
 - name: {{ $key }}
