@@ -21,6 +21,6 @@ data:
       }
 
       location /api {
-        proxy_pass http://{{ include "lib.common.fullname" . }}-server:8000/;
+        proxy_pass http://{{ include "lib.common.fullname" . }}-server:8000;
       }
     }
