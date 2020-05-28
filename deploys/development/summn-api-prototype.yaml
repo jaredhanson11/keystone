@@ -9,6 +9,7 @@ existingSecret: summn-api-prototype-secrets
 secret:
   AYLIEN_NEWS_API_ID: ""
   AYLIEN_NEWS_API_KEY: ""
+  SECRET_KEY: ""
 config:
   ALEXA_SOURCE_RANKING_MAX: "200"
   SUMMN_STORY_COUNT: "10"
@@ -26,4 +27,8 @@ config.py: |-
   # Aylien Config
   AYLIEN_NEWS_API_ID = os.environ.get('AYLIEN_NEWS_API_ID')
   AYLIEN_NEWS_API_KEY = os.environ.get('AYLIEN_NEWS_API_KEY')
+  # JWT Auth
+  SECRET_KEY = os.environ.get('SECRET_KEY')
+  JWT_LIFESPAN = os.environ.get('JWT_LIFESPAN', -1)
+  JWT_FRESHSPAN = os.environ.get('JWT_FRESHSPAN', 5)
 
