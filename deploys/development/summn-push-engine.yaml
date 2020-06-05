@@ -1,0 +1,29 @@
+image:
+  repository: jaredhanson11/summn-push-engine
+  tag: latest
+
+dbConnection:
+  shouldConnect: true
+
+existingSecret: summn-push-engine-secrets
+secret:
+  APNS_PRIVATE_KEY_ID: ""
+mountedSecrets:
+  apns_private_key.p8: "/keys/"
+config:
+  APNS_ISSUER_ID: "UKXPCSGL7S"
+  APNS_TOPIC: "co.summn.app.SummnAppPrototype"
+  APNS_PRIVATE_KEY_PATH: "/keys/apns_private_key.p8"
+
+ingress:
+  enabled: false
+
+config.py: |-
+  import os
+  # SQLALCHEMY
+  SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
+  # APNS config
+  APNS_PRIVATE_KEY_PATH = os.environ.get("APNS_PRIVATE_KEY_PATH")
+  APNS_PRIVATE_KEY_ID = os.environ.get("APNS_PRIVATE_KEY_ID")
+  APNS_ISSUER_ID = os.environ.get("APNS_ISSUER_ID")
+  APNS_TOPIC = os.environ.get("APNS_TOPIC")
