@@ -41,6 +41,7 @@ spec:
               path: /api/hb
               port: http
           volumeMounts:
+{{- include "flask-app.secretVolumeMounts" . | nindent  12 }}
             - name: app-config
               mountPath: /app/config.py
               subPath: config.py
@@ -55,3 +56,4 @@ spec:
         - name: app-config
           configMap:
             name: {{ include "lib.common.fullname" . }}
+{{- include "flask-app.secretVolumes" . | nindent  8 }}

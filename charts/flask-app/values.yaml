@@ -19,6 +19,14 @@ existingSecret: ""
 #   from set in this dictionary
 secret: {}
 
+# mountedSecrets, mapping of file -> directory
+#   describing where secrets should be mapped to
+#   within the deployment. the key (aka filename)
+#   must be defined in the existingSecret
+# ex: "file-name.pem": "/keys/" means the key "file-name.pem"
+#   in the existingSecret will be located at /keys/file-name.pem
+mountedSecrets: {}
+
 # dbConnection, defines values used for setting up connection to database
 dbConnection:
   shouldConnect: false
@@ -32,11 +40,10 @@ dbConnection:
   name: summn_development
 
 # config, values set as environemnt variables
+#   Some common values to be set:
+#     JWT_LIFESPAN: -1
+#     JWT_FRESHPAN: 5
 config: {}
-  ## Some common values to be set:
-  # JWT_LIFESPAN: -1
-  # JWT_FRESHPAN: 5
-
 
 # config.py, config file mounted as flask app config
 config.py: |-
