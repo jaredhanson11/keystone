@@ -31,13 +31,7 @@ helm-repo:
     namespace: "tools"
     stacks: []
 
-# common services
-db-migrations:
-  - name: "db-migrations"
-    chartName: "vamble/db-migrations"
-    namespace: "common"
-    stacks: []
-
+# common
 postgresql:
   # Installed with:
   #   --set existingSecret=postgres-secrets
@@ -46,37 +40,7 @@ postgresql:
     namespace: "common"
     stacks: []
 
-rabbitmq:
-  # Installed with:
-  #   --set rabbitmq.password=***
-  - name: "rabbitmq"
-    chartName: "stable/rabbitmq"
-    namespace: "common"
-    stacks: []
-
-minio:
-  # Installed with:
-  #   --set accessKey=***
-  #   --set secretKey=***
-  - name: "minio"
-    chartName: "stable/minio"
-    namespace: "common"
-    stacks: []
-
 # apps
-
-## STREAMT -- DEPRECATED ##
-streamt-api:
-  - name: "streamt-api"
-    chartName: "vamble/streamt-app"
-    namespace: "development"
-    stacks: []
-
-streamt-vidpub:
-  - name: "streamt-vidpub"
-    chartName: "vamble/streamt-vidpub"
-    namespace: "development"
-    stacks: []
 
 ## Summn
 summn-landing-page:
