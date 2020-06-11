@@ -1,7 +1,7 @@
 {{- include "lib.ingress" . -}}
 
 {{- $fullName := include "lib.common.fullname" . -}}
-{{- $hosts := list "endergy.co" "endergy.info" -}}
+{{- $hosts := list "summn.co" -}}
 {{- $svcPort := .Values.service.port -}}
 {{- $subdomain := .Values.ingress.subdomain -}}
 {{- range $hosts }}
