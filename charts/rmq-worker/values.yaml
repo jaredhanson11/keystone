@@ -1,0 +1,33 @@
+# Default values for rmq-worker.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: jaredhanson11/summn-email-engine
+  pullPolicy: Always
+  tag: "latest"
+
+nameOverride: ""
+fullnameOverride: ""
+
+# existingSecret, holds secrets for deployment.
+#   Make sure all secrets defined in `.Values.secret`
+#   are defined in the existing secret
+existingSecret: ""
+# secret, defines all secret values that need to be set
+#   if `.Values.existingSecret` is not set, then use the values
+#   from set in this dictionary
+secret: {}
+# config, values set as environemnt variables
+#   Some common values to be set:
+config: {}
+
+service:
+  enabled: false
+
+ingress:
+  enabled: false
+
+resources: {}

@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "lib.common.fullname" . }}
+  labels:
+    {{- include "lib.common.labels" . | nindent 4 }}
+spec:
+  revisionHistoryLimit: 0
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "lib.common.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum | trunc 63 }}
+        {{- include "lib.common.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: {{ printf "%s:%s" (required "Missing image.repository" .Values.image.repository) (required "Missing image.tag" .Values.image.tag) | quote }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+{{- include "lib.deploy.envConfigs" . | nindent 12 }}
+{{- include "lib.deploy.envSecrets" . | nindent 12 }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}

@@ -14,10 +14,13 @@ image:
 #   Make sure all secrets defined in `.Values.secret`
 #   are defined in the existing secret
 existingSecret: ""
-# secrets, defines all secret values that need to be set
+# secret, defines all secret values that need to be set
 #   if `.Values.existingSecret` is not set, then use the values
 #   from set in this dictionary
 secret: {}
+# config, values set as environemnt variables
+#   Some common values to be set:
+config: {}
 
 # mountedSecrets, mapping of file -> directory
 #   describing where secrets should be mapped to
@@ -38,12 +41,6 @@ dbConnection:
   port: 5432
   host: postgresql.common
   name: summn_development
-
-# config, values set as environemnt variables
-#   Some common values to be set:
-#     JWT_LIFESPAN: -1
-#     JWT_FRESHPAN: 5
-config: {}
 
 # config.py, config file mounted as flask app config
 config.py: |-
