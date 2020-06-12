@@ -67,6 +67,12 @@ summn-push-engine:
     namespace: "development"
     stacks: []
 
+summn-email-engine:
+  - name: "summn-email-engine"
+    chartName: "vamble/rmq-worker"
+    namespace: "development"
+    stacks: []
+
 rabbitmq-dev:
   - name: "rabbitmq"
     chartName: "bitnami/rabbitmq"
