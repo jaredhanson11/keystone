@@ -12,6 +12,8 @@ image:
 replicaCount: 1
 resources: {}
 
+config: {}
+
 service:
   type: ClusterIP
   port: 80

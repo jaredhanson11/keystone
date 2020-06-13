@@ -19,6 +19,8 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+{{- include "lib.deploy.envConfigs" . | nindent 12 }}
           ports:
             - name: http
               containerPort: 80

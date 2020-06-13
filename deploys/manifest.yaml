@@ -78,3 +78,9 @@ rabbitmq-dev:
     chartName: "bitnami/rabbitmq"
     namespace: "development"
     stacks: []
+
+summn-support-prototype:
+  - name: "summn-support-web"
+    chartName: "vamble/webclient-app"
+    namespace: "development"
+    stacks: []
