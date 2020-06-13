@@ -19,7 +19,7 @@ config:
   SUMMN_STORY_COUNT: "10"
 
 ingress:
-  subdomain: "api.staging"
+  subdomain: "api-staging"
 
 config.py: |-
   import os

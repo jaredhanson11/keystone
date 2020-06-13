@@ -13,7 +13,7 @@ persistence:
 
 ingress:
   enabled: true
-  hostName: "rabbitmq.staging.summn.co"
+  hostName: "rabbitmq-staging.summn.co"
 
 resources:
   requests:
