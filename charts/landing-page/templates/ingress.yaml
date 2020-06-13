@@ -1,6 +1,6 @@
 {{- include "lib.ingress" . -}}
 
-{{- if .Values.ingress.noSubdomain -}}
+{{- if .Values.ingress.isRoot -}}
 {{- $fullName := include "lib.common.fullname" . -}}
 {{- $hosts := .Values.lib.hosts -}}
 {{- $svcPort := .Values.service.port -}}

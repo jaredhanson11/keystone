@@ -17,7 +17,7 @@ service:
   port: 80
 
 ingress:
-  noSubdomain: false
+  isRoot: false
   enabled: true
   annotations: {}
   # subdomain, for example `pyrepo.endergy.co`
