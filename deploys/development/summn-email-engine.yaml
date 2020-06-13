@@ -13,6 +13,6 @@ config:
   EMAIL_SUPPORT_ADDRESS: support@summn.co
   EMAIL_SMTP_SERVER: smtp.gmail.com
   EMAIL_SMTP_PORT: "587"
-  PASSWORD_RESET_URL: "https://support.summn.co/password-reset?token={token}"
+  PASSWORD_RESET_URL: "https://support.staging.summn.co/password-reset?token={token}"
   # PASSWORD_RESET_SUBJECT:
   # PASSWORD_RESET_BODY":

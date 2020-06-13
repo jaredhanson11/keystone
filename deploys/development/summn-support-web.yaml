@@ -2,7 +2,7 @@ image:
   repository: "jaredhanson11/summn-support-web"
 
 config:
-  API_URL: "https://api.summn.co"
+  API_URL: "https://api.staging.summn.co"
 
 ingress:
-  subdomain: "support"
+  subdomain: "support.staging"

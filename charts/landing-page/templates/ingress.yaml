@@ -1,9 +1,9 @@
 {{- include "lib.ingress" . -}}
 
+{{- if .Values.ingress.noSubdomain -}}
 {{- $fullName := include "lib.common.fullname" . -}}
-{{- $hosts := list "summn.co" -}}
+{{- $hosts := .Values.lib.hosts -}}
 {{- $svcPort := .Values.service.port -}}
-{{- $subdomain := .Values.ingress.subdomain -}}
 {{- range $hosts }}
     - host: "{{ . }}"
       http:
@@ -12,4 +12,5 @@
             backend:
               serviceName: {{ $fullName | quote }}
               servicePort: {{ $svcPort }}
+{{- end -}}
 {{- end -}}
