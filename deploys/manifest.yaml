@@ -43,43 +43,43 @@ postgresql:
 # development
 
 ## Summn
-summn-landing-page:
+summn-landing-page-staging:
   - name: "summn-landing-page"
     chartName: "vamble/landing-page"
     namespace: "development"
     stacks: []
 
-summn-api-prototype:
+summn-api-staging:
   - name: "summn-api-prototype"
     chartName: "vamble/flask-app"
     namespace: "development"
     stacks: []
 
-summn-admin-prototype:
+summn-admin-web-staging:
   - name: "summn-admin-prototype"
     chartName: "vamble/webclient-app"
     namespace: "development"
     stacks: []
 
-summn-push-engine:
+summn-push-engine-staging:
   - name: "summn-push-engine"
     chartName: "vamble/flask-app"
     namespace: "development"
     stacks: []
 
-summn-email-engine:
+summn-email-engine-staging:
   - name: "summn-email-engine"
     chartName: "vamble/rmq-worker"
     namespace: "development"
     stacks: []
 
-rabbitmq-dev:
+rabbitmq-staging:
   - name: "rabbitmq"
     chartName: "bitnami/rabbitmq"
     namespace: "development"
     stacks: []
 
-summn-support-prototype:
+summn-support-web-staging:
   - name: "summn-support-web"
     chartName: "vamble/webclient-app"
     namespace: "development"

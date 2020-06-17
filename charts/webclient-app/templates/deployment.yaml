@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          image: {{ printf "%s:%s" (required "Missing image.repository" .Values.image.repository) (required "Missing image.tag" .Values.image.tag) | quote }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
 {{- include "lib.deploy.envConfigs" . | nindent 12 }}
