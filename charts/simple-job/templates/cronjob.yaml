@@ -1,0 +1,31 @@
+{{- if .Values.job.cron.enabled -}}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ include "lib.common.fullname" . }}
+  labels:
+    {{  include "lib.common.labels" . | nindent 4 }}
+spec:
+{{-  with .Values.job.cron.schedule }}
+  schedule: {{ quote . }}
+{{- end }}
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            {{  include "lib.common.selectorLabels" . | nindent 12 }}
+        spec:
+          containers:
+            - name: "main-job"
+              image: {{ printf "%s:%s" (required "Missing image.repository" .Values.image.repository) (required "Missing image.tag" .Values.image.tag) | quote }}
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              {{- with .Values.job.args }}
+              args: {{ . }}
+              {{- end }}
+              env:
+  {{- include "lib.deploy.envConfigs" . | nindent 16 }}
+  {{- include "lib.deploy.envSecrets" . | nindent 16 }}
+  {{- include "lib.db.sqlalchemyDbUri" . | nindent 16 }}
+          restartPolicy: {{ .Values.job.restartPolicy }}
+{{- end -}}

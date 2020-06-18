@@ -1,0 +1,43 @@
+# Default values for rmq-worker.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: ""
+  tag: ""
+  pullPolicy: Always
+
+nameOverride: ""
+fullnameOverride: ""
+
+job:
+  # args, passed to the container if specified
+  restartPolicy: OnFailure
+  args: []
+  cron:
+    enabled: false
+    schedule: ""
+
+dbConnection:
+  shouldConnect: false
+  prefix: "postgresql://"
+  passwordSecret:
+    secretName: postgres-secrets
+    keyName: postgresql-password
+  user: postgres
+  port: 5432
+  host: postgresql.common
+  name: summn_development
+
+existingSecret: summn-api-prototype-secrets
+secret:
+  AYLIEN_NEWS_API_ID: ""
+  AYLIEN_NEWS_API_KEY: ""
+# secret, defines all secret values that need to be set
+#   if `.Values.existingSecret` is not set, then use the values
+#   from set in this dictionary
+secret: {}
+# config, values set as environemnt variables
+config: {}
+
+resources: {}
