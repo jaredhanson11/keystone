@@ -1,6 +1,0 @@
-image:
-  repository: "jaredhanson11/summn-admin-prototype"
-  tag: 0.1.0-SNAPSHOT
-
-ingress:
-  subdomain: "admin-staging"

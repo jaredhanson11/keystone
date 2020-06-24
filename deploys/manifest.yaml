@@ -56,7 +56,7 @@ summn-api-staging:
     stacks: []
 
 summn-admin-web-staging:
-  - name: "summn-admin-prototype"
+  - name: "summn-admin-web"
     chartName: "vamble/webclient-app"
     namespace: "development"
     stacks: []
