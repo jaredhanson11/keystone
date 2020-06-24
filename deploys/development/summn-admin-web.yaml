@@ -3,7 +3,7 @@ image:
   tag: 0.1.0-SNAPSHOT
 
 config:
-  API_URL: "https://api-staging.summn.co"
+  API_URL: "https://api-staging.summn.co/api"
 
 ingress:
   subdomain: "admin-staging"
