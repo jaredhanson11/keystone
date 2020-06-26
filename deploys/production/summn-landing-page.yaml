@@ -1,0 +1,23 @@
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 125m
+
+image:
+  imageVersion: 1.0.0
+
+ingress:
+  isRoot: true
+
+server:
+  image:
+    imageVersion: 1.0.0
+  dbConnection:
+    prefix: "postgresql://"
+    passwordSecret:
+      secretName: postgres-secrets
+      keyName: postgresql-password
+    user: summn-landing-page-user
+    port: 25060
+    host: summn-production-database-do-user-7025508-0.a.db.ondigitalocean.com
+    name: summn-landing-page?sslmode=require

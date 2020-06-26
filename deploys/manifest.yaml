@@ -84,3 +84,10 @@ summn-support-web-staging:
     chartName: "vamble/webclient-app"
     namespace: "development"
     stacks: []
+
+# Production
+summn-landing-page-prod:
+  - name: "summn-landing-page"
+    chartName: "vamble/landing-page"
+    namespace: "production"
+    stacks: []
