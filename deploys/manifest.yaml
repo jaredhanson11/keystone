@@ -55,6 +55,12 @@ summn-api-staging:
     namespace: "development"
     stacks: []
 
+summn-story-retriever-staging:
+  - name: "summn-story-retriever"
+    chartName: "vamble/simple-job"
+    namespace: "development"
+    stacks: []
+
 summn-admin-web-staging:
   - name: "summn-admin-web"
     chartName: "vamble/webclient-app"
@@ -69,7 +75,7 @@ summn-push-engine-staging:
 
 summn-push-scheduler-staging:
   - name: "summn-push-scheduler"
-    chartName: "vamble/rmq-worker"
+    chartName: "vamble/simple-job"
     namespace: "development"
     stacks: []
 
