@@ -3,5 +3,14 @@ resources:
     memory: 256Mi
     cpu: 125m
 
+server:
+  image:
+    imageVersion: 1.1.0-SNAPSHOT
+  rmqConnection:
+    passwordSecret:
+      secretName: staging-secrets
+      keyName: rabbitmq-password
+    host: rabbitmq
+
 ingress:
   subdomain: "staging"

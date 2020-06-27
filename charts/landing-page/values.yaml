@@ -40,3 +40,10 @@ server:
     port: 5432
     host: postgresql.common
     name: summn_landing_page
+  rmqConnection:
+    user: keystone-user
+    passwordSecret:
+      secretName: rmq-secrets
+      keyName: rabbitmq-password
+    port: 5672
+    host: rabbitmq

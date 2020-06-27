@@ -85,6 +85,17 @@ spec:
               value: {{ .Values.server.dbConnection.prefix }}
             - name: SQLALCHEMY_DATABASE_URI
               value: "$(DB_PREFIX)$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)"
+            - name: RMQ_USER
+              value: {{ .Values.server.rmqConnection.user }}
+            - name: RMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.server.rmqConnection.passwordSecret.secretName }}
+                  key: {{ .Values.server.rmqConnection.passwordSecret.keyName }}
+            - name: RMQ_PORT
+              value: "{{ .Values.server.rmqConnection.port }}"
+            - name: RMQ_HOST
+              value: {{ .Values.server.rmqConnection.host }}
 
           ports:
             - name: http
