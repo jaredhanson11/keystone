@@ -31,4 +31,15 @@ mountedSecrets: {}
 #   Some common values to be set:
 config: {}
 
+dbConnection:
+  shouldConnect: false
+  prefix: "postgresql://"
+  passwordSecret:
+    secretName: postgres-secrets
+    keyName: postgresql-password
+  user: postgres
+  port: 5432
+  host: postgresql.common
+  name: summn_development
+
 resources: {}

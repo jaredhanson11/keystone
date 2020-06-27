@@ -63,7 +63,7 @@ summn-admin-web-staging:
 
 summn-push-engine-staging:
   - name: "summn-push-engine"
-    chartName: "vamble/flask-app"
+    chartName: "vamble/rmq-worker"
     namespace: "development"
     stacks: []
 

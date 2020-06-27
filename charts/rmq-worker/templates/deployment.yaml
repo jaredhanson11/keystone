@@ -24,6 +24,7 @@ spec:
           env:
 {{- include "lib.deploy.envConfigs" . | nindent 12 }}
 {{- include "lib.deploy.envSecrets" . | nindent 12 }}
+{{- include "lib.db.sqlalchemyDbUri" . | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
