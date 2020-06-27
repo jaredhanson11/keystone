@@ -1,0 +1,38 @@
+# Default values for rmq-worker.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: "jaredhanson11/summn-push-scheduler"
+  tag: "0.1.0-SNAPSHOT"
+
+nameOverride: ""
+fullnameOverride: ""
+
+job:
+  restartPolicy: Never
+  args: ["REMIND_ALL"]
+  cron:
+    enabled: true
+    schedule: "0 9 * * *"
+
+dbConnection:
+  shouldConnect: true
+
+# existingSecret, holds secrets for deployment.
+#   Make sure all secrets defined in `.Values.secret`
+#   are defined in the existing secret
+existingSecret: summn-push-engine-secrets
+# secret, defines all secret values that need to be set
+#   if `.Values.existingSecret` is not set, then use the values
+#   from set in this dictionary
+secret:
+  RMQ_PASSWORD: ""
+
+# config, values set as environemnt variables
+config:
+  RMQ_USER: keystone-user
+  RMQ_HOST: rabbitmq
+  RMQ_PORT: "5672"
+
+resources: {}
