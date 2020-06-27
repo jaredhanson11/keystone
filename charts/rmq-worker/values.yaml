@@ -20,14 +20,15 @@ existingSecret: ""
 #   if `.Values.existingSecret` is not set, then use the values
 #   from set in this dictionary
 secret: {}
+# mountedSecrets, mapping of file -> directory
+#   describing where secrets should be mapped to
+#   within the deployment. the key (aka filename)
+#   must be defined in the existingSecret
+# ex: "file-name.pem": "/keys/" means the key "file-name.pem"
+#   in the existingSecret will be located at /keys/file-name.pem
+mountedSecrets: {}
 # config, values set as environemnt variables
 #   Some common values to be set:
 config: {}
-
-service:
-  enabled: false
-
-ingress:
-  enabled: false
 
 resources: {}
