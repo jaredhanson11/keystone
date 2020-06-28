@@ -9,8 +9,8 @@ config:
   RMQ_USER: keystone-user
   RMQ_HOST: rabbitmq
   RMQ_PORT: "5672"
-  EMAIL_USER_ADDRESS: jared@summn.co
-  EMAIL_USER_FROM_NAME: Jared from Summ'n
+  EMAIL_USER_ADDRESS: anthony@summn.co
+  EMAIL_USER_FROM_NAME: Anthony from Summ’n
   EMAIL_SUPPORT_ADDRESS: support@summn.co
   EMAIL_SMTP_SERVER: smtp.gmail.com
   EMAIL_SMTP_PORT: "587"
