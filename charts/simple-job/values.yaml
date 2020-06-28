@@ -16,6 +16,8 @@ job:
   args: []
   cron:
     enabled: false
+    # schedule, crontab schedule. Keep in mind
+    #   Digital Ocean is in UTC time
     schedule: ""
 
 dbConnection:
