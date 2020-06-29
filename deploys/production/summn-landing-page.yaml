@@ -11,13 +11,18 @@ ingress:
 
 server:
   image:
-    imageVersion: 1.0.0
+    imageVersion: 1.1.0
   dbConnection:
     prefix: "postgresql://"
     passwordSecret:
       secretName: postgres-secrets
-      keyName: postgresql-password
+      keyName: postgresql-landing-page-password
     user: summn-landing-page-user
     port: 25060
     host: summn-production-database-do-user-7025508-0.a.db.ondigitalocean.com
     name: summn-landing-page?sslmode=require
+  rmqConnection:
+    passwordSecret:
+      secretName: rabbitmq-secrets
+      keyName: rabbitmq-password
+    host: rabbitmq

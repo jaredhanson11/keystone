@@ -1,0 +1,19 @@
+image:
+  repository: jaredhanson11/summn-email-engine
+  tag: 0.1.0
+existingSecret: "summn-email-engine-secrets"
+secret:
+  EMAIL_USER_PASS: ""
+  RMQ_PASSWORD:
+config:
+  RMQ_USER: keystone-user
+  RMQ_HOST: rabbitmq
+  RMQ_PORT: "5672"
+  EMAIL_USER_ADDRESS: anthony@summn.co
+  EMAIL_USER_FROM_NAME: Anthony from Summ’n
+  EMAIL_SUPPORT_ADDRESS: support@summn.co
+  EMAIL_SMTP_SERVER: smtp.gmail.com
+  EMAIL_SMTP_PORT: "587"
+  PASSWORD_RESET_URL: "https://support.summn.co/password-reset?token={token}"
+  # PASSWORD_RESET_SUBJECT:
+  # PASSWORD_RESET_BODY":

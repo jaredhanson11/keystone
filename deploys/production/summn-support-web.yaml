@@ -1,0 +1,9 @@
+image:
+  repository: "jaredhanson11/summn-support-web"
+  tag: 0.1.0
+
+config:
+  API_URL: "https://api.summn.co"
+
+ingress:
+  subdomain: "support"
