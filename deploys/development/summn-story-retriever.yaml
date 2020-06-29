@@ -11,9 +11,9 @@ fullnameOverride: ""
 
 job:
   cron:
-    enabled: true
+    # enabled: true
     # PDT= "0 5,9,13,18,21 * * *"
-    schedule: "0 1,4,12,16,20 * * *"
+    # schedule: "0 1,4,12,16,20 * * *"
 
 dbConnection:
   shouldConnect: true
