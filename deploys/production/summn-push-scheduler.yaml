@@ -18,6 +18,14 @@ job:
 
 dbConnection:
   shouldConnect: true
+  prefix: "postgresql://"
+  passwordSecret:
+    secretName: postgres-secrets
+    keyName: summn-rw-user-password
+  user: summn-rw-user
+  port: 25060
+  host: summn-production-database-do-user-7025508-0.a.db.ondigitalocean.com
+  name: summn?sslmode=require
 
 # existingSecret, holds secrets for deployment.
 #   Make sure all secrets defined in `.Values.secret`
