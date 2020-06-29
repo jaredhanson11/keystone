@@ -1,6 +1,6 @@
 replicaCount: 1
 
-rabbitmq:
+auth:
   username: keystone-user
   existingPasswordSecret: rabbitmq-secrets
 
@@ -10,7 +10,7 @@ persistence:
 
 ingress:
   enabled: true
-  hostName: "rabbitmq.summn.co"
+  hostname: "rabbitmq.summn.co"
 
 resources:
   requests:
