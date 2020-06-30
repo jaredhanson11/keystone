@@ -3,9 +3,12 @@ resources:
     memory: 256Mi
     cpu: 125m
 
+image:
+  imageVersion: latest
+
 server:
   image:
-    imageVersion: 1.1.0-SNAPSHOT
+    imageVersion: latest
   rmqConnection:
     passwordSecret:
       secretName: staging-secrets
