@@ -1,6 +1,6 @@
 image:
   repository: "jaredhanson11/summn-admin-web"
-  tag: 0.2.0-SNAPSHOT
+  tag: latest
 
 config:
   API_URL: "https://api-staging.summn.co/api"

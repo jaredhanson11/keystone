@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/summn-api-prototype
-  tag: 0.1.0-SNAPSHOT
+  tag: latest
 
 dbConnection:
   shouldConnect: true
@@ -17,6 +17,7 @@ config:
   RMQ_HOST: rabbitmq
   ALEXA_SOURCE_RANKING_MAX: "200"
   SUMMN_STORY_COUNT: "10"
+  CORS_ALLOW_ORIGINS: "https://admin-staging.summn.co"
 
 ingress:
   subdomain: "api-staging"
@@ -43,3 +44,5 @@ config.py: |-
   # Password reset
   if os.environ.get('RESET_TOKEN_TTL_MINUTES'):
       RESET_TOKEN_TTL_MINUTES=int(os.environ.get('RESET_TOKEN_TTL_MINUTES'))
+  if os.environ.get('CORS_ALLOW_ORIGINS'):
+    CORS_ALLOW_ORIGINS = os.environ.get('CORS_ALLOW_ORIGINS').split(',')
