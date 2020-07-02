@@ -55,4 +55,4 @@ config.py: |-
   if os.environ.get('RESET_TOKEN_TTL_MINUTES'):
       RESET_TOKEN_TTL_MINUTES=int(os.environ.get('RESET_TOKEN_TTL_MINUTES'))
   if os.environ.get('CORS_ALLOW_ORIGINS'):
-    CORS_ALLOW_ORIGINS = os.environ.get('CORS_ALLOW_ORIGINS').split(','
+    CORS_ALLOW_ORIGINS = os.environ.get('CORS_ALLOW_ORIGINS').split(',')
