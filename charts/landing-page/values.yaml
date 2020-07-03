@@ -13,6 +13,8 @@ image:
 replicaCount: 1
 resources: {}
 
+nginxCustomRules: []
+
 service:
   type: ClusterIP
   port: 80

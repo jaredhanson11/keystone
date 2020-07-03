@@ -23,4 +23,7 @@ data:
       location /api {
         proxy_pass http://{{ include "lib.common.fullname" . }}-server:8000;
       }
+    {{- range $i, $val := .Values.nginxCustomRules }}
+    {{ $val | nindent 6 }}
+    {{ end -}}
     }
