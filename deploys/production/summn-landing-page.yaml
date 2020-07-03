@@ -4,7 +4,7 @@ resources:
     cpu: 125m
 
 image:
-  imageVersion: 1.1.3
+  imageVersion: 1.1.4
 
 ingress:
   isRoot: true
