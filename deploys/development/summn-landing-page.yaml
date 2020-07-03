@@ -6,6 +6,12 @@ resources:
 image:
   imageVersion: latest
 
+nginxCustomRules:
+  - |-
+    location = /in {
+      return 301 /?utm_source=linkedin&utm_medium=page&utm_campaign=summn_linkedin_page;
+    }
+
 server:
   image:
     imageVersion: latest
