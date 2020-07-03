@@ -27,7 +27,7 @@ config:
   ALEXA_SOURCE_RANKING_MAX: "200"
   # SUMMN_STORY_COUNT not currently used to configure anything (look in code)
   SUMMN_STORY_COUNT: "10"
-  CORS_ALLOW_ORIGINS: "https://admin.summn.co"
+  CORS_ALLOW_ORIGINS: "https://admin.summn.co,https://support.summn.co"
 
 ingress:
   subdomain: "api"
