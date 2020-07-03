@@ -9,6 +9,12 @@ image:
 ingress:
   isRoot: true
 
+nginxCustomRules:
+  - |-
+    location = /in {
+      return 301 /?utm_source=linkedin&utm_medium=page&utm_campaign=summn_linkedin_page;
+    }
+
 server:
   image:
     imageVersion: 1.1.0
