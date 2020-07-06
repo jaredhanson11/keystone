@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/summn-api-prototype
-  tag: 0.2.1
+  tag: 0.2.2
 
 dbConnection:
   shouldConnect: true
@@ -28,7 +28,6 @@ config:
   # SUMMN_STORY_COUNT not currently used to configure anything (look in code)
   SUMMN_STORY_COUNT: "10"
   CORS_ALLOW_ORIGINS: "https://admin.summn.co,https://support.summn.co"
-  JWT_FRESHSPAN: "-1"
 
 ingress:
   subdomain: "api"
