@@ -28,6 +28,7 @@ config:
   # SUMMN_STORY_COUNT not currently used to configure anything (look in code)
   SUMMN_STORY_COUNT: "10"
   CORS_ALLOW_ORIGINS: "https://admin.summn.co,https://support.summn.co"
+  JWT_FRESHSPAN: "-1"
 
 ingress:
   subdomain: "api"
