@@ -18,6 +18,7 @@ config:
   ALEXA_SOURCE_RANKING_MAX: "200"
   SUMMN_STORY_COUNT: "10"
   CORS_ALLOW_ORIGINS: "https://admin-staging.summn.co"
+  JWT_FRESHSPAN: "-1"
 
 ingress:
   subdomain: "api-staging"
