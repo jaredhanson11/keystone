@@ -4,7 +4,7 @@
 
 image:
   repository: "jaredhanson11/summn-story-retriever"
-  tag: "0.1.0-SNAPSHOT"
+  tag: latest
 
 nameOverride: ""
 fullnameOverride: ""
