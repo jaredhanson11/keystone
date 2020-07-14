@@ -1,9 +1,9 @@
 image:
   repository: "jaredhanson11/summn-admin-web"
-  tag: 0.2.3
+  tag: 0.2.4
 
 config:
-  API_URL: "https://api.summn.co/api"
+  API_URL: "https://admin-api.summn.co/api"
 
 ingress:
   subdomain: "admin"
