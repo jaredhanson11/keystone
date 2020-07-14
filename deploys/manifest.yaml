@@ -67,6 +67,12 @@ summn-admin-web-staging:
     namespace: "development"
     stacks: []
 
+summn-admin-api-staging:
+  - name: "summn-admin-api"
+    chartName: "vamble/flask-app"
+    namespace: "development"
+    stacks: []
+
 summn-push-engine-staging:
   - name: "summn-push-engine"
     chartName: "vamble/rmq-worker"
@@ -119,6 +125,12 @@ summn-api-prod:
 summn-story-retriever-prod:
   - name: "summn-story-retriever"
     chartName: "vamble/simple-job"
+    namespace: "production"
+    stacks: []
+
+summn-admin-api-prod:
+  - name: "summn-admin-api"
+    chartName: "vamble/flask-app"
     namespace: "production"
     stacks: []
 
