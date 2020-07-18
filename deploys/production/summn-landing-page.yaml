@@ -15,6 +15,10 @@ nginxCustomRules:
       return 301 /?utm_source=linkedin&utm_medium=page&utm_campaign=summn_linkedin_page;
     }
 
+    location ~ ^/u/(?<user_id>(\d+))$ {
+      return 301 /?utm_source=app&utm_medium=share&utm_campaign=$user_id;
+    }
+
 server:
   image:
     imageVersion: 1.1.0
