@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/summn-email-engine
-  tag: 0.2.0
+  tag: latest
 existingSecret: "summn-email-engine-secrets"
 secret:
   EMAIL_USER_PASS: ""

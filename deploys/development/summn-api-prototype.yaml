@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/summn-api-prototype
-  tag: 0.3.0
+  tag: latest
 
 dbConnection:
   shouldConnect: true
