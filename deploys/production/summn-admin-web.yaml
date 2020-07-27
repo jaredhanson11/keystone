@@ -1,6 +1,6 @@
 image:
   repository: "jaredhanson11/summn-admin-web"
-  tag: 0.2.7
+  tag: 0.2.8
 
 config:
   API_URL: "https://admin-api.summn.co/api"
