@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/summn-push-engine
-  tag: latest
+  tag: 0.2.0
 
 dbConnection:
   shouldConnect: true
