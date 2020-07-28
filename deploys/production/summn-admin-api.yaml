@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/summn-admin-api
-  tag: 0.1.5
+  tag: 0.1.6
 
 dbConnection:
   shouldConnect: true
