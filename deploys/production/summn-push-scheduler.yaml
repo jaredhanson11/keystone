@@ -14,7 +14,7 @@ job:
   args: ["REMIND_ALL"]
   cron:
     enabled: true
-    schedule: "0 16 * * *"
+    schedule: "0 15 * * *"
 
 dbConnection:
   shouldConnect: true
