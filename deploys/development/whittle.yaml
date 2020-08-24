@@ -1,0 +1,9 @@
+image:
+  repository: "jaredhanson11/whittle"
+  tag: latest
+
+config:
+  API_URL: "https://api-staging.summn.co/api"
+
+ingress:
+  subdomain: "whittle-staging"

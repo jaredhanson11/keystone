@@ -1,9 +1,0 @@
-image:
-  repository: "jaredhanson11/summn-support-web"
-  tag: latest
-
-config:
-  API_URL: "https://api-staging.summn.co"
-
-ingress:
-  subdomain: "support-staging"
