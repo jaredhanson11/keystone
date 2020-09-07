@@ -10,10 +10,13 @@ existingSecret: redwood-secrets
 secret:
   SECRET_KEY: ""
 config:
-  GOOGLE_OAUTH_SECRETS_FILE: "/secrets/credentials.json"
-  GOOGLE_OAUTH_CALLBACK_URL: "https://whittle-staging.summn.co/auth/google/callback"
   SUMM_LOG_FILE: "/app/app.log"
   CORS_ALLOW_ORIGINS: "http://localhost:8080,https://whittle-staging.summn.co"
+  GOOGLE_OAUTH_SECRETS_FILE: "/secrets/credentials.json"
+  GOOGLE_OAUTH_CALLBACK_URL: "https://whittle-staging.summn.co/auth/google/callback"
+  RMQ_USER: keystone-user
+  RMQ_HOST: rabbitmq
+  RMQ_PORT: "5672"
 
 ingress:
   subdomain: "api-staging"
