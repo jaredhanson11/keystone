@@ -8,6 +8,7 @@ dbConnection:
 
 existingSecret: redwood-secrets
 secret:
+  RMQ_PASSWORD: ""
   SECRET_KEY: ""
 config:
   SUMM_LOG_FILE: "/app/app.log"
