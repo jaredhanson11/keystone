@@ -10,6 +10,8 @@ existingSecret: redwood-secrets
 secret:
   SECRET_KEY: ""
 config:
+  GOOGLE_OAUTH_SECRETS_FILE: "/secrets/credentials.json"
+  GOOGLE_OAUTH_CALLBACK_URL: "https://whittle-staging.summn.co/auth/google/callback"
   SUMM_LOG_FILE: "/app/app.log"
   CORS_ALLOW_ORIGINS: "http://localhost:8080,https://whittle-staging.summn.co"
 
@@ -22,6 +24,14 @@ config.py: |-
   CORS_ALLOW_ORIGINS = os.environ.get("CORS_ALLOW_ORIGINS", "").split(",")
   # SQLALCHEMY
   SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
+  # Google auth
+  GOOGLE_OAUTH_SECRETS_FILE = os.environ.get("GOOGLE_OAUTH_SECRETS_FILE")
+  GOOGLE_OAUTH_CALLBACK_URL = os.environ.get("GOOGLE_OAUTH_CALLBACK_URL")
+  # RMQ connection config
+  RMQ_USER = os.environ["RMQ_USER"]
+  RMQ_PASSWORD = os.environ["RMQ_PASSWORD"]
+  RMQ_HOST = os.environ["RMQ_HOST"]
+  RMQ_PORT = os.environ["RMQ_PORT"]
   # JWT Auth
   SECRET_KEY = os.environ.get("SECRET_KEY")
   JWT_LIFESPAN = os.environ.get("JWT_LIFESPAN", -1)

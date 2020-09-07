@@ -55,6 +55,12 @@ whittle-staging:
     namespace: "development"
     stacks: []
 
+autotroph-worker-staging:
+  - name: "autotroph-worker"
+    chartName: "vamble/rmq-worker"
+    namespace: "development"
+    stacks: []
+
 redwood-demo:
   - name: "redwood-demo"
     chartName: "vamble/flask-app"
