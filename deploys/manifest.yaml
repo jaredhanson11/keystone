@@ -61,6 +61,12 @@ autotroph-worker-staging:
     namespace: "development"
     stacks: []
 
+autotroph-job-staging:
+  - name: "autotroph-job"
+    chartName: "vamble/simple-job"
+    namespace: "development"
+    stacks: []
+
 redwood-demo:
   - name: "redwood-demo"
     chartName: "vamble/flask-app"
