@@ -4,6 +4,7 @@ image:
 
 config:
   API_URL: "https://api-staging.summn.co/api"
+  IMAGES_URL: "https://summn.sfo2.cdn.digitaloceanspaces.com/whittle-staging/"
 
 ingress:
   subdomain: "whittle-staging"

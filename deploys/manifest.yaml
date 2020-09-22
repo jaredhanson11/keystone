@@ -67,18 +67,6 @@ autotroph-job-staging:
     namespace: "development"
     stacks: []
 
-redwood-demo:
-  - name: "redwood-demo"
-    chartName: "vamble/flask-app"
-    namespace: "development"
-    stacks: []
-
-whittle-demo:
-  - name: "whittle-demo"
-    chartName: "vamble/webclient-app"
-    namespace: "development"
-    stacks: []
-
 # Production
 rabbitmq-prod:
   - name: "rabbitmq"
