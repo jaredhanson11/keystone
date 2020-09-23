@@ -1,5 +1,5 @@
 image:
-  repository: "jaredhanson11/whittle-admin-web"
+  repository: "jaredhanson11/whittle-landing-page"
   tag: latest
 
 ingress:
