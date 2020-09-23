@@ -1,0 +1,6 @@
+image:
+  repository: "jaredhanson11/whittle-admin-web"
+  tag: latest
+
+ingress:
+  enabled: false

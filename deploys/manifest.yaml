@@ -74,6 +74,12 @@ rabbitmq-prod:
     namespace: "production"
     stacks: []
 
+whittle-landing-page-prod:
+  - name: "whittle-landing-page"
+    chartName: "vamble/webclient-app"
+    namespace: "production"
+    stacks: []
+
 summn-landing-page-prod:
   - name: "summn-landing-page"
     chartName: "vamble/landing-page"
