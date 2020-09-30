@@ -1,0 +1,26 @@
+image:
+  repository: "jaredhanson11/autotroph-job"
+  tag: todo
+
+nameOverride: ""
+fullnameOverride: ""
+
+job:
+  cron:
+    enabled: true
+    schedule: "*/15 * * * *" # every 15 minutes
+
+dbConnection:
+  shouldConnect: true
+  prefix: "postgresql://"
+  passwordSecret:
+    secretName: postgres-secrets
+    keyName: summn-rw-user-password
+  user: summn-rw-user
+  port: 25060
+  host: summn-production-database-do-user-7025508-0.a.db.ondigitalocean.com
+  name: redwood?sslmode=require
+
+existingSecret: redwood-secrets
+config:
+  SUMM_LOG_FILE: "/app/app.log"

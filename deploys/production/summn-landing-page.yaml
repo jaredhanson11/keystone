@@ -7,7 +7,7 @@ image:
   imageVersion: 1.1.7
 
 ingress:
-  isRoot: true
+  enabled: false
 
 nginxCustomRules:
   - |-

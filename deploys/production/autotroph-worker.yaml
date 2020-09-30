@@ -1,6 +1,6 @@
 image:
-  repository: jaredhanson11/summn-push-engine
-  tag: 0.2.0
+  repository: jaredhanson11/autotroph-worker
+  tag: 0.1.0
 
 dbConnection:
   shouldConnect: true
@@ -11,18 +11,15 @@ dbConnection:
   user: summn-rw-user
   port: 25060
   host: summn-production-database-do-user-7025508-0.a.db.ondigitalocean.com
-  name: summn?sslmode=require
+  name: redwood?sslmode=require
 
-existingSecret: summn-push-engine-secrets
+existingSecret: redwood-secrets
 secret:
-  APNS_PRIVATE_KEY_ID: ""
   RMQ_PASSWORD: ""
 mountedSecrets:
-  apns_private_key.p8: "/keys/"
+  credentials.json: "/secrets/"
 config:
-  APNS_ISSUER_ID: "UKXPCSGL7S"
-  APNS_TOPIC: "co.summn.app.SummnAppPrototype"
-  APNS_PRIVATE_KEY_PATH: "/keys/apns_private_key.p8"
+  SUMM_LOG_FILE: "/app/app.log"
   RMQ_USER: keystone-user
   RMQ_HOST: rabbitmq
   RMQ_PORT: "5672"

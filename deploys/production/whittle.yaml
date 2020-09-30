@@ -1,0 +1,10 @@
+image:
+  repository: "jaredhanson11/whittle"
+  tag: 0.1.0
+
+config:
+  API_URL: "https://api.usewhittle.com/api"
+  IMAGES_URL: "https://summn.sfo2.cdn.digitaloceanspaces.com/whittle-staging/"
+
+ingress:
+  subdomain: "beta"

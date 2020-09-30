@@ -80,56 +80,33 @@ whittle-landing-page-prod:
     namespace: "production"
     stacks: []
 
+whittle-prod:
+  - name: "whittle"
+    chartName: "vamble/webclient-app"
+    namespace: "production"
+    stacks: []
+
+redwood-prod:
+  - name: "redwood"
+    chartName: "vamble/flask-app"
+    namespace: "production"
+    stacks: []
+
+autotroph-job-prod:
+  - name: "autotroph-job"
+    chartName: "vamble/simple-job"
+    namespace: "production"
+    stacks: []
+
+autotroph-worker-prod:
+  - name: "autotroph-worker"
+    chartName: "vamble/rmq-worker"
+    namespace: "production"
+    stacks: []
+
+## Keeping landing page up for summn
 summn-landing-page-prod:
   - name: "summn-landing-page"
     chartName: "vamble/landing-page"
-    namespace: "production"
-    stacks: []
-
-summn-api-prod:
-  - name: "summn-api-prototype"
-    chartName: "vamble/flask-app"
-    namespace: "production"
-    stacks: []
-
-summn-story-retriever-prod:
-  - name: "summn-story-retriever"
-    chartName: "vamble/simple-job"
-    namespace: "production"
-    stacks: []
-
-summn-admin-api-prod:
-  - name: "summn-admin-api"
-    chartName: "vamble/flask-app"
-    namespace: "production"
-    stacks: []
-
-summn-admin-web-prod:
-  - name: "summn-admin-web"
-    chartName: "vamble/webclient-app"
-    namespace: "production"
-    stacks: []
-
-summn-push-engine-prod:
-  - name: "summn-push-engine"
-    chartName: "vamble/rmq-worker"
-    namespace: "production"
-    stacks: []
-
-summn-push-scheduler-prod:
-  - name: "summn-push-scheduler"
-    chartName: "vamble/simple-job"
-    namespace: "production"
-    stacks: []
-
-summn-email-engine-prod:
-  - name: "summn-email-engine"
-    chartName: "vamble/rmq-worker"
-    namespace: "production"
-    stacks: []
-
-summn-support-web-prod:
-  - name: "summn-support-web"
-    chartName: "vamble/webclient-app"
     namespace: "production"
     stacks: []
