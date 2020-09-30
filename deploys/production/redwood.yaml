@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/redwood
-  tag: todo
+  tag: 0.1.0
 
 dbConnection:
   shouldConnect: true
