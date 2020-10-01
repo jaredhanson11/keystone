@@ -1,6 +1,6 @@
 image:
   repository: "jaredhanson11/whittle"
-  tag: 0.2.1
+  tag: 0.2.2
 
 config:
   API_URL: "https://api.usewhittle.com/api"
