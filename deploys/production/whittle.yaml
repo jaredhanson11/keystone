@@ -1,10 +1,11 @@
 image:
   repository: "jaredhanson11/whittle"
-  tag: 0.2.2
+  tag: 0.2.3
 
 config:
   API_URL: "https://api.usewhittle.com/api"
   IMAGES_URL: "https://summn.sfo2.cdn.digitaloceanspaces.com/whittle-staging/"
+  MIXPANEL_PROJECT_TOKEN: "5b8ba60b758d7685f6e2e3d6050ac4d5"
 
 ingress:
   subdomain: "beta"
