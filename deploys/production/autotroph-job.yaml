@@ -1,6 +1,6 @@
 image:
   repository: "jaredhanson11/autotroph-job"
-  tag: 0.2.3
+  tag: 0.2.4
 
 nameOverride: ""
 fullnameOverride: ""

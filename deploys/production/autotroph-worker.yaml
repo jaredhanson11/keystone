@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/autotroph-worker
-  tag: 0.2.3
+  tag: 0.2.4
 
 dbConnection:
   shouldConnect: true
