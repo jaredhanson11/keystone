@@ -67,6 +67,13 @@ autotroph-job-staging:
     namespace: "development"
     stacks: []
 
+## Rep
+toyota-staging:
+  - name: "toyota"
+    chartName: "vamble/flask-app"
+    namespace: "development"
+    stacks: []
+
 # Production
 rabbitmq-prod:
   - name: "rabbitmq"
