@@ -74,6 +74,12 @@ toyota-staging:
     namespace: "development"
     stacks: []
 
+rep-staging:
+  - name: "rep"
+    chartName: "vamble/webclient-app"
+    namespace: "development"
+    stacks: []
+
 # Production
 rabbitmq-prod:
   - name: "rabbitmq"
