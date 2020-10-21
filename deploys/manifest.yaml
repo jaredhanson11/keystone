@@ -117,6 +117,13 @@ autotroph-worker-prod:
     namespace: "production"
     stacks: []
 
+## Rep
+rep-landing-page-prod:
+  - name: "rep-landing-page"
+    chartName: "vamble/webclient-app"
+    namespace: "production"
+    stacks: []
+
 ## Keeping landing page up for summn
 summn-landing-page-prod:
   - name: "summn-landing-page"
