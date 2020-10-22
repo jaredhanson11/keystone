@@ -8,3 +8,4 @@ config:
 
 ingress:
   subdomain: "beta"
+  hosts: ["rep.so"]
