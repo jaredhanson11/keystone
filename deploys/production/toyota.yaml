@@ -24,7 +24,7 @@ config:
   CORS_ALLOW_ORIGINS: "https://beta.rep.so"
   GOOGLE_OAUTH_SECRETS_FILE: "/secrets/credentials.json"
   GOOGLE_OAUTH_CALLBACK_URL: "https://beta.rep.so/"
-  TYPEFORM_SIGNUP_SURVEY_ID: "YG2R91nu"
+  TYPEFORM_SIGNUP_SURVEY_ID: "DcwXSXYF"
 
 ingress:
   subdomain: "api"

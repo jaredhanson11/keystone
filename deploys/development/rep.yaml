@@ -5,6 +5,8 @@ image:
 config:
   API_URL: "https://toyota-staging.summn.co/api"
   IMAGES_URL: "https://summn.sfo2.cdn.digitaloceanspaces.com/rep/"
+  TYPEFORM_SIGNUP_SURVEY_ID: "YG2R91nu"
+
 
 ingress:
   subdomain: "rep-staging"
