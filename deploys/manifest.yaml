@@ -124,6 +124,18 @@ rep-landing-page-prod:
     namespace: "production"
     stacks: []
 
+toyota-prod:
+  - name: "toyota"
+    chartName: "vamble/flask-app"
+    namespace: "production"
+    stacks: []
+
+rep-prod:
+  - name: "rep"
+    chartName: "vamble/webclient-app"
+    namespace: "production"
+    stacks: []
+
 ## Keeping landing page up for summn
 summn-landing-page-prod:
   - name: "summn-landing-page"
