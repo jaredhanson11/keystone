@@ -17,7 +17,7 @@ config:
   CORS_ALLOW_ORIGINS: "http://localhost:8080,https://rep-staging.summn.co"
   GOOGLE_OAUTH_SECRETS_FILE: "/secrets/credentials.json"
   GOOGLE_OAUTH_CALLBACK_URL: "https://rep-staging.summn.co/"
-  TYPEFORM_SIGNUP_SURVEY_ID: "YG2R91nu"
+  TYPEFORM_SIGNUP_SURVEY_ID: "MXvX2uoR"
 
 ingress:
   subdomain: "toyota-staging"
