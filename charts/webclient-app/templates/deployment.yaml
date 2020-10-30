@@ -25,6 +25,9 @@ spec:
             - name: http
               containerPort: 80
               protocol: TCP
+          volumeMounts:
+            - name: nginx-conf
+              mountPath: /etc/nginx/conf.d/
           livenessProbe:
             httpGet:
               path: /
@@ -35,3 +38,7 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: {{ include "lib.common.fullname" . }
