@@ -2,5 +2,16 @@ image:
   repository: "jaredhanson11/rep-landing-page"
   tag: 1.2.0
 
+nginxCustomRules:
+  - |-
+    location = /terms-of-service {
+      proxy_pass https://summn.sfo2.cdn.digitaloceanspaces.com/rep/legal-docs/rep-TOS_10-13-2020.pdf;
+    }
+
+  - |-
+    location = /privacy-policy {
+      proxy_pass https://summn.sfo2.cdn.digitaloceanspaces.com/rep/legal-docs/rep-privacy-policy_10-13-2020.pdf;
+    }
+
 ingress:
   enabled: false
