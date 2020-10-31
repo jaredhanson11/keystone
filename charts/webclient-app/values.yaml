@@ -15,8 +15,6 @@ resources: {}
 
 config: {}
 
-nginxCustomRules: []
-
 service:
   type: ClusterIP
   port: 80
