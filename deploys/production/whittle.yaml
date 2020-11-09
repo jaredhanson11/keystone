@@ -9,3 +9,4 @@ config:
 
 ingress:
   subdomain: "beta"
+  hosts: ["usewhittle.com"]
