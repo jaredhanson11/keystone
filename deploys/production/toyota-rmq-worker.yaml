@@ -1,6 +1,6 @@
 image:
-  repository: jaredhanson11/toyota
-  tag: 0.1.3
+  repository: jaredhanson11/toyota-rmq-worker
+  tag: 0.1.0
 
 dbConnection:
   shouldConnect: true
@@ -15,30 +15,17 @@ dbConnection:
 
 existingSecret: toyota-secrets
 secret:
-  SECRET_KEY: ""
-  TYPEFORM_API_KEY: ""
   RMQ_PASSWORD: ""
-mountedSecrets:
-  credentials.json: "/secrets/"
+  TYPEFORM_API_KEY: ""
 config:
   SUMM_LOG_FILE: "/app/app.log"
-  CORS_ALLOW_ORIGINS: "https://beta.rep.so"
   RMQ_USER: keystone-user
   RMQ_HOST: rabbitmq
   RMQ_PORT: "5672"
-  GOOGLE_OAUTH_SECRETS_FILE: "/secrets/credentials.json"
-  GOOGLE_OAUTH_CALLBACK_URL: "https://beta.rep.so/"
-  TYPEFORM_SIGNUP_SURVEY_ID: "DcwXSXYF"
-
-ingress:
-  subdomain: "api"
-  hosts: ["rep.so"]
+  TYPEFORM_SIGNUP_SURVEY_ID: "MXvX2uoR"
 
 config.py: |-
   import os
-
-  # CORS through summ-web
-  CORS_ALLOW_ORIGINS = os.environ.get("CORS_ALLOW_ORIGINS", "").split(",")
 
   # SQLALCHEMY
   SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
@@ -48,15 +35,6 @@ config.py: |-
   RMQ_PASSWORD = os.environ["RMQ_PASSWORD"]
   RMQ_HOST = os.environ["RMQ_HOST"]
   RMQ_PORT = os.environ["RMQ_PORT"]
-
-  # JWT Auth
-  SECRET_KEY = os.environ.get("SECRET_KEY")
-  JWT_LIFESPAN = os.environ.get("JWT_LIFESPAN", -1)
-  JWT_FRESHSPAN = os.environ.get("JWT_FRESHSPAN", 5)
-
-  # Google OAUTh
-  GOOGLE_OAUTH_SECRETS_FILE = os.environ.get("GOOGLE_OAUTH_SECRETS_FILE")
-  GOOGLE_OAUTH_CALLBACK_URL = os.environ.get("GOOGLE_OAUTH_CALLBACK_URL")
 
   # Typeform
   TYPEFORM_API_KEY = os.environ.get("TYPEFORM_API_KEY")

@@ -111,6 +111,12 @@ toyota-prod:
     namespace: "production"
     stacks: []
 
+toyota-rmq-worker-prod:
+  - name: "toyota-rmq-worker"
+    chartName: "vamble/rmq-worker"
+    namespace: "production"
+    stacks: []
+
 rep-prod:
   - name: "rep"
     chartName: "vamble/webclient-app"
