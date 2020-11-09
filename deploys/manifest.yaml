@@ -42,35 +42,16 @@ postgresql:
 
 # development
 
-## Summn
-redwood-staging:
-  - name: "redwood"
-    chartName: "vamble/flask-app"
-    namespace: "development"
-    stacks: []
-
-whittle-staging:
-  - name: "whittle"
-    chartName: "vamble/webclient-app"
-    namespace: "development"
-    stacks: []
-
-autotroph-worker-staging:
-  - name: "autotroph-worker"
-    chartName: "vamble/rmq-worker"
-    namespace: "development"
-    stacks: []
-
-autotroph-job-staging:
-  - name: "autotroph-job"
-    chartName: "vamble/simple-job"
-    namespace: "development"
-    stacks: []
-
 ## Rep
 toyota-staging:
   - name: "toyota"
     chartName: "vamble/flask-app"
+    namespace: "development"
+    stacks: []
+
+toyota-rmq-worker-staging:
+  - name: "toyota-rmq-worker"
+    chartName: "vamble/rmq-worker"
     namespace: "development"
     stacks: []
 
