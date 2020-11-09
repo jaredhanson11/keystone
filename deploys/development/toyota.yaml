@@ -18,7 +18,7 @@ config:
   RMQ_USER: keystone-user
   RMQ_HOST: rabbitmq
   RMQ_PORT: "5672"
-  CORS_ALLOW_ORIGINS: "http://localhost:8080,https://rep-staging.summn.co"
+  CORS_ALLOW_ORIGINS: "http://localhost:8080,https://rep-staging.rep.so"
   GOOGLE_OAUTH_SECRETS_FILE: "/secrets/credentials.json"
   GOOGLE_OAUTH_CALLBACK_URL: "https://rep-staging.rep.so/"
   TYPEFORM_SIGNUP_SURVEY_ID: "MXvX2uoR"
