@@ -3,7 +3,7 @@ image:
   tag: latest
 
 config:
-  API_URL: "https://toyota-staging.summn.co/api"
+  API_URL: "https://toyota-staging.rep.so/api"
   IMAGES_URL: "https://summn.sfo2.cdn.digitaloceanspaces.com/rep/"
   TYPEFORM_SIGNUP_SURVEY_ID: "MXvX2uoR"
 
