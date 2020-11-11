@@ -1,6 +1,6 @@
 image:
   repository: "jaredhanson11/rep-landing-page"
-  tag: 1.4.0
+  tag: 1.5.0
 
 # WARNING THIS IS NOT BEING USED, LOCATION BLOCKS BUILT INTO DOCKER IMAGE BY DOCKER BUILD
 nginxCustomRules:
@@ -11,7 +11,7 @@ nginxCustomRules:
 
   - |-
     location = /privacy-policy {
-      proxy_pass https://summn.sfo2.cdn.digitaloceanspaces.com/rep/legal-docs/rep-privacy-policy_10-13-2020.pdf;
+      proxy_pass https://summn.sfo2.cdn.digitaloceanspaces.com/rep/legal-docs/rep-privacy-policy_11-10-2020.pdf;
     }
 
 ingress:
