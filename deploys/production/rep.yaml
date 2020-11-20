@@ -1,11 +1,12 @@
 image:
   repository: "jaredhanson11/rep"
-  tag: 0.2.2
+  tag: 0.2.3
 
 config:
   API_URL: "https://api.rep.so/api"
   IMAGES_URL: "https://summn.sfo2.cdn.digitaloceanspaces.com/rep/"
   TYPEFORM_SIGNUP_SURVEY_ID: "DcwXSXYF"
+  TYPEFORM_LIST_PRODUCT_URL: "https://docs.google.com/forms/d/e/1FAIpQLSdalppnfUUvjKTwZUYTOFuowX8lmY-itOcULv5rnE4saFANrQ/viewform"
 
 ingress:
   subdomain: "beta"
