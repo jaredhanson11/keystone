@@ -7,7 +7,7 @@ config:
   IMAGES_URL: "https://summn.sfo2.cdn.digitaloceanspaces.com/rep/"
   TYPEFORM_SIGNUP_SURVEY_ID: "MXvX2uoR"
   TYPEFORM_LIST_PRODUCT_URL: "https://docs.google.com/forms/d/e/1FAIpQLSdalppnfUUvjKTwZUYTOFuowX8lmY-itOcULv5rnE4saFANrQ/viewform"
-  MIXPANEL_PROJECT_TOKEN_KEY: "2537e41ac63384da7639fe27069b3280"
+  MIXPANEL_PROJECT_TOKEN_KEY: "b42ee1e97523760a897715e61e650bd9"
 
 
 ingress:
