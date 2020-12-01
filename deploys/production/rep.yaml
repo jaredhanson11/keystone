@@ -6,7 +6,7 @@ config:
   API_URL: "https://api.rep.so/api"
   IMAGES_URL: "https://summn.sfo2.cdn.digitaloceanspaces.com/rep/"
   TYPEFORM_SIGNUP_SURVEY_ID: "DcwXSXYF"
-  TYPEFORM_LIST_PRODUCT_URL: "https://docs.google.com/forms/d/e/1FAIpQLSdalppnfUUvjKTwZUYTOFuowX8lmY-itOcULv5rnE4saFANrQ/viewform"
+  TYPEFORM_LIST_PRODUCT_URL: "https://form.typeform.com/to/HhdwmFQv"
   MIXPANEL_PROJECT_TOKEN_KEY: "1a6b21aca5cae3dbc6f05eba0650f805"
 
 ingress:
