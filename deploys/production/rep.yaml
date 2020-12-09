@@ -1,6 +1,6 @@
 image:
   repository: "jaredhanson11/rep"
-  tag: 0.2.8
+  tag: 0.3.1
 
 config:
   API_URL: "https://api.rep.so/api"
