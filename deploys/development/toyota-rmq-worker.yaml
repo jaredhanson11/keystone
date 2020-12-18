@@ -15,7 +15,7 @@ config:
   RMQ_USER: keystone-user
   RMQ_HOST: rabbitmq
   RMQ_PORT: "5672"
-  TYPEFORM_SIGNUP_SURVEY_ID: "MXvX2uoR"
+  TYPEFORM_SIGNUP_SURVEY_ID: "MIZ0J0kW"
 
 config.py: |-
   import os
