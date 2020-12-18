@@ -8,8 +8,8 @@ select user_company_id from users_jobs where user_id in (select id from users wh
 
 -- 2 => delete company related
 delete from users_jobs where user_id in (select id from users where email = '$EMAIL');
-delete from users_companies_to_companies_groups where user_company_id = {USER_COMPANY_ID};
-delete from users_companies where id = {user_company_id};
+delete from users_companies_to_companies_groups where user_company_id in (select user_company_id from users_jobs where user_id in (select id from users where email = '$EMAIL'));
+delete from users_companies where id in (select user_company_id from users_jobs where user_id in (select id from users where email = '$EMAIL'));
 
 -- 3 => delete users
 delete from users_login_providers where user_id in (select id from users where email = '$EMAIL');
