@@ -1,6 +1,6 @@
 image:
   repository: "jaredhanson11/rep-landing-page"
-  tag: 1.8.0
+  tag: 1.6.0
 
 # WARNING THIS IS NOT BEING USED, LOCATION BLOCKS BUILT INTO DOCKER IMAGE BY DOCKER BUILD
 nginxCustomRules:
