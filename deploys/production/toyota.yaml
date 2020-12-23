@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/toyota
-  tag: 0.4.0
+  tag: 0.4.1
 
 dbConnection:
   shouldConnect: true
