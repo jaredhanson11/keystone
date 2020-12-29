@@ -1,6 +1,6 @@
 # ARGS
 CURRENT_EMAIL=$1
-NEW_EMAIL=$1
+NEW_EMAIL=$2
 
 echo
 cat << EOF
