@@ -6,4 +6,4 @@ metadata:
     {{- include "lib.common.labels" . | nindent 4 }}
 data:
   config.py: |-
-{{ index .Values "config.py" | nindent 4 }}
+{{ print (index .Values "config.py") | nindent 4 }}
