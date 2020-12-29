@@ -10,6 +10,7 @@ existingSecret: toyota-secrets
 secret:
   RMQ_PASSWORD: ""
   TYPEFORM_API_KEY: ""
+  SENDGRID_API_KEY: ""
 config:
   SUMM_LOG_FILE: "/app/app.log"
   RMQ_USER: keystone-user
@@ -32,6 +33,14 @@ config.py: |-
   # Typeform
   TYPEFORM_API_KEY = os.environ.get("TYPEFORM_API_KEY")
   TYPEFORM_SIGNUP_SURVEY_ID = os.environ.get("TYPEFORM_SIGNUP_SURVEY_ID")
+
+  # Sendgrid
+  SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+
+  # Email
+  EMAIL_NEW_USER_FROM_ADDRESS = ("support@rep.so", "Rep Support")
+  EMAIL_NEW_USER_TEMPLATE_ID = "d-93541c8aac1b4c5c8efd608014d9b4a4"
+  EMAIL_NEW_WAITLISTED_USER_TEMPLATE_ID = "d-93541c8aac1b4c5c8efd608014d9b4a4"
 
   # Logging
   tmp = os.environ.get("SUMM_LOG_FILE")
