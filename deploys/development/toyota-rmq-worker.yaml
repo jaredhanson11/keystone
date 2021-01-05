@@ -38,9 +38,9 @@ config.py: |-
   SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 
   # Email
-  EMAIL_NEW_USER_FROM_ADDRESS = ("support@rep.so", "Rep Support")
+  EMAIL_NEW_USER_FROM_ADDRESS = ("anthony@rep.so", "Anthony Emberley")
   EMAIL_NEW_USER_TEMPLATE_ID = "d-93541c8aac1b4c5c8efd608014d9b4a4"
-  EMAIL_NEW_USER_WAITLISTED_TEMPLATE_ID = "d-93541c8aac1b4c5c8efd608014d9b4a4"
+  EMAIL_NEW_USER_WAITLISTED_TEMPLATE_ID = "d-8fd3b0b686194b7d90ccd9afdc0b952a"
 
   # Logging
   tmp = os.environ.get("SUMM_LOG_FILE")
