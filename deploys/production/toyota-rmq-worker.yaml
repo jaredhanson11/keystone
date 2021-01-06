@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/toyota-rmq-worker
-  tag: 0.1.12
+  tag: 0.1.13
 
 dbConnection:
   shouldConnect: true
@@ -43,6 +43,7 @@ config.py: |-
 
   # Sendgrid
   SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+  SENDGRID_GROUP_ID_ACCOUNT_ALERTS = 29093  # UnsubscribeGroup: User Account Alerts
 
   # Email
   EMAIL_NEW_USER_FROM_ADDRESS = ("anthony@rep.so", "Anthony Emberley")
