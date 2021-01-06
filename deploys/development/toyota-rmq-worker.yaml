@@ -36,6 +36,7 @@ config.py: |-
 
   # Sendgrid
   SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+  SENDGRID_GROUP_ID_ACCOUNT_ALERTS = 29093  # UnsubscribeGroup: User Account Alerts
 
   # Email
   EMAIL_NEW_USER_FROM_ADDRESS = ("anthony@rep.so", "Anthony Emberley")
