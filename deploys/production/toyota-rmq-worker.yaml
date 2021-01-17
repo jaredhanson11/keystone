@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/toyota-rmq-worker
-  tag: 0.1.13
+  tag: 0.2.0
 
 dbConnection:
   shouldConnect: true
