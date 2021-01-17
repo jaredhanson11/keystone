@@ -40,7 +40,7 @@ config.py: |-
 
   # Email
   EMAIL_NEW_USER_FROM_ADDRESS = ("anthony@rep.so", "Anthony Emberley")
-  EMAIL_NEW_USER_TEMPLATE_ID = "d-a26b6466dbb94eda801089725b1f0cff"
+  EMAIL_NEW_USER_TEMPLATE_ID = "d-93541c8aac1b4c5c8efd608014d9b4a4"
   EMAIL_NEW_USER_WAITLISTED_TEMPLATE_ID = "d-8fd3b0b686194b7d90ccd9afdc0b952a"
 
   # Logging
