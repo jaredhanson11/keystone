@@ -1,6 +1,0 @@
-image:
-  repository: "jaredhanson11/whittle-landing-page"
-  tag: latest
-
-ingress:
-  enabled: false

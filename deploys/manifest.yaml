@@ -4,128 +4,19 @@
 # deploys/
 #   manifest.yaml
 #   <namespace>/
-#     <app>.yml # stack = _default
-#     <app>.<stack>.yml
+#     <app>.yaml # stack = _default
+#     <app>.yaml
 #
 # Manifest Entry #
 # <payload.deploy>:
 #   - name: str # used to find
 #     chartName: str # name of chart in helm repo (i.e stable/postgres)
 #     namespace: str # name of k8s namespace (and values file directory)
-#     stacks: list # if empty deploy all stacks, else deploy only stacks defined here
 #
 # NO YAML ANCHORS ALLOWED -> https://github.com/mikefarah/yq/issues/339
 
-endergy-master: []
-
-# tools
-py-repo:
-  - name: "py-repo"
-    chartName: "vamble/py-repo"
-    namespace: "tools"
-    stacks: []
-
-helm-repo:
-  - name: "helm-repo"
-    chartName: "vamble/helm-repo"
-    namespace: "tools"
-    stacks: []
-
-# common
-postgresql:
-  # Installed with:
-  #   --set existingSecret=postgres-secrets
-  - name: "postgresql"
-    chartName: "stable/postgresql"
-    namespace: "common"
-    stacks: []
-
-# development
-
-## Rep
-toyota-staging:
-  - name: "toyota"
-    chartName: "vamble/flask-app"
-    namespace: "development"
-    stacks: []
-
-toyota-rmq-worker-staging:
-  - name: "toyota-rmq-worker"
-    chartName: "vamble/rmq-worker"
-    namespace: "development"
-    stacks: []
-
-rep-staging:
-  - name: "rep"
-    chartName: "vamble/webclient-app"
-    namespace: "development"
-    stacks: []
-
-# Production
-rabbitmq-prod:
-  - name: "rabbitmq"
-    chartName: "bitnami/rabbitmq"
+## Flok
+flok-landing-page-prod:
+  - name: "flok-landing-page"
+    chartName: "webclient-app"
     namespace: "production"
-    stacks: []
-
-whittle-landing-page-prod:
-  - name: "whittle-landing-page"
-    chartName: "vamble/webclient-app"
-    namespace: "production"
-    stacks: []
-
-whittle-prod:
-  - name: "whittle"
-    chartName: "vamble/webclient-app"
-    namespace: "production"
-    stacks: []
-
-redwood-prod:
-  - name: "redwood"
-    chartName: "vamble/flask-app"
-    namespace: "production"
-    stacks: []
-
-autotroph-job-prod:
-  - name: "autotroph-job"
-    chartName: "vamble/simple-job"
-    namespace: "production"
-    stacks: []
-
-autotroph-worker-prod:
-  - name: "autotroph-worker"
-    chartName: "vamble/rmq-worker"
-    namespace: "production"
-    stacks: []
-
-## Rep
-rep-landing-page-prod:
-  - name: "rep-landing-page"
-    chartName: "vamble/webclient-app"
-    namespace: "production"
-    stacks: []
-
-toyota-prod:
-  - name: "toyota"
-    chartName: "vamble/flask-app"
-    namespace: "production"
-    stacks: []
-
-toyota-rmq-worker-prod:
-  - name: "toyota-rmq-worker"
-    chartName: "vamble/rmq-worker"
-    namespace: "production"
-    stacks: []
-
-rep-prod:
-  - name: "rep"
-    chartName: "vamble/webclient-app"
-    namespace: "production"
-    stacks: []
-
-## Keeping landing page up for summn
-summn-landing-page-prod:
-  - name: "summn-landing-page"
-    chartName: "vamble/landing-page"
-    namespace: "production"
-    stacks: []

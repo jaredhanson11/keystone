@@ -62,6 +62,7 @@ service:
 
 ingress:
   enabled: true
+  rootEnabled: false
   annotations: {}
   # subdomain, for example `pyrepo.endergy.co`
   subdomain: "api"
