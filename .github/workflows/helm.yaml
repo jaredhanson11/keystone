@@ -1,0 +1,18 @@
+
+name: Helm Image CI
+on:
+  push:
+    branches:
+      - master
+jobs:
+  helm-publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Package and publish helm charts.
+      uses: docker://jaredhanson11/cicd-tools
+      env:
+        HELM_REPO_USER: ${{ secrets.HELM_REPO_USER }}
+        HELM_REPO_PASSWORD: ${{ secrets.HELM_REPO_PASSWORD }}
+      with:
+        entrypoint: /scripts/github-workflows/publish-helm.sh
