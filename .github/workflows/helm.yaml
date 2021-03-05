@@ -1,5 +1,9 @@
+
 name: Helm Image CI
-on: [push]
+on:
+  push:
+    branches:
+      - master
 jobs:
   helm-publish:
     runs-on: ubuntu-latest

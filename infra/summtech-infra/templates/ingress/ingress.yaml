@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-ingress-controller
+  namespace: kube-system
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:668951522996:certificate/66ca387c-8f13-44d5-800f-623c8740f8f9,arn:aws:acm:us-east-1:668951522996:certificate/40c6f8ba-5e54-41d5-aeff-405a9a5567ea	
+    alb.ingress.kubernetes.io/healthcheck-path: "/healthz"
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+    alb.ingress.kubernetes.io/actions.www-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Host": "goflok.com", "Port": "443", "StatusCode": "HTTP_301"}}'
+
+spec:
+  rules:
+  - host: www.goflok.com
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: www-redirect
+          servicePort: use-annotation
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: ssl-redirect
+          servicePort: use-annotation
+      - path: /*
+        backend:
+          serviceName: ingress-nginx-controller
+          servicePort: http

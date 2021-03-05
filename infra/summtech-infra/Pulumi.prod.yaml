@@ -1,0 +1,4 @@
+config:
+  aws:region: us-east-1
+  pulumi:template: aws-python
+  summtech-infra:cert-arns: arn:aws:acm:us-east-1:668951522996:certificate/66ca387c-8f13-44d5-800f-623c8740f8f9,arn:aws:acm:us-east-1:668951522996:certificate/40c6f8ba-5e54-41d5-aeff-405a9a5567ea

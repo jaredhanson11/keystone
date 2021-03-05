@@ -12,6 +12,7 @@ libs.hosts generates ingress entrypoints.
 {{- $fullName := include "lib.common.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- $subdomain := .Values.ingress.subdomain -}}
+{{- $rootEnabled := .Values.ingress.rootEnabled -}}
 {{- range $hosts }}
 - host: "{{ $subdomain }}.{{ . }}"
   http:
@@ -20,6 +21,15 @@ libs.hosts generates ingress entrypoints.
         backend:
           serviceName: {{ $fullName | quote }}
           servicePort: {{ $svcPort }}
+{{ if $rootEnabled }}
+- host: "{{ . }}"
+  http:
+    paths:
+      - path: "/"
+        backend:
+          serviceName: {{ $fullName | quote }}
+          servicePort: {{ $svcPort }}
+{{- end -}}
 {{- end -}}
 {{- end -}}
 
@@ -28,7 +38,8 @@ libs.hosts generates ingress entrypoints.
 {{- define "lib.ingress" -}}
 {{- if .Values.ingress.enabled -}}
 {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
+# apiVersion: networking.k8s.io/v1
 {{- else if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1beta1
 {{- else -}}
@@ -41,6 +52,7 @@ metadata:
     {{- include "lib.common.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
+    kubernetes.io/ingress.class: "nginx"
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
