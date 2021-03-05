@@ -2,7 +2,7 @@
 # Setup helm to connect to helm repository.
 # Requires: $HELM_REPO_USER
 #           $HELM_REPO_PASSWORD
-# Optional: $HELM_REPO_URL (default, https://helm.endergy.co/)
+# Optional: $HELM_REPO_URL (default, https://nexus.goflok.com/repository/helm)
 set -e
 
 if [[ -z "$HELM_REPO_PASSWORD" || -z "$HELM_REPO_USER" ]]; then
@@ -12,9 +12,9 @@ if [[ -z "$HELM_REPO_PASSWORD" || -z "$HELM_REPO_USER" ]]; then
 fi
 
 if [[ -z "$HELM_REPO_URL" ]]; then
-    HELM_REPO_URL="https://helm.endergy.co/"
+    HELM_REPO_URL="https://nexus.goflok.com/repository/helm"
 fi
 
 helm repo add stable https://charts.helm.sh/stable/
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm repo add vamble $HELM_REPO_URL --username "$HELM_REPO_USER" --password "$HELM_REPO_PASSWORD"
+helm repo add summtech $HELM_REPO_URL --username "$HELM_REPO_USER" --password "$HELM_REPO_PASSWORD"
