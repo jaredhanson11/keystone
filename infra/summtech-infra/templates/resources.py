@@ -286,6 +286,16 @@ summtech_node_group = eks.NodeGroup(
     subnet_ids=public_vpc_subnet_ids.ids,
 )
 
+summtech_nexus_node_group = eks.NodeGroup(
+    resource_name="summtech-nexus-group",
+    cluster_name=summtech_cluster.name,
+    node_role_arn=ec2_role.arn,
+    instance_types=["t3.medium"],
+    tags={"Name": "summtech-nexus-nodegroup"},
+    scaling_config=NodeGroupScalingConfig(max_size=2, min_size=1, desired_size=1),
+    subnet_ids=public_vpc_subnet_ids.ids,
+)
+
 # # Export the cluster's kubeconfig.
 pulumi.export("cluster-name", summtech_cluster.name)
 pulumi.export("kube-config", utils.generate_kube_config(summtech_cluster))

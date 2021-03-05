@@ -13,7 +13,7 @@ from pulumi_kubernetes.networking.v1beta1 import IngressBackendArgs, IngressSpec
 
 from . import utils
 from .config import Config
-from .resources import summtech_cluster, summtech_node_group
+from .resources import summtech_cluster, summtech_nexus_node_group, summtech_node_group
 
 kubeconfig = utils.generate_kube_config(summtech_cluster)
 cluster_name = summtech_cluster.name.apply(lambda name: name)
@@ -29,6 +29,9 @@ NGINX_INGRESS_CHART_NAME = "ingress-nginx"
 ingress_nginx_fetch_opts = pulumi_kubernetes.helm.v3.FetchOpts(
     repo="https://kubernetes.github.io/ingress-nginx"
 )
+nexus_fetch_opts = pulumi_kubernetes.helm.v3.FetchOpts(
+    repo="https://sonatype.github.io/helm3-charts/"
+)
 
 # # nginx ingress controller deployment
 nginx_ingress_values = {
@@ -38,6 +41,7 @@ nginx_ingress_values = {
             "type": "NodePort",
             "targetPorts": {"http": "http", "https": "http"},
         },
+        "config": {"use-forwarded-headers": "true"},
     }
 }
 nginx_ingress_controller = pulumi_kubernetes.helm.v3.Chart(
@@ -70,6 +74,31 @@ for _namespace in namespaces:
         ),
     )
     namespaces_dict[_namespace] = namespace.metadata.name.apply(lambda name: name)
+
+nexus_values = {
+    "ingress": {
+        "enabled": True,
+        "hostRepo": "nexus.goflok.com",
+    },
+    "nexus": {
+        "docker": {"enabled": False},
+        "nodeSelector": {"beta.kubernetes.io/instance-type": "t3.medium"},
+    },
+}
+
+nexus_repository = pulumi_kubernetes.helm.v3.Chart(
+    "nexus",
+    pulumi_kubernetes.helm.v3.ChartOpts(
+        chart="nexus-repository-manager",
+        namespace=KUBE_SYSTEM_NS,
+        values=nexus_values,
+        fetch_opts=nexus_fetch_opts,
+    ),
+    opts=ResourceOptions(
+        depends_on=[summtech_cluster, summtech_nexus_node_group], provider=eks_provider
+    ),
+)
+
 
 manifest: dict = yaml.safe_load(deploys.joinpath("manifest.yaml").read_bytes())
 deploy_keys = list(manifest.keys()) if manifest else []
