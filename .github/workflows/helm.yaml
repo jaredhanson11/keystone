@@ -14,5 +14,6 @@ jobs:
       env:
         HELM_REPO_USER: ${{ secrets.HELM_REPO_USER }}
         HELM_REPO_PASSWORD: ${{ secrets.HELM_REPO_PASSWORD }}
+        HELM_REPO_URL: ${{ secrets.HELM_REPO_URL}}
       with:
         entrypoint: /scripts/github-workflows/publish-helm.sh
