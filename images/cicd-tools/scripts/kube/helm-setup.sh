@@ -13,6 +13,7 @@ fi
 
 if [[ -z "$HELM_REPO_URL" ]]; then
     HELM_REPO_URL="https://nexus.goflok.com/repository/helm"
+    export HELM_REPO_URL="$HELM_REPO_URL"
 fi
 
 helm repo add stable https://charts.helm.sh/stable/
