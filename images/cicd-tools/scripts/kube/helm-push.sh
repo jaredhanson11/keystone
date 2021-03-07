@@ -17,6 +17,5 @@ helm dependency update $1 && \
 helm lint $1 --strict --debug && \
 mkdir -p ~/.cicd-tools/helm
 CHART_PACKAGE="$(helm package -d ~/.cicd-tools/helm/ "$1" | cut -d":" -f2 | tr -d '[:space:]')"
-curl -u "$HELM_REPO_USER:$HELM_REPO_PASSWORD" "$HELM_REPO_URL" --upload-file "$CHART_PACKAGE" | indent
-rm $CHART_PACKAGE
+curl -u "$HELM_REPO_USER:$HELM_REPO_PASSWORD" "$HELM_REPO_URL" --upload-file "$CHART_PACKAGE"
 
