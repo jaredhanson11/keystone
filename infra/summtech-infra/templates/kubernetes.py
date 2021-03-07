@@ -26,12 +26,21 @@ eks_provider = Provider(
 ## CONSTANTS
 KUBE_SYSTEM_NS = "kube-system"
 NGINX_INGRESS_CHART_NAME = "ingress-nginx"
-ingress_nginx_fetch_opts = pulumi_kubernetes.helm.v3.FetchOpts(
-    repo="https://kubernetes.github.io/ingress-nginx"
-)
-nexus_fetch_opts = pulumi_kubernetes.helm.v3.FetchOpts(
-    repo="https://sonatype.github.io/helm3-charts/"
-)
+HELM_REPO_FETCH_OPTS = {
+    "ingress-nginx": pulumi_kubernetes.helm.v3.FetchOpts(
+        repo="https://kubernetes.github.io/ingress-nginx"
+    ),
+    "sonatype": pulumi_kubernetes.helm.v3.FetchOpts(
+        repo="https://sonatype.github.io/helm3-charts/"
+    ),
+    "bitnami": pulumi_kubernetes.helm.v3.FetchOpts(
+        repo="https://charts.bitnami.com/bitnami"
+    ),
+    "stable": pulumi_kubernetes.helm.v3.FetchOpts(repo="https://charts.helm.sh/stable"),
+    "summtech": pulumi_kubernetes.helm.v3.FetchOpts(
+        repo="https://charts.helm.sh/stable"
+    ),
+}
 
 # # nginx ingress controller deployment
 nginx_ingress_values = {
@@ -50,7 +59,7 @@ nginx_ingress_controller = pulumi_kubernetes.helm.v3.Chart(
         chart=NGINX_INGRESS_CHART_NAME,
         namespace=KUBE_SYSTEM_NS,
         values=nginx_ingress_values,
-        fetch_opts=ingress_nginx_fetch_opts,
+        fetch_opts=HELM_REPO_FETCH_OPTS["ingress-nginx"],
     ),
     opts=ResourceOptions(
         depends_on=[summtech_cluster, summtech_node_group], provider=eks_provider
@@ -75,31 +84,6 @@ for _namespace in namespaces:
     )
     namespaces_dict[_namespace] = namespace.metadata.name.apply(lambda name: name)
 
-nexus_values = {
-    "ingress": {
-        "enabled": True,
-        "hostRepo": "nexus.goflok.com",
-    },
-    "nexus": {
-        "docker": {"enabled": False},
-        "nodeSelector": {"beta.kubernetes.io/instance-type": "t3.medium"},
-    },
-}
-
-nexus_repository = pulumi_kubernetes.helm.v3.Chart(
-    "nexus",
-    pulumi_kubernetes.helm.v3.ChartOpts(
-        chart="nexus-repository-manager",
-        namespace=KUBE_SYSTEM_NS,
-        values=nexus_values,
-        fetch_opts=nexus_fetch_opts,
-    ),
-    opts=ResourceOptions(
-        depends_on=[summtech_cluster, summtech_nexus_node_group], provider=eks_provider
-    ),
-)
-
-
 manifest: dict = yaml.safe_load(deploys.joinpath("manifest.yaml").read_bytes())
 deploy_keys = list(manifest.keys()) if manifest else []
 for _deployment in deploy_keys:
@@ -107,8 +91,7 @@ for _deployment in deploy_keys:
     for deploy_args in deploys_args:
         deploy_name = deploy_args["name"]
         namespace = deploy_args["namespace"]
-        chartname = deploy_args["chartName"]
-
+        reponame, chartname = deploy_args["chartName"].split("/")
         values = yaml.safe_load(
             Path(Config.get_deploys_dir())
             .joinpath(namespace)
@@ -116,13 +99,28 @@ for _deployment in deploy_keys:
             .read_bytes()
         )
 
-        chart_path = path.join(Config.get_charts_dir(), f"./{chartname}/")
-        deploy = pulumi_kubernetes.helm.v3.Chart(
-            deploy_name,
-            config=LocalChartOpts(
-                path=chart_path,
+        if reponame == "local":
+            chart_path = str(
+                Path(Config.get_charts_dir()).joinpath(chartname).as_posix()
+            )
+            chart_opts = pulumi_kubernetes.helm.v3.LocalChartOpts(
+                chart_path,
                 namespace=namespaces_dict[namespace],
                 values=values,
+            )
+        else:
+            chart_opts = pulumi_kubernetes.helm.v3.ChartOpts(
+                chart=chartname,
+                namespace=namespaces_dict[namespace],
+                values=values,
+                fetch_opts=HELM_REPO_FETCH_OPTS[reponame],
+            )
+
+        deploy = pulumi_kubernetes.helm.v3.Chart(
+            deploy_name,
+            config=chart_opts,
+            opts=ResourceOptions(
+                depends_on=[summtech_cluster, summtech_nexus_node_group],
+                provider=eks_provider,
             ),
-            opts=ResourceOptions(depends_on=[summtech_cluster], provider=eks_provider),
         )

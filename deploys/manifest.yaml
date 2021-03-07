@@ -15,8 +15,20 @@
 #
 # NO YAML ANCHORS ALLOWED -> https://github.com/mikefarah/yq/issues/339
 
+## Nexus (artifacts)
+nexus-prod:
+  - name: "nexus"
+    chartName: "sonatype/nexus-repository-manager"
+    namespace: "nexus"
+
+# ## Ghost (blog)
+# ghost-prod:
+#   - name: "ghost"
+#     chartName: "bitnami/ghost"
+#     namespace: "ghost"
+
 ## Flok
 flok-landing-page-prod:
   - name: "flok-landing-page"
-    chartName: "webclient-app"
+    chartName: "local/webclient-app"
     namespace: "production"

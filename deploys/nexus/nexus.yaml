@@ -1,0 +1,8 @@
+nexus:
+  docker: 
+    enabled: false
+  nodeSelector:
+    beta.kubernetes.io/instance-type: "t3.medium"
+ingress:
+  enabled: true
+  hostRepo: nexus.goflok.com
