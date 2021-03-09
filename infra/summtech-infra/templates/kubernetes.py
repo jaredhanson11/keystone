@@ -57,6 +57,7 @@ nginx_ingress_controller = pulumi_kubernetes.helm.v3.Chart(
     "ingress-nginx",
     pulumi_kubernetes.helm.v3.ChartOpts(
         chart=NGINX_INGRESS_CHART_NAME,
+        version="3.23.0",
         namespace=KUBE_SYSTEM_NS,
         values=nginx_ingress_values,
         fetch_opts=HELM_REPO_FETCH_OPTS["ingress-nginx"],
