@@ -11,7 +11,7 @@ from pulumi_kubernetes import Provider
 from pulumi_kubernetes.helm.v3.helm import FetchOpts, LocalChartOpts
 from pulumi_kubernetes.networking.v1beta1 import IngressBackendArgs, IngressSpecArgs
 
-from . import utils
+from . import iam_users, utils
 from .config import Config
 from .resources import summtech_cluster, summtech_nexus_node_group, summtech_node_group
 
