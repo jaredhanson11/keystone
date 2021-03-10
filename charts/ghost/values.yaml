@@ -1,0 +1,33 @@
+# Default values for py-repo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: "ghost"
+  tag: ""
+  pullPolicy: Always
+
+replicaCount: 1
+resources: {}
+
+config: {}
+  ## you should set the following
+  # url: <public_url>
+
+# nodeSelector: yaml, example: beta.kubernetes.io/instance-type: "t3.medium"
+nodeSelector: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  annotations: {}
+  # subdomain, for example `pyrepo.endergy.co`
+  subdomain: "ghost"
+  # hosts, if empty use all hosts defined in lib
+  hosts: []

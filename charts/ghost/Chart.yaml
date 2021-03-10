@@ -1,0 +1,13 @@
+apiVersion: v2
+name: ghost
+description: A simple deployment of a ghost blog.
+type: application
+
+version: 0.1.0
+appVersion: latest
+
+# Chart dependencies
+dependencies:
+- name: lib
+  version: 0.1.0
+  repository: file://../lib

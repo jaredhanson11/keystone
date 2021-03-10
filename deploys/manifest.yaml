@@ -21,11 +21,11 @@ nexus-prod:
     chartName: "sonatype/nexus-repository-manager"
     namespace: "nexus"
 
-# ## Ghost (blog)
-# ghost-prod:
-#   - name: "ghost"
-#     chartName: "bitnami/ghost"
-#     namespace: "ghost"
+## Ghost (blog)
+ghost-prod:
+  - name: "ghost"
+    chartName: "local/ghost"
+    namespace: "ghost"
 
 ## Flok
 flok-landing-page-prod:

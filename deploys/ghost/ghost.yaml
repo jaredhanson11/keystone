@@ -1,0 +1,13 @@
+
+image:
+  repository: "ghost"
+  tag: latest
+
+config:
+  url: "https://blog.goflok.com"
+
+ingress:
+  enabled: true
+  subdomain: "blog"
+  hosts:
+  - "goflok.com"

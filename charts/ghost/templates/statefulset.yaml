@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "lib.common.fullname" . }}
+  labels:
+    {{- include "lib.common.labels" . | nindent 4 }}
+spec:
+  revisionHistoryLimit: 0
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "lib.common.selectorLabels" . | nindent 6 }}
+  serviceName: {{ include "lib.common.fullname" . }}-headless
+  template:
+    metadata:
+      labels:
+        {{- include "lib.common.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- if .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml .Values.nodeSelector | indent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+{{- include "lib.deploy.envConfigs" . | nindent 12 }}
+          ports:
+            - name: http
+              containerPort: 2368
+              protocol: TCP
+          volumeMounts:
+          - name: ghost-storage
+            mountPath: /var/lib/ghost/content
+          readinessProbe:
+            httpGet:
+              path: "/"
+              port: http
+              httpHeaders:
+              - name: "X-Forwarded-Proto"
+                value: "https"
+              - name: "Host"
+                value: "localhost:2368"
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+  volumeClaimTemplates:
+  - metadata:
+      name: ghost-storage
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 8Gi
