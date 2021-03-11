@@ -2,14 +2,18 @@ import json
 
 import pulumi
 import pulumi_aws
-from pulumi import resource
+import pulumi_postgresql
 from pulumi.resource import ResourceOptions
 from pulumi_aws import ec2, eks, get_availability_zones, iam
 from pulumi_aws.ec2.get_subnet_ids import get_subnet_ids
+from pulumi_aws.ec2.security_group import SecurityGroupIngressArgs
 from pulumi_aws.eks.outputs import ClusterVpcConfig, NodeGroupScalingConfig
+from pulumi_postgresql import Database
 
 from . import utils
 from .config import Config
+
+config = pulumi.Config()
 
 #### IAM ####
 ## EKS Cluster Role
@@ -302,6 +306,58 @@ pulumi.export("kube-config", utils.generate_kube_config(summtech_cluster))
 
 
 #### MANAGED POSTGRES ####
+whitelisted_ips = ["98.42.95.217/32"]
+
+postgres_security_group = pulumi_aws.ec2.SecurityGroup(
+    "postgres-whitelist",
+    ingress=[
+        SecurityGroupIngressArgs(
+            from_port=5432, to_port=5432, cidr_blocks=whitelisted_ips, protocol="TCP"
+        )
+    ],
+    description="Whitelist for IPs outside of AWS allowed to access postgres.",
+)
+
+summtech_postgres = pulumi_aws.rds.Instance(
+    "summtech-postgres",
+    allocated_storage=20,
+    max_allocated_storage=50,
+    engine="postgres",
+    engine_version="12.5",
+    instance_class="db.t3.small",
+    name="summtech_admin",
+    username="summtech_admin",
+    password="default123",
+    publicly_accessible=True,
+    vpc_security_group_ids=[postgres_security_group.id],
+    opts=ResourceOptions(depends_on=[postgres_security_group]),
+)
+
+postgres_user = pulumi_postgresql.Role(
+    "summtech-user",
+    name="summtech-user",
+    password=config.get("summtech-user-postgres-pw"),
+    login=True,
+    opts=ResourceOptions(depends_on=[summtech_postgres]),
+)
+
+flok_production_db = Database(
+    "flok-production",
+    name="flok-production",
+    owner="summtech-user",
+    opts=ResourceOptions(
+        depends_on=[summtech_postgres],
+    ),
+)
+
+flok_staging_db = Database(
+    "flok-staging",
+    name="flok-staging",
+    owner="summtech-user",
+    opts=ResourceOptions(
+        depends_on=[summtech_postgres],
+    ),
+)
 
 #### S3 ####
 
