@@ -1,11 +1,13 @@
 config:
   aws:region: us-east-1
+  postgres:password:
+    secure: AAABAJkJpkke2d23NLxKn82omsWGbdvfuEKeZEGTiR6jA2fAaWErTXPlbgyzWbYR9lPKB+9i4AlW
   postgresql:host: summtech-postgres61a057c.cyva8rncdmah.us-east-1.rds.amazonaws.com
   postgresql:password:
-    secure: AAABAEuVMncUNFVGKtwnuKdETIAD9bAmN4oIeZCnGTFnIAuolKinL7nO
+    secure: AAABAJYbu0tUVoG3L2R0i3iwgHEwwoXiq5fIVnBzSmCRRi39EvPyR/7Am+Ndgvel4LXAxC6xC6uS
   postgresql:superuser: "false"
   postgresql:username: summtech_admin
   pulumi:template: aws-python
   summtech-infra:cert-arns: arn:aws:acm:us-east-1:668951522996:certificate/66ca387c-8f13-44d5-800f-623c8740f8f9,arn:aws:acm:us-east-1:668951522996:certificate/40c6f8ba-5e54-41d5-aeff-405a9a5567ea
   summtech-infra:summtech-user-postgres-pw:
-    secure: AAABAMeF27RYsUBaK0UflQeW8UUN1GwnmiovZKSZK/chb92wIy3IWa6EBVTQv7wMtVHWg7ck82N4
+    secure: AAABAMV8BEz3dnnueJ0yLY73aF4nV32x9HMIwbuXxryhFB6laR98PSm5X+h3N4dSTq5REZRgCmXO

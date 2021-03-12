@@ -14,6 +14,7 @@ from . import utils
 from .config import Config
 
 config = pulumi.Config()
+postgresql_config = pulumi.Config("postgresql")
 
 #### IAM ####
 ## EKS Cluster Role
@@ -325,9 +326,10 @@ summtech_postgres = pulumi_aws.rds.Instance(
     engine="postgres",
     engine_version="12.5",
     instance_class="db.t3.small",
+    deletion_protection=True,
     name="summtech_admin",
     username="summtech_admin",
-    password="default123",
+    password=postgresql_config.get("password"),
     publicly_accessible=True,
     vpc_security_group_ids=[postgres_security_group.id],
     opts=ResourceOptions(depends_on=[postgres_security_group]),
@@ -343,7 +345,7 @@ postgres_user = pulumi_postgresql.Role(
 
 flok_production_db = Database(
     "flok-production",
-    name="flok-production",
+    name="flok_production",
     owner="summtech-user",
     opts=ResourceOptions(
         depends_on=[summtech_postgres],
@@ -352,7 +354,7 @@ flok_production_db = Database(
 
 flok_staging_db = Database(
     "flok-staging",
-    name="flok-staging",
+    name="flok_staging",
     owner="summtech-user",
     opts=ResourceOptions(
         depends_on=[summtech_postgres],
