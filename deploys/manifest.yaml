@@ -39,3 +39,8 @@ hawk-staging:
   - name: "hawk"
     chartName: "local/flask-app"
     namespace: "staging"
+
+flok-staging:
+  - name: "flok"
+    chartName: "local/webclient-app"
+    namespace: "staging"
