@@ -5,8 +5,12 @@ import pulumi_aws
 import pulumi_postgresql
 from pulumi.resource import ResourceOptions
 from pulumi_aws import ec2, eks, get_availability_zones, iam
+from pulumi_aws.ec2 import security_group
 from pulumi_aws.ec2.get_subnet_ids import get_subnet_ids
-from pulumi_aws.ec2.security_group import SecurityGroupIngressArgs
+from pulumi_aws.ec2.security_group import (
+    SecurityGroupEgressArgs,
+    SecurityGroupIngressArgs,
+)
 from pulumi_aws.eks.outputs import ClusterVpcConfig, NodeGroupScalingConfig
 from pulumi_postgresql import Database
 
@@ -270,12 +274,27 @@ public_vpc_subnet_ids = ec2.get_subnet_ids(
 )
 
 #### EKS ####
+
+# eks_cluster_security_group = pulumi_aws.ec2.SecurityGroup(
+#     "eks-cluster-security-group",
+#     egress=[
+#         SecurityGroupEgressArgs(
+#             from_port=0, to_port=0, protocol="-1", cidr_blocks=["0.0.0.0/0"]
+#         )
+#     ],
+#     ingress=[
+#         SecurityGroupIngressArgs(from_port=0, to_port=0, protocol="-1", self=True),
+#     ],
+#     description="Security group for all EKS resources.",
+# )
+
 # Create an EKS cluster.
 summtech_cluster = eks.Cluster(
     resource_name="summtech-cluster",
     role_arn=eks_role.arn,
     tags={"Name": "summtech-eks-cluster"},
     vpc_config=ClusterVpcConfig(
+        # cluster_security_group_id=eks_cluster_security_group.id,
         public_access_cidrs=["0.0.0.0/0"],
         subnet_ids=public_vpc_subnet_ids.ids,
     ),
@@ -314,9 +333,16 @@ postgres_security_group = pulumi_aws.ec2.SecurityGroup(
     ingress=[
         SecurityGroupIngressArgs(
             from_port=5432, to_port=5432, cidr_blocks=whitelisted_ips, protocol="TCP"
-        )
+        ),
+        SecurityGroupIngressArgs(
+            from_port=5432,
+            to_port=5432,
+            security_groups=[summtech_cluster.vpc_config.cluster_security_group_id],
+            protocol="TCP",
+        ),
     ],
     description="Whitelist for IPs outside of AWS allowed to access postgres.",
+    opts=ResourceOptions(depends_on=[summtech_cluster]),
 )
 
 summtech_postgres = pulumi_aws.rds.Instance(
@@ -331,6 +357,7 @@ summtech_postgres = pulumi_aws.rds.Instance(
     username="summtech_admin",
     password=postgresql_config.get("password"),
     publicly_accessible=True,
+    # vpc_security_group_ids=[postgres_security_group.id, eks_cluster_security_group.id],
     vpc_security_group_ids=[postgres_security_group.id],
     opts=ResourceOptions(depends_on=[postgres_security_group]),
 )

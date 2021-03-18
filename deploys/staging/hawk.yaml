@@ -1,0 +1,41 @@
+image:
+  repository: jaredhanson11/hawk
+  tag: latest
+
+dbConnection:
+  shouldConnect: true
+  passwordSecret:
+    secretName: postgres-secrets
+    keyName: postgresql-password
+  user: summtech-user
+  host: summtech-postgres61a057c.cyva8rncdmah.us-east-1.rds.amazonaws.com
+  name: flok_staging
+
+existingSecret: hawk-secrets
+secret:
+  SECRET_KEY: ""
+config:
+  SUMM_LOG_FILE: "/app/app.log"
+  CORS_ALLOW_ORIGINS: "http://localhost:8080,https://app-staging.goflok.com"
+  SUMM_LOG_LEVEL: DEBUG
+
+ingress:
+  subdomain: "hawk-staging"
+
+config.py: |-
+  import os
+  # CORS through summ-web
+  CORS_ALLOW_ORIGINS = os.environ.get("CORS_ALLOW_ORIGINS", "").split(",")
+  # SQLALCHEMY
+  SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
+  # JWT Auth
+  SECRET_KEY = os.environ.get("SECRET_KEY")
+  JWT_LIFESPAN = os.environ.get("JWT_LIFESPAN", -1)
+  JWT_FRESHSPAN = os.environ.get("JWT_FRESHSPAN", 5)
+  # Logging
+  tmp = os.environ.get("SUMM_LOG_FILE")
+  if tmp:
+      SUMM_LOG_FILE = tmp
+  tmp = os.environ.get("SUMM_LOG_FILE_SIZE")
+  if tmp:
+      SUMM_LOG_FILE_SIZE = tmp

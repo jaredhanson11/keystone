@@ -28,7 +28,14 @@ ghost-prod:
     namespace: "ghost"
 
 ## Flok
+#### Production
 flok-landing-page-prod:
   - name: "flok-landing-page"
     chartName: "local/webclient-app"
     namespace: "production"
+
+#### Staging
+hawk-staging:
+  - name: "hawk"
+    chartName: "local/flask-app"
+    namespace: "staging"

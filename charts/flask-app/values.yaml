@@ -39,8 +39,8 @@ dbConnection:
     keyName: postgresql-password
   user: postgres
   port: 5432
-  host: postgresql.common
-  name: summn_development
+  host: localhost
+  name: postgres
 
 # config.py, config file mounted as flask app config
 config.py: |-
