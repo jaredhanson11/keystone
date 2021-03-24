@@ -326,7 +326,7 @@ pulumi.export("kube-config", utils.generate_kube_config(summtech_cluster))
 
 
 #### MANAGED POSTGRES ####
-whitelisted_ips = ["98.42.95.217/32"]
+whitelisted_ips = ["98.42.95.217/32", "52.175.251.223/32"]
 
 postgres_security_group = pulumi_aws.ec2.SecurityGroup(
     "postgres-whitelist",
