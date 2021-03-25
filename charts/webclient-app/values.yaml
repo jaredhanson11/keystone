@@ -14,6 +14,9 @@ replicaCount: 1
 resources: {}
 
 config: {}
+existingSecret: ""
+secret: {}
+
 
 service:
   type: ClusterIP

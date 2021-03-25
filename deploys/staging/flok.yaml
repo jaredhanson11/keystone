@@ -6,6 +6,10 @@ config:
   API_URL: "https://hawk-staging.goflok.com/api"
   IMAGES_URL: "https://flok-b32d43c.s3.us-east-1.amazonaws.com/"
 
+existingSecret: flok-secrets
+secret:
+  GOOGLE_API_KEY: ""
+
 ingress:
   enabled: true
   subdomain: "app-staging"

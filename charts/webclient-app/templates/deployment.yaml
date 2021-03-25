@@ -21,6 +21,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
 {{- include "lib.deploy.envConfigs" . | nindent 12 }}
+{{- include "lib.deploy.envSecrets" . | nindent 12 }}
           ports:
             - name: http
               containerPort: 80
