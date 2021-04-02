@@ -1,8 +1,7 @@
 image:
   repository: "jaredhanson11/flok-landing-page"
-  tag: 0.0.10
+  tag: 0.0.9
 
 ingress:
   enabled: true
-  rootEnabled: true
-  subdomain: "landing"
+  subdomain: "staging"

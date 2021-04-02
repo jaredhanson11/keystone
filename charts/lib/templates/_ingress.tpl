@@ -37,7 +37,7 @@ libs.hosts generates ingress entrypoints.
 */ -}}
 {{- define "lib.ingress" -}}
 {{- if .Values.ingress.enabled -}}
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: {{ include "lib.common.fullname" . }}

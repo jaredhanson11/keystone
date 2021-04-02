@@ -7,22 +7,28 @@
 #     <app>.yaml # stack = _default
 #     <app>.yaml
 #
-# Manifest Entry #
+## Manifest Entry ##
 # <payload.deploy>:
 #   - name: str # used to find
 #     chartName: str # name of chart in helm repo (i.e stable/postgres)
 #     namespace: str # name of k8s namespace (and values file directory)
 #
+## Result ##
+#   each Manifest Entry is installed via Helm
+#     using the <chartName> specified,
+#     the values located at deploys/<namespace>/<name>.yaml,
+#     and the helm deployment name as <payload.key>
+#
 # NO YAML ANCHORS ALLOWED -> https://github.com/mikefarah/yq/issues/339
 
 ## Nexus (artifacts)
-nexus-prod:
+nexus:
   - name: "nexus"
     chartName: "sonatype/nexus-repository-manager"
     namespace: "nexus"
 
 ## Ghost (blog)
-ghost-prod:
+ghost:
   - name: "ghost"
     chartName: "local/ghost"
     namespace: "ghost"
@@ -44,3 +50,9 @@ flok-staging:
   - name: "flok"
     chartName: "local/webclient-app"
     namespace: "staging"
+
+## Used when needing to test landing page changes ##
+# flok-landing-page-staging:
+#   - name: "flok-landing-page"
+#     chartName: "local/webclient-app"
+#     namespace: "staging"

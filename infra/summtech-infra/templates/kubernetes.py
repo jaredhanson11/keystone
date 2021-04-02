@@ -118,7 +118,7 @@ for _deployment in deploy_keys:
             )
 
         deploy = pulumi_kubernetes.helm.v3.Chart(
-            deploy_name,
+            _deployment,
             config=chart_opts,
             opts=ResourceOptions(
                 depends_on=[summtech_cluster, summtech_nexus_node_group],
