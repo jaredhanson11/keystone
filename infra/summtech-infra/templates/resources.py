@@ -306,7 +306,8 @@ summtech_node_group = eks.NodeGroup(
     node_role_arn=ec2_role.arn,
     instance_types=["t2.small"],
     tags={"Name": "summtech-cluster-nodegroup"},
-    scaling_config=NodeGroupScalingConfig(max_size=2, min_size=1, desired_size=2),
+    labels={"summtech.io/nodegroup": "summtech-cluster-nodegroup"},
+    scaling_config=NodeGroupScalingConfig(max_size=3, min_size=1, desired_size=3),
     subnet_ids=public_vpc_subnet_ids.ids,
 )
 
@@ -316,7 +317,8 @@ summtech_nexus_node_group = eks.NodeGroup(
     node_role_arn=ec2_role.arn,
     instance_types=["t3.medium"],
     tags={"Name": "summtech-nexus-nodegroup"},
-    scaling_config=NodeGroupScalingConfig(max_size=2, min_size=1, desired_size=1),
+    labels={"summtech.io/nodegroup": "summtech-nexus-nodegroup"},
+    scaling_config=NodeGroupScalingConfig(max_size=2, min_size=1, desired_size=2),
     subnet_ids=public_vpc_subnet_ids.ids,
 )
 

@@ -3,6 +3,15 @@ nexus:
     enabled: false
   nodeSelector:
     beta.kubernetes.io/instance-type: "t3.medium"
+    summtech.io/nodegroup: "summtech-nexus-nodegroup"
+  resources:
+    requests:
+      memory: "3Gi"
+      cpu: "1500m"
+    limits:
+      memory: "4Gi"
+      cpu: "2"
+
 ingress:
   enabled: true
   hostRepo: nexus.goflok.com
