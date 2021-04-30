@@ -9,6 +9,7 @@ config:
 existingSecret: flok-secrets
 secret:
   GOOGLE_API_KEY: ""
+  STRIPE_KEY: ""
 
 ingress:
   enabled: true
