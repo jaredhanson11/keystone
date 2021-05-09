@@ -390,6 +390,15 @@ flok_staging_db = Database(
     ),
 )
 
+pigeon_staging_db = Database(
+    "pigeon-staging",
+    name="pigeon_staging",
+    owner="summtech-user",
+    opts=ResourceOptions(
+        depends_on=[summtech_postgres],
+    ),
+)
+
 #### S3 ####
 
 flok_s3_bucket = pulumi_aws.s3.Bucket(

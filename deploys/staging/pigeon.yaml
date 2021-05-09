@@ -1,0 +1,13 @@
+image:
+  repository: "jaredhanson11/pigeon"
+  tag: latest
+
+config:
+  API_URL: "https://pigeon-staging.goflok.com/api"
+
+existingSecret: flok-secrets
+secret:
+
+ingress:
+  enabled: true
+  subdomain: "app-pigeon-staging"
