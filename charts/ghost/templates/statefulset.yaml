@@ -6,7 +6,7 @@ metadata:
     {{- include "lib.common.labels" . | nindent 4 }}
 spec:
   revisionHistoryLimit: 0
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1 # Limitation of Ghost (needs single instance): https://ghost.org/docs/faq/clustering-sharding-multi-server/
   selector:
     matchLabels:
       {{- include "lib.common.selectorLabels" . | nindent 6 }}
@@ -26,6 +26,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
 {{- include "lib.deploy.envConfigs" . | nindent 12 }}
+{{- include "lib.deploy.envSecrets" . | nindent 12 }}
           ports:
             - name: http
               containerPort: 2368
@@ -51,4 +52,4 @@ spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
-          storage: 8Gi
+          storage: 16Gi

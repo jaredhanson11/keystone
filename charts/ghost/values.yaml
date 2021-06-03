@@ -10,12 +10,14 @@ image:
   tag: ""
   pullPolicy: Always
 
-replicaCount: 1
 resources: {}
 
 config: {}
   ## you should set the following
   # url: <public_url>
+
+existingSecret: ""
+secret: {}
 
 # nodeSelector: yaml, example: beta.kubernetes.io/instance-type: "t3.medium"
 nodeSelector: {}
