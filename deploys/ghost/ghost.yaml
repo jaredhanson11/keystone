@@ -23,7 +23,7 @@ secret:
 ingress:
   enabled: true
   rootEnabled: true
-  path: "/blog/"
+  path: "/blog"
 
 resources:
   limits:
