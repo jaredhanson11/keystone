@@ -21,10 +21,9 @@ secret:
   mail__options__auth__pass: ""
 
 ingress:
-  enabled: false
-  # subdomain: "blog"
-  # hosts:
-  # - "goflok.com"
+  enabled: true
+  rootEnabled: true
+  path: "/blog/"
 
 resources:
   limits:

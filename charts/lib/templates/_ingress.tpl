@@ -3,6 +3,7 @@ libs.hosts generates ingress entrypoints.
 .Values
 ._inputs:
   subdomain: str
+  path: str
   hosts: list (optional)
   svcName: str
   svcPort: str
@@ -12,12 +13,13 @@ libs.hosts generates ingress entrypoints.
 {{- $fullName := include "lib.common.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
 {{- $subdomain := .Values.ingress.subdomain -}}
+{{- $path := .Values.ingress.path -}}
 {{- $rootEnabled := .Values.ingress.rootEnabled -}}
 {{- range $hosts }}
 - host: "{{ $subdomain }}.{{ . }}"
   http:
     paths:
-      - path: "/"
+      - path: "{{ default "/" $path }}"
         backend:
           serviceName: {{ $fullName | quote }}
           servicePort: {{ $svcPort }}
@@ -25,7 +27,7 @@ libs.hosts generates ingress entrypoints.
 - host: "{{ . }}"
   http:
     paths:
-      - path: "/"
+      - path: "{{ default "/" $path }}"
         backend:
           serviceName: {{ $fullName | quote }}
           servicePort: {{ $svcPort }}

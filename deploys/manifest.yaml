@@ -35,11 +35,6 @@ ghost:
 
 ## Flok
 #### Production
-goflok-com-ingress:
-  - name: "goflok-com-ingress"
-    chartName: "bitnami/nginx"
-    namespace: "production"
-
 flok-landing-page-prod:
   - name: "flok-landing-page"
     chartName: "local/webclient-app"
