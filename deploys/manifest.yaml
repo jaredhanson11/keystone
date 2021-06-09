@@ -40,6 +40,11 @@ flok-landing-page-prod:
     chartName: "local/webclient-app"
     namespace: "production"
 
+flok-ingress:
+  - name: "goflok-com-ingress"
+    chartName: "bitnami/nginx"
+    namespace: "production"
+
 #### Staging
 hawk-staging:
   - name: "hawk"

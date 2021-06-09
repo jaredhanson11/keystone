@@ -4,5 +4,4 @@ image:
 
 ingress:
   enabled: true
-  rootEnabled: true
   subdomain: "landing"

@@ -36,7 +36,7 @@ spec:
             mountPath: /var/lib/ghost/content
           readinessProbe:
             httpGet:
-              path: "/"
+              path: "{{ .Values.healthCheckPath }}"
               port: http
               httpHeaders:
               - name: "X-Forwarded-Proto"

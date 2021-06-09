@@ -12,6 +12,8 @@ image:
 
 resources: {}
 
+healthCheckPath: "/"
+
 config: {}
   ## you should set the following
   # url: <public_url>

@@ -3,9 +3,11 @@ image:
   # before upgrading tag, check ghost upgrading docs
   tag: "4.6.4"
 
+healthCheckPath: "/blog/"
+
 config:
   NODE_ENV: "production"
-  url: "https://blog.goflok.com"
+  url: "https://goflok.com/blog/"
   mail__from: "noreply@goflok.com"
   mail__transport: "SMTP"
   mail__options__host: "smtp.sendgrid.net"
@@ -19,10 +21,10 @@ secret:
   mail__options__auth__pass: ""
 
 ingress:
-  enabled: true
-  subdomain: "blog"
-  hosts:
-  - "goflok.com"
+  enabled: false
+  # subdomain: "blog"
+  # hosts:
+  # - "goflok.com"
 
 resources:
   limits:
