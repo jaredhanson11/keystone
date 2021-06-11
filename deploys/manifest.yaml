@@ -62,8 +62,8 @@ flok-staging:
     chartName: "local/webclient-app"
     namespace: "staging"
 
-## Used when needing to test landing page changes ##
-# flok-landing-page-staging:
-#   - name: "flok-landing-page"
-#     chartName: "local/webclient-app"
-#     namespace: "staging"
+# Used when needing to test landing page changes ##
+flok-landing-page-staging:
+  - name: "flok-landing-page"
+    chartName: "local/webclient-app"
+    namespace: "staging"
