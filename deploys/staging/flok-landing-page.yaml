@@ -1,6 +1,6 @@
 image:
   repository: "jaredhanson11/flok-landing-page"
-  tag: 0.1.2
+  tag: 0.2.0
 
 ingress:
   enabled: true
