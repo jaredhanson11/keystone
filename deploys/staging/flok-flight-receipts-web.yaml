@@ -1,0 +1,34 @@
+image:
+  repository: jaredhanson11/flok-flight-receipts-web
+  tag: latest
+dbConnection:
+  shouldConnect: true
+  passwordSecret:
+    secretName: postgres-secrets
+    keyName: postgresql-password
+  user: summtech-user
+  host: summtech-postgres61a057c.cyva8rncdmah.us-east-1.rds.amazonaws.com
+  name: flok_staging
+existingSecret: flok-flight-receipts-secrets
+secret:
+  RMQ_PASSWORD: ""
+config:
+  RMQ_USER: summtech-user
+  RMQ_HOST: b-79ce4be9-7c67-4d87-86b6-78094324a90e.mq.us-east-1.amazonaws.com
+  RMQ_PORT: "5671"
+  RMQ_SECURE: "1"
+  SUMM_LOG_FILE: "/app/app.log"
+config.py: |-
+  import os
+  # SQLALCHEMY
+  SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
+  # RMQ connection config
+  RMQ_USER = os.environ["RMQ_USER"]
+  RMQ_PASSWORD = os.environ["RMQ_PASSWORD"]
+  RMQ_HOST = os.environ["RMQ_HOST"]
+  RMQ_PORT = os.environ["RMQ_PORT"]
+  RMQ_SECURE = os.environ.get("RMQ_SECURE")
+  # Logging
+  SUMM_LOG_FILE = os.environ["SUMM_LOG_FILE"]
+ingress:
+  subdomain: "flight-receipts"

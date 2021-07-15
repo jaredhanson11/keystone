@@ -46,16 +46,15 @@ hawk-staging:
     chartName: "local/flask-app"
     namespace: "staging"
 
-robin-staging:
-  - name: "robin"
+flok-flight-receipts-web-staging:
+  - name: "flok-flight-receipts-web"
     chartName: "local/flask-app"
     namespace: "staging"
 
-# Testing slack bot stuff
-# pigeon-backend-staging:
-#   - name: "pigeon-backend"
-#     chartName: "local/flask-app"
-#     namespace: "staging"
+flok-flight-receipts-rmq-worker-staging:
+  - name: "flok-flight-receipts-rmq-worker"
+    chartName: "local/rmq-worker"
+    namespace: "staging"
 
 flok-staging:
   - name: "flok"

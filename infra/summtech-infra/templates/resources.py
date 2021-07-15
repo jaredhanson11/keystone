@@ -282,26 +282,12 @@ public_vpc_useast1a_subnet_ids = ec2.get_subnet_ids(
 
 #### EKS ####
 
-# eks_cluster_security_group = pulumi_aws.ec2.SecurityGroup(
-#     "eks-cluster-security-group",
-#     egress=[
-#         SecurityGroupEgressArgs(
-#             from_port=0, to_port=0, protocol="-1", cidr_blocks=["0.0.0.0/0"]
-#         )
-#     ],
-#     ingress=[
-#         SecurityGroupIngressArgs(from_port=0, to_port=0, protocol="-1", self=True),
-#     ],
-#     description="Security group for all EKS resources.",
-# )
-
 # Create an EKS cluster.
 summtech_cluster = eks.Cluster(
     resource_name="summtech-cluster",
     role_arn=eks_role.arn,
     tags={"Name": "summtech-eks-cluster"},
     vpc_config=ClusterVpcConfig(
-        # cluster_security_group_id=eks_cluster_security_group.id,
         public_access_cidrs=["0.0.0.0/0"],
         subnet_ids=public_vpc_subnet_ids.ids,
     ),
