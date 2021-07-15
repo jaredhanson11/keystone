@@ -1,8 +1,7 @@
 docker-user=jaredhanson11
-tag=1.0.0
 name=${docker-user}/python-builder
 
 build:
-	docker build . -t ${name}:${tag}
+	docker build . -t ${name}:latest
 push: build
-	docker push ${name}:${tag}
+	docker push ${name}:latest
