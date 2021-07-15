@@ -273,6 +273,13 @@ public_vpc_subnet_ids = ec2.get_subnet_ids(
     vpc_id=public_vpc.id,
 )
 
+public_vpc_useast1a_subnet_ids = ec2.get_subnet_ids(
+    filters=[
+        ec2.GetSubnetIdsFilterArgs(name="availabilityZone", values=["us-east-1a"])
+    ],
+    vpc_id=public_vpc.id,
+)
+
 #### EKS ####
 
 # eks_cluster_security_group = pulumi_aws.ec2.SecurityGroup(
@@ -406,3 +413,27 @@ flok_s3_bucket = pulumi_aws.s3.Bucket(
 )
 
 pulumi.export("flok-s3-bucket-name", flok_s3_bucket.bucket)
+
+#### RabbitMQ Broker ####
+
+rabbitmq_config = pulumi.Config("rabbitmq")
+rmq_broker = pulumi_aws.mq.Broker(
+    "rabbitmq-broker-1",
+    broker_name="rabbitmq-broker-1",
+    engine_type="RabbitMQ",
+    engine_version="3.8.11",
+    deployment_mode="SINGLE_INSTANCE",
+    host_instance_type="mq.t3.micro",
+    apply_immediately=True,  # probably should remove for prod deploy
+    publicly_accessible=True,  # can remove with https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/accessing-web-console-of-broker-without-public-accessibility.html
+    subnet_ids=public_vpc_useast1a_subnet_ids.ids,
+    users=[
+        pulumi_aws.mq.BrokerUserArgs(
+            username="summtech-user",
+            password=rabbitmq_config.get("password"),
+        ),
+    ],
+)
+
+pulumi.export("rmq-broker-1-console", rmq_broker.instances[0].console_url)
+pulumi.export("rmq-broker-1-endpoint", rmq_broker.instances[0].endpoints[0])

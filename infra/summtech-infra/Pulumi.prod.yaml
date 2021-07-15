@@ -8,6 +8,8 @@ config:
   postgresql:superuser: "false"
   postgresql:username: summtech_admin
   pulumi:template: aws-python
+  rabbitmq:password:
+    secure: AAABAMR21A5hztvPeh24ffGES3ndavJfHOEMCOeKplW3hASKeoCGw11AO24yrh1cm5M1qRTBgFNl
   summtech-infra:cert-arns: arn:aws:acm:us-east-1:668951522996:certificate/66ca387c-8f13-44d5-800f-623c8740f8f9,arn:aws:acm:us-east-1:668951522996:certificate/40c6f8ba-5e54-41d5-aeff-405a9a5567ea
   summtech-infra:summtech-user-postgres-pw:
     secure: AAABAMV8BEz3dnnueJ0yLY73aF4nV32x9HMIwbuXxryhFB6laR98PSm5X+h3N4dSTq5REZRgCmXO
