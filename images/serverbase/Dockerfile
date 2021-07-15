@@ -1,8 +1,6 @@
-FROM python:3.7-alpine
+FROM python:3.7-slim
 
-# This doubles our images size (112MB -> 211MB)
-# but gunicorn errors without so have to leave for now.
-RUN apk add --no-cache gcc libc-dev
+RUN apt-get update && apt-get upgrade -y
 
 COPY requirements.txt /
 RUN pip install -r /requirements.txt

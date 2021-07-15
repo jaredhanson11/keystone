@@ -1,9 +1,8 @@
-FROM python:3.7-alpine
+FROM python:3.7-slim
 
-RUN apk add bash make
-RUN apk add --no-cache --virtual .build-deps gcc libc-dev libffi-dev openssl-dev python3-dev musl-dev cargo && \
-    pip install --upgrade setuptools wheel twine && \
-    apk del .build-deps
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y bash make
+RUN pip install --upgrade setuptools wheel twine
 
 ENV TWINE_USERNAME='unset'
 ENV TWINE_PASSWORD='unset'
