@@ -396,6 +396,13 @@ pigeon_staging_db = Database(
 
 flok_s3_bucket = pulumi_aws.s3.Bucket(
     resource_name="flok",
+    cors_rules=[
+        pulumi_aws.s3.BucketCorsRuleArgs(
+            allowed_headers=["*"],
+            allowed_methods=["PUT", "POST", "GET"],
+            allowed_origins=["*"],
+        )
+    ],
 )
 
 pulumi.export("flok-s3-bucket-name", flok_s3_bucket.bucket)
