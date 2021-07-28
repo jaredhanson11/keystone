@@ -10,5 +10,5 @@ WORKDIR /app
 COPY ./logging.conf /app/
 RUN mkdir -p /logs/
 
-EXPOSE 8000
-ENTRYPOINT [ "gunicorn", "-w 2", "server:app", "-b 0.0.0.0:8000", "--log-config", "/app/logging.conf" ]
+ENV PORT 8000
+ENTRYPOINT gunicorn -w 2 server:app -b 0.0.0.0:$PORT --log-config /app/logging.conf
