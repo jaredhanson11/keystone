@@ -11,4 +11,6 @@ COPY ./logging.conf /app/
 RUN mkdir -p /logs/
 
 ENV PORT 8000
-ENTRYPOINT gunicorn -w 2 server:app -b 0.0.0.0:$PORT --log-config /app/logging.conf
+
+COPY ./entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
