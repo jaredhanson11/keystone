@@ -408,8 +408,13 @@ flok_s3_bucket = pulumi_aws.s3.Bucket(
         )
     ],
 )
-
 pulumi.export("flok-s3-bucket-name", flok_s3_bucket.bucket)
+
+# For business storage, typically non app specific
+flok_generic_s3_bucket = pulumi_aws.s3.Bucket(
+    resource_name="flok-generic",
+)
+pulumi.export("flok-generic-s3-bucket-name", flok_generic_s3_bucket.bucket)
 
 #### RabbitMQ Broker ####
 
