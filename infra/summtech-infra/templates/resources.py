@@ -325,6 +325,7 @@ whitelisted_ips = [
     "98.42.95.217/32",
     "52.175.251.223/32",
     "98.248.35.171/32",  # jared home
+    "0.0.0.0/0",  # whitelist all IP's
 ]
 
 postgres_security_group = pulumi_aws.ec2.SecurityGroup(

@@ -18,6 +18,7 @@ secret:
 config:
   SUMM_LOG_FILE: "/app/app.log"
   CORS_ALLOW_ORIGINS: "http://localhost:8080,https://app-staging.goflok.com"
+  CLIENT_BASE_URL: "https://app-staging.goflok.com"
   SUMM_LOG_LEVEL: DEBUG
 
 ingress:

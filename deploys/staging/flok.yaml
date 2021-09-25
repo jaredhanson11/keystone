@@ -5,6 +5,10 @@ image:
 config:
   API_URL: "https://hawk-staging.goflok.com/api"
   IMAGES_URL: "https://flok-b32d43c.s3.us-east-1.amazonaws.com/"
+  ALGOLIA_DESTINATIONS_INDEX: dev_destinations
+  ALGOLIA_HOTELS_INDEX: dev_hotels
+  ALGOLIA_API_KEY: 1bfd529008a4c2c0945b629b44707593
+  ALGOLIA_APP_ID: 0GNPYG0XAN
 
 existingSecret: flok-secrets
 secret:
