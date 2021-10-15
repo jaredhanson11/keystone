@@ -1,0 +1,30 @@
+# Server that triggers algolia indexer to run
+image:
+  repository: jaredhanson11/hawk-algolia-indexer-server
+  tag: latest
+
+existingSecret: hawk-secrets
+secret:
+  RMQ_PASSWORD: ""
+config:
+  RMQ_USER: summtech-user
+  RMQ_HOST: b-79ce4be9-7c67-4d87-86b6-78094324a90e.mq.us-east-1.amazonaws.com
+  RMQ_PORT: "5671"
+  RMQ_SECURE: "1"
+  SUMM_LOG_FILE: "/app/app.log"
+  SUMM_LOG_LEVEL: DEBUG
+  TRIGGER_PASSWORD: "18efe4fc"
+
+ingress:
+  subdomain: "algolia"
+
+config.py: |-
+  import os
+  RMQ_USER = os.environ.get("RMQ_USER")
+  RMQ_PASSWORD = os.environ.get("RMQ_PASSWORD")
+  RMQ_HOST = os.environ.get("RMQ_HOST")
+  RMQ_PORT = os.environ.get("RMQ_PORT")
+  RMQ_SECURE = os.environ["RMQ_SECURE"]
+  TRIGGER_PASSWORD = os.environ.get("TRIGGER_PASSWORD")
+  SUMM_LOG_FILE  = os.environ["SUMM_LOG_FILE"]
+  SUMM_LOG_LEVEL = os.environ["SUMM_LOG_LEVEL"]

@@ -1,0 +1,32 @@
+image:
+  repository: jaredhanson11/hawk-algolia-indexer
+  tag: latest
+existingSecret: hawk-secrets
+secret:
+  RMQ_PASSWORD: ""
+  DATABASE_URL: ""
+  ALGOLIA_API_KEY: ""
+config:
+  ALGOLIA_APP_ID: "0GNPYG0XAN"
+  ALGOLIA_DESTINATIONS_INDEX: "destinations"
+  ALGOLIA_HOTELS_INDEX: "hotels"
+  RMQ_USER: summtech-user
+  RMQ_HOST: b-79ce4be9-7c67-4d87-86b6-78094324a90e.mq.us-east-1.amazonaws.com
+  RMQ_PORT: "5671"
+  RMQ_SECURE: "1"
+  SUMM_LOG_FILE: "/app/app.log"
+  SUMM_LOG_LEVEL: DEBUG
+config.py: |-
+  import os
+  SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
+  RMQ_USER = os.environ["RMQ_USER"]
+  RMQ_PASSWORD = os.environ["RMQ_PASSWORD"]
+  RMQ_HOST = os.environ["RMQ_HOST"]
+  RMQ_PORT = os.environ["RMQ_PORT"]
+  RMQ_SECURE = os.environ["RMQ_SECURE"]
+  ALGOLIA_APP_ID = os.environ["ALGOLIA_APP_ID"]
+  ALGOLIA_API_KEY = os.environ["ALGOLIA_API_KEY"]
+  ALGOLIA_DESTINATIONS_INDEX = os.environ["ALGOLIA_DESTINATIONS_INDEX"]
+  ALGOLIA_HOTELS_INDEX = os.environ["ALGOLIA_HOTELS_INDEX"]
+  SUMM_LOG_FILE  = os.environ["SUMM_LOG_FILE"]
+  SUMM_LOG_LEVEL = os.environ["SUMM_LOG_LEVEL"]

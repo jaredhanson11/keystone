@@ -40,6 +40,16 @@ flok-landing-page-prod:
     chartName: "local/webclient-app"
     namespace: "production"
 
+algolia-indexer-producer:
+  - name: "algolia-indexer-server"
+    chartName: "local/flask-app"
+    namespace: "production"
+
+algolia-indexer-consumer:
+  - name: "algolia-indexer"
+    chartName: "local/rmq-worker"
+    namespace: "production"
+
 #### Staging
 hawk-staging:
   - name: "hawk"
