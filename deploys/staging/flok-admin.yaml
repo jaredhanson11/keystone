@@ -1,0 +1,44 @@
+image:
+  repository: "jaredhanson11/flok-admin"
+  tag: latest
+
+config:
+  SUMM_LOG_FILE: "/logs/app.log"
+  SUMM_LOG_LEVEL: DEBUG
+  GOOGLE_CREDENTIALS_PATH: /secrets/google_credentials.json
+
+existingSecret: flok-secrets
+secret:
+  AWS_ACCESS_KEY: ""
+  AWS_SECRET_KEY: ""
+mountedSecrets:
+  google_credentials.json: /secrets/
+
+dbConnection:
+  shouldConnect: true
+  passwordSecret:
+    secretName: postgres-secrets
+    keyName: postgresql-password
+  user: summtech-user
+  host: summtech-postgres61a057c.cyva8rncdmah.us-east-1.rds.amazonaws.com
+  name: flok_staging
+
+config.py: |-
+  import os
+  GOOGLE_CREDENTIALS_PATH = os.environ["GOOGLE_CREDENTIALS_PATH"]
+  # AWS
+  AWS_ACCESS_KEY = os.environ["AWS_ACCESS_KEY"]
+  AWS_SECRET_KEY = os.environ["AWS_SECRET_KEY"]
+  # SQLALCHEMY
+  SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
+  # Logging
+  tmp = os.environ.get("SUMM_LOG_FILE")
+  if tmp:
+      SUMM_LOG_FILE = tmp
+  tmp = os.environ.get("SUMM_LOG_FILE_SIZE")
+  if tmp:
+      SUMM_LOG_FILE_SIZE = tmp
+
+ingress:
+  enabled: true
+  subdomain: "admin-staging"

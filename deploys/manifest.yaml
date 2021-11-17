@@ -50,6 +50,11 @@ algolia-indexer-consumer:
     chartName: "local/rmq-worker"
     namespace: "production"
 
+flok-admin-prod:
+  - name: "flok-admin"
+    chartName: "local/flask-app"
+    namespace: "production"
+
 #### Staging
 hawk-staging:
   - name: "hawk"
@@ -69,6 +74,11 @@ flok-flight-receipts-rmq-worker-staging:
 flok-staging:
   - name: "flok"
     chartName: "local/webclient-app"
+    namespace: "staging"
+
+flok-admin-staging:
+  - name: "flok-admin"
+    chartName: "local/flask-app"
     namespace: "staging"
 
 # Used when needing to test landing page changes ##
