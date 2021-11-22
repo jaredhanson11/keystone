@@ -11,6 +11,7 @@ existingSecret: flok-secrets
 secret:
   AWS_ACCESS_KEY: ""
   AWS_SECRET_KEY: ""
+  GOOGLE_MAPS_KEY: ""
 mountedSecrets:
   google_credentials.json: /secrets/
 
@@ -27,6 +28,7 @@ dbConnection:
 config.py: |-
   import os
   GOOGLE_CREDENTIALS_PATH = os.environ["GOOGLE_CREDENTIALS_PATH"]
+  GOOGLE_MAPS_KEY=os.environ["GOOGLE_MAPS_KEY"]
   # AWS
   AWS_ACCESS_KEY = os.environ["AWS_ACCESS_KEY"]
   AWS_SECRET_KEY = os.environ["AWS_SECRET_KEY"]
