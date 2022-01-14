@@ -27,5 +27,9 @@ spec:
   {{- include "lib.deploy.envConfigs" . | nindent 16 }}
   {{- include "lib.deploy.envSecrets" . | nindent 16 }}
   {{- include "lib.db.sqlalchemyDbUri" . | nindent 16 }}
+              volumeMounts:
+{{- include "lib.secret.secretVolumeMounts" . | nindent  16 }}
+          volumes:
+{{- include "lib.secret.secretVolumes" . | nindent  12 }}
           restartPolicy: {{ .Values.job.restartPolicy }}
 {{- end -}}
