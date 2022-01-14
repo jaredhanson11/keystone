@@ -55,20 +55,15 @@ flok-admin-prod:
     chartName: "local/flask-app"
     namespace: "production"
 
+flok-flight-receipts-job:
+  - name: "flok-flight-receipts-job"
+    chartName: "local/simple-job"
+    namespace: "production"
+
 #### Staging
 hawk-staging:
   - name: "hawk"
     chartName: "local/flask-app"
-    namespace: "staging"
-
-flok-flight-receipts-web-staging:
-  - name: "flok-flight-receipts-web"
-    chartName: "local/flask-app"
-    namespace: "staging"
-
-flok-flight-receipts-rmq-worker-staging:
-  - name: "flok-flight-receipts-rmq-worker"
-    chartName: "local/rmq-worker"
     namespace: "staging"
 
 flok-staging:
