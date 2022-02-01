@@ -1,6 +1,6 @@
 image:
   repository: jaredhanson11/flok-flight-receipts-job
-  tag: latest
+  tag: "1.0"
 job:
   cron:
     enabled: true
