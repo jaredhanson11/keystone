@@ -1,3 +1,4 @@
+itsdangerous==2.0.1 # bugfix, 2.1.0 not mixing with Flask 1.1.1, related: https://stackoverflow.com/a/71206978
 Flask==1.1.1
 gunicorn==20.0.0
 Flask-RESTful==0.3.7
