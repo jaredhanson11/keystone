@@ -40,21 +40,6 @@ flok-landing-page-prod:
     chartName: "local/webclient-app"
     namespace: "production"
 
-algolia-indexer-producer:
-  - name: "algolia-indexer-server"
-    chartName: "local/flask-app"
-    namespace: "production"
-
-algolia-indexer-consumer:
-  - name: "algolia-indexer"
-    chartName: "local/rmq-worker"
-    namespace: "production"
-
-flok-admin-prod:
-  - name: "flok-admin"
-    chartName: "local/flask-app"
-    namespace: "production"
-
 flok-flight-receipts-job:
   - name: "flok-flight-receipts-job"
     chartName: "local/simple-job"
@@ -69,11 +54,6 @@ hawk-staging:
 flok-staging:
   - name: "flok"
     chartName: "local/webclient-app"
-    namespace: "staging"
-
-flok-admin-staging:
-  - name: "flok-admin"
-    chartName: "local/flask-app"
     namespace: "staging"
 
 # Used when needing to test landing page changes ##
