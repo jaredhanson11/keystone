@@ -1,5 +1,7 @@
+image:
+  tag: "3.38.1"
 nexus:
-  docker: 
+  docker:
     enabled: false
   nodeSelector:
     beta.kubernetes.io/instance-type: "t3.medium"

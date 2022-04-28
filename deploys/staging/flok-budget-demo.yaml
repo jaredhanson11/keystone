@@ -1,0 +1,11 @@
+image:
+  repository: "jaredhanson11/flok"
+  tag: 1.0-budget
+
+config:
+  API_URL: "https://api.goflok.com/api"
+  IMAGES_URL: "https://flok-b32d43c.s3.us-east-1.amazonaws.com/"
+
+ingress:
+  enabled: true
+  subdomain: "budget"

@@ -25,6 +25,7 @@
 nexus:
   - name: "nexus"
     chartName: "sonatype/nexus-repository-manager"
+    chartVersion: "37.3.0"
     namespace: "nexus"
 
 ## Ghost (blog)
@@ -42,7 +43,7 @@ flok-landing-page-prod:
 
 pigeon:
   - name: "pigeon"
-    chartName: "local/simple-job"
+    chartName: "local/rmq-worker"
     namespace: "production"
 
 flok-flight-receipts-job:
@@ -58,6 +59,11 @@ hawk-staging:
 
 flok-staging:
   - name: "flok"
+    chartName: "local/webclient-app"
+    namespace: "staging"
+
+flok-budget-demo:
+  - name: "flok-budget-demo"
     chartName: "local/webclient-app"
     namespace: "staging"
 
