@@ -93,6 +93,7 @@ for _deployment in deploy_keys:
         deploy_name = deploy_args["name"]
         namespace = deploy_args["namespace"]
         reponame, chartname = deploy_args["chartName"].split("/")
+        chart_version = deploy_args.get("chartVersion")
         values = yaml.safe_load(
             Path(Config.get_deploys_dir())
             .joinpath(namespace)
@@ -112,6 +113,7 @@ for _deployment in deploy_keys:
         else:
             chart_opts = pulumi_kubernetes.helm.v3.ChartOpts(
                 chart=chartname,
+                version=chart_version,
                 namespace=namespaces_dict[namespace],
                 values=values,
                 fetch_opts=HELM_REPO_FETCH_OPTS[reponame],

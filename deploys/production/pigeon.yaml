@@ -1,0 +1,20 @@
+image:
+  repository: "jaredhanson11/pigeon"
+  tag: 1.0.0
+existingSecret: hawk-secrets
+secret:
+  DATABASE_URL: ""
+  RMQ_CONNECTION_URL: ""
+  SLACK_BOT_TOKEN: ""
+  SENDGRID_API_KEY: ""
+config:
+  SUMM_LOG_FILE: "/app/app.log"
+  SUMM_LOG_LEVEL: DEBUG
+config.py: |-
+  import os
+  SQLALCHEMY_DATABASE_URI = os.environ["DATABASE_URL"]
+  RMQ_CONNECTION_URL = os.environ["RMQ_CONNECTION_URL"]
+  SLACK_BOT_TOKEN = os.environ["SLACK_BOT_TOKEN"]
+  SENDGRID_API_KEY = os.environ["SENDGRID_API_KEY"]
+  SUMM_LOG_FILE  = os.environ["SUMM_LOG_FILE"]
+  SUMM_LOG_LEVEL = os.environ["SUMM_LOG_LEVEL"]

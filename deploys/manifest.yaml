@@ -40,6 +40,11 @@ flok-landing-page-prod:
     chartName: "local/webclient-app"
     namespace: "production"
 
+pigeon:
+  - name: "pigeon"
+    chartName: "local/simple-job"
+    namespace: "production"
+
 flok-flight-receipts-job:
   - name: "flok-flight-receipts-job"
     chartName: "local/simple-job"
