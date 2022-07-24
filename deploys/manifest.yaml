@@ -52,23 +52,17 @@ flok-flight-receipts-job:
     namespace: "production"
 
 #### Staging
-hawk-staging:
-  - name: "hawk"
-    chartName: "local/flask-app"
+pigeon-staging:
+  - name: "pigeon"
+    chartName: "local/rmq-worker"
     namespace: "staging"
-
-flok-staging:
-  - name: "flok"
-    chartName: "local/webclient-app"
-    namespace: "staging"
-
-flok-budget-demo:
-  - name: "flok-budget-demo"
-    chartName: "local/webclient-app"
-    namespace: "staging"
+# flok-budget-demo:
+#   - name: "flok-budget-demo"
+#     chartName: "local/webclient-app"
+#     namespace: "staging"
 
 # Used when needing to test landing page changes ##
-flok-landing-page-staging:
-  - name: "flok-landing-page"
-    chartName: "local/webclient-app"
-    namespace: "staging"
+# flok-landing-page-staging:
+#   - name: "flok-landing-page"
+#     chartName: "local/webclient-app"
+#     namespace: "staging"
