@@ -46,10 +46,10 @@ pigeon:
     chartName: "local/rmq-worker"
     namespace: "production"
 
-flok-flight-receipts-job:
-  - name: "flok-flight-receipts-job"
-    chartName: "local/simple-job"
-    namespace: "production"
+# flok-flight-receipts-job:
+#   - name: "flok-flight-receipts-job"
+#     chartName: "local/simple-job"
+#     namespace: "production"
 
 #### Staging
 pigeon-staging:
