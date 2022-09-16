@@ -1,0 +1,7 @@
+image:
+  repository: "jaredhanson11/teneoretreat2022-splashscreen"
+  tag: 1.0.0
+
+ingress:
+  enabled: true
+  subdomain: "teneoretreat2022-test"

@@ -46,6 +46,11 @@ pigeon:
     chartName: "local/rmq-worker"
     namespace: "production"
 
+teneoretreat2022-splash:
+  - name: "teneoretreat2022-splash"
+    chartName: "local/webclient-app"
+    namespace: "production"
+
 # flok-flight-receipts-job:
 #   - name: "flok-flight-receipts-job"
 #     chartName: "local/simple-job"
