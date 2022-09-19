@@ -4,4 +4,4 @@ image:
 
 ingress:
   enabled: true
-  subdomain: "teneoretreat2022-test"
+  subdomain: "teneoretreat2022"
