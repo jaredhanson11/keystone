@@ -1,6 +1,6 @@
 image:
   repository: "jaredhanson11/pigeon"
-  tag: 2.3.1
+  tag: 2.4.0
 
 existingSecret: hawk-secrets
 secret:
