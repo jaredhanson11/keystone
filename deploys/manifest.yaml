@@ -51,6 +51,11 @@ teneoretreat2022-splash:
     chartName: "local/webclient-app"
     namespace: "production"
 
+flok-holiday-landing-page:
+  - name: "flok-holiday-landing-page"
+    chartName: "local/webclient-app"
+    namespace: "production"
+
 # flok-flight-receipts-job:
 #   - name: "flok-flight-receipts-job"
 #     chartName: "local/simple-job"
