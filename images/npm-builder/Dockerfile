@@ -9,7 +9,7 @@ ENV NPM_EMAIL='unset'
 ENV NPM_USER='unset'
 ENV NPM_PASSWORD='unset'
 
-COPY --from=jaredhanson11/cicd-tools /scripts/python /scripts/npm
+COPY --from=jaredhanson11/cicd-tools /scripts/npm /scripts/npm
 COPY --from=jaredhanson11/cicd-tools /scripts/github-workflows /scripts/github-workflows
 
 WORKDIR /build
