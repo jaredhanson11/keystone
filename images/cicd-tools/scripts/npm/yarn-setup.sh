@@ -14,7 +14,7 @@ then
     exit 1
 fi
 
-yarn config set @summtech:registry $NPM_REGISTRY
-yarn config set _auth $(echo -n $NPM_USER:$NPM_PASSWORD | base64)
-yarn config set email $NPM_EMAIL
-yarn config set always-auth true
+npm config set @summtech:registry $NPM_REGISTRY
+npm config set _auth $(echo -n $NPM_USER:$NPM_PASSWORD | base64)
+npm config set email $NPM_EMAIL
+npm config set always-auth true
