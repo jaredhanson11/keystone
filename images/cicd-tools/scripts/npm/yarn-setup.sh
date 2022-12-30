@@ -9,7 +9,7 @@ if [[ -z "$NPM_REGISTRY" || -z "$NPM_EMAIL" || \
     -z "$NPM_USER" || -z "$NPM_PASSWORD" ]];
 then
     echo "Missing required inputs."
-    echo "./yarn-login.sh"
+    echo "./yarn-setup.sh"
     echo "Requires: NPM_REGISTRY, NPM_EMAIL, NPM_USER, NPM_PASSWORD"
     exit 1
 fi
