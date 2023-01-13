@@ -36,6 +36,7 @@ summtech_users = {
     "harris@goflok.com": [summtech_admin_group, summtech_user_group],
     "anthony@goflok.com": [summtech_admin_group, summtech_user_group],
     "yan@goflok.com": [summtech_admin_group, summtech_user_group],
+    "andrew@goflok.com": [summtech_user_group],
 }
 
 for _user in summtech_users:
