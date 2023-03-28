@@ -62,17 +62,17 @@ flok-holiday-landing-page:
 #     namespace: "production"
 
 #### Staging
-pigeon-staging:
-  - name: "pigeon"
-    chartName: "local/rmq-worker"
-    namespace: "staging"
+# pigeon-staging:
+#   - name: "pigeon"
+#     chartName: "local/rmq-worker"
+#     namespace: "staging"
 # flok-budget-demo:
 #   - name: "flok-budget-demo"
 #     chartName: "local/webclient-app"
 #     namespace: "staging"
 
 # Used when needing to test landing page changes ##
-# flok-landing-page-staging:
-#   - name: "flok-landing-page"
-#     chartName: "local/webclient-app"
-#     namespace: "staging"
+flok-landing-page-staging:
+  - name: "flok-landing-page"
+    chartName: "local/webclient-app"
+    namespace: "staging"
