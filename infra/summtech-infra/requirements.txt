@@ -1,4 +1,6 @@
 pulumi>=2.0.0,<3.0.0
 pulumi-aws>=3.2.0,<4.0.0
 pulumi-kubernetes>=2.8.0,<3.0.0
-pulumi_postgresql==2.7.2
+pyyaml==5.3.1
+protobuf==3.20
+pulumi_postgresql>=2.0.0,<=3.0.0
