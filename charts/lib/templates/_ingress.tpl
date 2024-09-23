@@ -20,17 +20,23 @@ libs.hosts generates ingress entrypoints.
   http:
     paths:
       - path: "{{ default "/" $path }}"
+        pathType: ImplementationSpecific
         backend:
-          serviceName: {{ $fullName | quote }}
-          servicePort: {{ $svcPort }}
+          service:
+            name: {{ $fullName | quote }}
+            port:
+              number: {{ $svcPort }}
 {{ if $rootEnabled }}
 - host: "{{ . }}"
   http:
     paths:
       - path: "{{ default "/" $path }}"
+        pathType: ImplementationSpecific
         backend:
-          serviceName: {{ $fullName | quote }}
-          servicePort: {{ $svcPort }}
+          service:
+            name: {{ $fullName | quote }}
+            port:
+              number: {{ $svcPort }}
 {{- end -}}
 {{- end -}}
 {{- end -}}
@@ -39,7 +45,7 @@ libs.hosts generates ingress entrypoints.
 */ -}}
 {{- define "lib.ingress" -}}
 {{- if .Values.ingress.enabled -}}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ include "lib.common.fullname" . }}
