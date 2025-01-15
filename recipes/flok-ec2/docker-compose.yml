@@ -1,0 +1,27 @@
+services:
+  ghost:
+    restart: always
+    image: ghost:4.6.4
+    hostname: ghost
+    environment:
+      NODE_ENV: production
+      mail__from: noreply@flok.com
+      mail__options__auth__user: apikey
+      mail__options__host: smtp.sendgrid.net
+      mail__options__port: "465"
+      mail__options__secureConnection: "true"
+      mail__options__service: SendGrid
+      mail__transport: SMTP
+      url: https://goflok.com/blog/
+      mail__options__auth__pass: xxxxxxx
+    volumes:
+      - /ghost:/var/lib/ghost/content
+    ports:
+      - "0.0.0.0:3001:2368"
+  landing-page:
+    restart: always
+    image: jaredhanson11/flok-landing-page:2.0.18
+    hostname: landing-page
+    ports:
+      - "0.0.0.0:3000:80"
+
